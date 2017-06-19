@@ -1,0 +1,38 @@
+[
+    {
+        "controlGroup": "Revolution",
+        "yearMonth": "2017 JAN",
+        "workerPoolFteStatus": "Full TIme",
+        "firstName": "Vidya",
+        "lastName": "T",
+        "workedHours": "12",
+        "workerPoolFteCount": "1"
+    },
+    {
+        "controlGroup": "Revolution",
+        "yearMonth": "2016 FEB",
+        "workerPoolFteStatus": "Non Full Time",
+        "firstName": "Sharat",
+        "lastName": "G",
+        "workedHours": "10",
+        "workerPoolFteCount": "06"
+    },
+    {
+        "controlGroup": "Revolution",
+        "yearMonth": "2015 DEC",
+        "workerPoolFteStatus": "Full TIme",
+        "firstName": "Chakradhar",
+        "lastName": "P",
+        "workedHours": "16",
+        "workerPoolFteCount": "08"
+    },
+    {
+        "controlGroup": "Revolution",
+        "yearMonth": "2016 SEP",
+        "workerPoolFteStatus": "Full TIme",
+        "firstName": "Kowsik",
+        "lastName": "P",
+        "workedHours": "20",
+        "workerPoolFteCount": "03"
+    }
+]

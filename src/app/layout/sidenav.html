@@ -1,0 +1,244 @@
+<!-- -------------- Sidebar  -------------- -->
+<aside id="sidebar_left" class="nano nano-light affix">
+
+    <!-- -------------- Sidebar Left Wrapper  -------------- -->
+    <div class="sidebar-left-content nano-content">
+        <!-- -------------- Sidebar Header -------------- -->
+        <header class="sidebar-header">
+            <!-- -------------- Sidebar - Author -------------- -->
+            <!-- -------------- Sidebar - Author Menu  -------------- -->
+            <div class="sidebar-widget menu-widget">
+                <div class="row text-center mbn">
+                    <div class="col-xs-2 pln prn">
+                        <a [routerLink]="['/',route,dashboard]" class="text-primary" data-toggle="tooltip" data-placement="top" title="Dashboard">
+                                <span class="fa fa-dashboard"></span>
+                            </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 pln prn">
+                        <a href="charts-highcharts.html" class="text-info" data-toggle="tooltip" data-placement="top" title="Stats">
+                                <span class="fa fa-bar-chart-o"></span>
+                            </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 pln prn">
+                        <a href="sales-stats-products.html" class="text-system" data-toggle="tooltip" data-placement="top" title="Orders">
+                                <span class="fa fa-info-circle"></span>
+                            </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 pln prn">
+                        <a href="sales-stats-purchases.html" class="text-warning" data-toggle="tooltip" data-placement="top" title="Invoices">
+                                <span class="fa fa-file"></span>
+                            </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 pln prn">
+                        <a href="basic-profile.html" class="text-alert" data-toggle="tooltip" data-placement="top" title="Users">
+                                <span class="fa fa-users"></span>
+                            </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-2 pln prn">
+                        <a href="management-tools-dock.html" class="text-danger" data-toggle="tooltip" data-placement="top" title="Settings">
+                                <span class="fa fa-cogs"></span>
+                            </a>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!-- -------------- /Sidebar Header -------------- -->
+
+        <!-- -------------- Sidebar Menu  -------------- -->
+        <ul class="nav sidebar-menu">
+            <li class="sidebar-label pt30">Menu</li>
+
+            <li>
+                <a class="accordion-toggle menu-open" href="#">
+                        <span class="fa fa-tasks"></span>
+                        <span class="sidebar-title">User Management</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li class="active">
+                        <a [routerLink]="['/',route,addcustomer]">
+                                <span class="fa fa-file-text-o"></span> Add Customer </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,listcustomer]">
+                                <span class="fa fa-file-text-o"></span> List Customers </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                        <span class="fa fa-dashboard"></span>
+                        <span class="sidebar-title">On Boarding</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li class="active">
+                        <a [routerLink]="['/',route,onboardingcustomerinformation]">
+                                <span class="fa fa-file-text-o"></span> Client Onboarding </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,controlgroup]">
+                                <span class="fa fa-file-text-o"></span> Control Group </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,ale]">
+                                <span class="fa fa-file-text-o"></span> ALE </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-label pt25">Data Related</li>
+            <li>
+                <a class="accordion-toggle" href="#">
+                          <span class="fa fa-share-square-o"></span>
+                        <span class="sidebar-title">Data Upload</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li>
+                        <a [routerLink]="['/',route,aledataupload]" routerLinkActive="active">
+                                <span class="fa fa-file-text-o"></span> ALE Data </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,payrolldataupload]" routerLinkActive="active">
+                                <span class="fa fa-file-text-o"></span> Payroll Data </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,insurancedataupload]" routerLinkActive="active">
+                                <span class="fa fa-file-text-o"></span> Insurance Data </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,onezeroninefourdataupload]" routerLinkActive="active">
+                                <span class="fa fa-file-text-o"></span> 1094 </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,onezeroninefivedataupload]" routerLinkActive="active">
+                                <span class="fa fa-file-text-o"></span> 1095 </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+
+
+
+
+            <li>
+
+                <a class="accordion-toggle" href="#">
+                        <span class="fa fa-desktop"></span>
+                        <span class="sidebar-title">Data View</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li class="active">
+                        <a [routerLink]="['/',route,onboardingcustomerinformation]">
+                                <span class="fa fa-file-text-o"></span> Payroll Data </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,onboardingcustomerinformation]">
+                                <span class="fa fa-file-text-o"></span> Insurance Data </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,onboardingcustomerinformation]">
+                                <span class="fa fa-file-text-o"></span> 1094 </a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/',route,onboardingcustomerinformation]">
+                                <span class="fa fa-file-text-o"></span> 1095 </a>
+                    </li>
+                </ul>
+
+
+
+            </li>
+            <li class="sidebar-label pt25">Eligibility</li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                        <span class="fa fa-wrench"></span>
+                        <span class="sidebar-title">Data Portal</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li>
+                        <a [routerLink]="['/',route,empsummary]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-equalizer"></span> Employee Summary </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,empeligilbility]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-book"></span> Eligible </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,empdemographics]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-modal-window"></span> Demographics </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,empbreakinservice]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-equalizer"></span> Break In Service </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/',route,nftreport]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-book"></span> New Hire Full Time </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,enftreport]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-modal-window"></span> New Hire Part Time </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,ogreport]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-equalizer"></span> On Going </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,ercreport]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-equalizer"></span> Employer Coverage </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/',route,pdareport]" routerLinkActive="active">
+                                <span class="glyphicon glyphicon-equalizer"></span> Payroll Activity Report </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-label pt25">IRS</li>
+
+            <li>
+                <a class="accordion-toggle" href="#">
+                        <span class="fa fa-check-square-o"></span>
+                        <span class="sidebar-title">Submission</span>
+                        <span class="caret"></span>
+                    </a>
+                <ul class="nav sub-nav">
+                    <li>
+                        <a>
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Generate 1094/1095 </a>
+                    </li>
+                    <li>
+                        <a>
+                                <span class="glyphicon glyphicon-calendar"></span> AIR Submission 1094/1095 </a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+        <!-- -------------- /Sidebar Menu  -------------- -->
+
+        <!-- -------------- Sidebar Hide Button -------------- -->
+        <div class="sidebar-toggler">
+            <a href="#">
+                    <span class="fa fa-arrow-circle-o-left"></span>
+                </a>
+        </div>
+        <!-- -------------- /Sidebar Hide Button -------------- -->
+
+    </div>
+    <!-- -------------- /Sidebar Left Wrapper  -------------- -->
+
+</aside>

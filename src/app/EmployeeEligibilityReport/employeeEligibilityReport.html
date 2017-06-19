@@ -1,0 +1,57 @@
+<!-- -------------- Main Wrapper -------------- -->
+<section id="content_wrapper">
+
+    <!-- -------------- Topbar -------------- -->
+    <header id="topbar" class="ph10">
+        <div class="topbar-left">
+            <div class="allcp-form theme-primary">
+                <div class="panel panel-primary" id="p2" data-panel-color="false" data-panel-fullscreen="false" data-panel-remove="false"
+                    data-panel-title="false">
+                    <div class="panel-heading">
+                        <span class="panel-title">Employee Eligibility Report</span>
+                        <span class="panel-icon pull-right">
+                           <a id="btnDownloadPdf"  class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
+                            <a id="btnDownloadExcel" class="fa fa-file-excel-o" (click)="downloadExcel()" ></a>
+                        </span>
+                    </div>                   
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="inputTableSearch" class="col-sm-2 control-label">Search</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" id="inputTableSearch" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
+                                                        (tableChanged)="onChangeTable(config)">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive over-x_table">
+                                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
+                                                (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+                                            </ng-table>
+                                            <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                                                [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                                                (numPages)="numPages = $event">
+                                            </pagination>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- -------------- /Topbar -------------- -->
+
+</section>

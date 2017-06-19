@@ -1,0 +1,129 @@
+<!-- -------------- Main Wrapper -------------- -->
+<section id="content_wrapper">
+
+    <!-- -------------- Topbar -------------- -->
+    <header id="topbar" class="ph10">
+        <div class="topbar-left">
+            <div class="allcp-form theme-primary">
+                <div class="panel panel-primary" id="p2" data-panel-color="false" data-panel-fullscreen="false" data-panel-remove="false"
+                    data-panel-title="false">
+                    <div class="panel-heading">
+                        <span class="panel-title">ACA Consolidated Eligibility Benefits Report - Standard & Initial Mode</span>
+                        <span class="panel-icon pull-right">
+                           <a id="btnDownloadPdf"  class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
+                            <a id="btnDownloadExcel" class="fa fa-file-excel-o" (click)="downloadExcel()" ></a>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="row" style="display:none">
+                                <div class="col-sm-4">
+                                    <div class="form-group"><label class="col-sm-5">{{companyName}}</label></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblReportRunDate" class="col-sm-5 control-label">Control Group: </label>
+                                        <label name="lblReportRunDate" class="col-sm-6 control-label">BIG FISH ENTERTAINMENT LLC</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblReportRunDate" class="col-sm-5 control-label">Report Run Date: </label>
+                                        <label name="lblReportRunDate" class="col-sm-6 control-label">{{reportRunDate}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblPlanStartDate" class="col-sm-5 control-label">Plan Start Date: </label>
+                                        <label name="lblPlanStartDate" class="col-sm-6 control-label">{{planStartDate}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblMeasurementPeriod" class="col-sm-5 control-label">Measurement Period: </label>
+                                        <label name="lblMeasurementPeriod" class="col-sm-5 control-label">{{measurmentPeriod}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblAdminstrativePeriod" class="col-sm-5 control-label">Administrative Period:</label>
+                                        <label name="lblAdminstrativePeriod" class="col-sm-5 control-label">{{adminstrativePeriod}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="row">
+                                <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="lblNewHireMeasurementPeriod" class="col-sm-5 control-label">New Hire Measurement Period: </label>
+                                    <label name="lblNewHireMeasurementPeriod" class="col-sm-5 control-label">{{newHireMeasurmentPeriod}}</label>
+                                </div>
+                            </div>
+                           </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="lblPlanStartDate" class="col-sm-5 control-label">ACA Employment Basis: </label>
+                                        <label name="lblPlanStartDate" class="col-sm-5 control-label">Any</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <!-- -------------- /Topbar -------------- -->
+    <!-- -------------- Content -------------- -->
+    <section id="content" class="table-layout animated fadeIn" ng-show="dataLoaded">
+        <div class="panel panel-visible p20" id="spy3">
+            <div class="panel-heading">
+                <div class="panel-title hidden-xs">
+                    Report Details
+                </div>
+            </div>
+            <div class="panel-body pn">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputTableSearch" class="col-sm-2 control-label">Search</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="inputTableSearch" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
+                                        (tableChanged)="onChangeTable(config)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive over-x_table">
+                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
+                                (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+                            </ng-table>
+                            <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                                [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                                (numPages)="numPages = $event">
+                            </pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- -------------- /Content -------------- -->
+</section>

@@ -1,0 +1,126 @@
+<!-- -------------- Main Wrapper -------------- -->
+<section id="content_wrapper">
+
+    <!-- -------------- Topbar -------------- -->
+    <header id="topbar" class="ph10">
+        <div class="topbar-left">
+            <div class="allcp-form theme-primary">
+                <div class="panel panel-primary" id="p2" data-panel-color="false" data-panel-fullscreen="false" data-panel-remove="false"
+                    data-panel-title="false">
+                    <div class="panel-heading">
+                        <span class="panel-title">ER Coverage Report</span>
+                        <span class="panel-icon pull-right">
+                           <a id="btnDownloadPdf"  class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
+                            <a id="btnDownloadExcel" class="fa fa-file-excel-o" (click)="downloadExcel()" ></a>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="ddlYear" class="col-sm-5 control-label"><i class="fa fa-calendar"></i> Year</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                                <select id="ddlYear" name="ddlYear" [(ngModel)]="selectedYear" aria-placeholder="Select year">
+                                                    <option value="-1">Select Year</option>
+                                                    <option *ngFor="let year of Years" value={{year}}>
+                                                        {{year}}
+                                                    </option>
+                                                </select>
+                                                <i class="arrow"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="ddlcontrolgroup" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                                <select id="ddlcontrolgroup" name="ddlcontrolgroup" [(ngModel)]="selectedControlGroup">
+                                                    <option value="-1">All</option>
+                                                    <option *ngFor="let group of ControlGroups" value={{group}}>
+                                                        {{group}}
+                                                    </option>
+                                                </select>
+                                                <i class="arrow"></i>
+                                            </label>
+                                        </div>                                        
+                                    </div>
+                                </div>  
+                                <div class="col-sm-3">
+                                            <button class="btn btn-primary" type="button" (click)="Search()">Filter</button>
+                                 </div>                             
+                            </div>
+                            
+                            <hr class="short" />
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h6>Summary</h6>
+                                    <div class="summaryBlock clearfix">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-success btn-lg" (click)="annualizedMonthlyReportData()">
+                                                        Annualized Monthly
+                                                    </button>
+                                                    <button type="button" class="btn btn-success btn-lg" (click)="annualizedMonthlyReportData()" >
+                                                        {{annulaizedMonthly}}
+                                                    </button>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- -------------- /Topbar -------------- -->
+    <!-- -------------- Content -------------- -->
+    <section id="content" class="table-layout animated fadeIn" *ngIf="dataLoaded">
+        <div class="panel panel-visible p20" id="spy3">
+            <div class="panel-heading">
+                <div class="panel-title hidden-xs">
+                    Report Details
+                </div>
+            </div>
+            <div class="panel-body pn">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputTableSearch" class="col-sm-2 control-label">Search</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="inputTableSearch" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
+                                        (tableChanged)="onChangeTable(config)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive over-x_table">
+                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
+                                (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+                            </ng-table>
+                            <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                                [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                                (numPages)="numPages = $event">
+                            </pagination>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- -------------- /Content -------------- -->
+</section>

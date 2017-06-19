@@ -1,0 +1,58 @@
+[
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN1",
+        "serviceStatus": "FullTime",
+        "weekStarting": "123",        
+        "weekEnding": "1000",
+        "weekCount": "7"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN2",
+        "serviceStatus": "FullTime",
+        "weekStarting": "123",        
+        "weekEnding": "1000",
+        "weekCount": "5"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN3",
+        "serviceStatus": "FullTime",
+        "weekStarting": "06-06-2016",       
+        "weekEnding":  "12-06-2016",
+        "weekCount": "7"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN1",
+        "serviceStatus": "FullTime",
+        "weekStarting": "06-06-2016",       
+        "weekEnding":  "12-06-2016",
+        "weekCount": "1"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN5",
+        "serviceStatus": "FullTime",
+        "weekStarting": "06-06-2016",       
+        "weekEnding":  "12-06-2016",
+        "weekCount": "6"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN5",
+        "serviceStatus": "FullTime",
+        "weekStarting": "06-06-2016",       
+        "weekEnding":  "12-06-2016",
+        "weekCount": "5"
+    },
+    {
+        "employeeName": "Vidya",        
+        "ssnNumber": "SSN9",
+        "serviceStatus": "FullTime",
+        "weekStarting": "123",        
+        "weekEnding": "1000",
+        "weekCount": "4"
+    }
+]

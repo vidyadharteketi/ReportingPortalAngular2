@@ -1,0 +1,58 @@
+[
+    {
+        "controlGroup": "ABC",
+        "mostRecentProductionCompany": "CTS",
+        "mostRecentProject": "KRIMS",
+        "ssnNumber": "12347",
+        "firstName": "Vidya",
+        "lastName": "T",
+        "lastWorkedDate": "12-31-2016",
+        "hireDate": "06-06-2016",
+        "payrollSource": "CS",
+        "avgHours": "45",
+        "totalHours": "120",
+        "unionType": "All"
+    },
+    {
+        "controlGroup": "ABC",
+        "mostRecentProductionCompany": "CTS",
+        "mostRecentProject": "KRIMS",
+        "ssnNumber": "12345",
+        "firstName": "Sharat",
+        "lastName": "G",
+        "lastWorkedDate": "11-31-2016",
+        "hireDate": "06-07-2016",
+        "payrollSource": "CS",
+        "avgHours": "45",
+        "totalHours": "200",
+        "unionType": "All"
+    },
+    {
+        "controlGroup": "ABC",
+        "mostRecentProductionCompany": "CTS",
+        "mostRecentProject": "KRIMS",
+        "ssnNumber": "12346",
+        "firstName": "Chakradhar",
+        "lastName": "P",
+        "lastWorkedDate": "10-31-2016",
+        "hireDate": "08-06-2016",
+        "payrollSource": "CS",
+        "avgHours": "45",
+        "totalHours": "300",
+        "unionType": "All"
+    },
+    {
+        "controlGroup": "ABC",
+        "mostRecentProductionCompany": "CTS",
+        "mostRecentProject": "KRIMS",
+        "ssnNumber": "12346",
+        "firstName": "Kowsik",
+        "lastName": "P",
+        "lastWorkedDate": "12-31-2016",
+        "hireDate": "03-06-2016",
+        "payrollSource": "CS",
+        "avgHours": "45",
+        "totalHours": "350",
+        "unionType": "All"
+    }
+]

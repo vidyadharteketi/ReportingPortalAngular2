@@ -1,0 +1,91 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "ng-table-excel-export",
+        "scope": null,
+        "escapedName": "ng-table-excel-export",
+        "name": "ng-table-excel-export",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Chakri\\Projects\\Project"
+    ]
+  ],
+  "_from": "ng-table-excel-export@latest",
+  "_id": "ng-table-excel-export@1.0.0",
+  "_inCache": true,
+  "_location": "/ng-table-excel-export",
+  "_nodeVersion": "6.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/ng-table-excel-export-1.0.0.tgz_1480613186420_0.6017480315640569"
+  },
+  "_npmUser": {
+    "name": "blsrm",
+    "email": "blsrm@yahoo.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ng-table-excel-export",
+    "scope": null,
+    "escapedName": "ng-table-excel-export",
+    "name": "ng-table-excel-export",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-table-excel-export/-/ng-table-excel-export-1.0.0.tgz",
+  "_shasum": "b0c107efe4fbf00a11a75952826078993b602883",
+  "_shrinkwrap": null,
+  "_spec": "ng-table-excel-export",
+  "_where": "C:\\Users\\Chakri\\Projects\\Project",
+  "author": {
+    "name": "Murugavel Ramachandran",
+    "email": "blsrm@yahoo.com"
+  },
+  "bugs": {
+    "url": "https://github.com/blsrm/ngTableExcelExport/issues"
+  },
+  "dependencies": {},
+  "description": "JavaScript export to Excel or CSV from HTML tables automatically in the browser and also compatible with all browsers",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b0c107efe4fbf00a11a75952826078993b602883",
+    "tarball": "https://registry.npmjs.org/ng-table-excel-export/-/ng-table-excel-export-1.0.0.tgz"
+  },
+  "homepage": "https://github.com/blsrm/ngTableExcelExport#readme",
+  "keywords": [
+    "excel",
+    "export",
+    "csv",
+    "excel",
+    "Internet explorer",
+    "javascript",
+    "client",
+    "side"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "blsrm",
+      "email": "blsrm@yahoo.com"
+    }
+  ],
+  "name": "ng-table-excel-export",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/blsrm/ngTableExcelExport.git"
+  },
+  "scripts": {},
+  "version": "1.0.0"
+}
