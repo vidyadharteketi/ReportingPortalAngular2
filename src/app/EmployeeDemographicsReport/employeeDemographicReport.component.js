@@ -20,6 +20,8 @@ var EmployeeDemographicReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
+            { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+            { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
             { title: 'Parent Company', className: 'va-m', name: 'ParentCompany' },
             { title: 'Prodcution Company', className: 'va-m', name: 'ProductionCompany' },
             { title: 'Show Name', className: 'va-m', name: 'ShowName' },

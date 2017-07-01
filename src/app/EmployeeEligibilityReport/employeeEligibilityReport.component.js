@@ -20,6 +20,8 @@ var EmployeeEligibilityReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
+            { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+            { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
             { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
             { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
             { title: 'SSN', className: 'va-m', name: 'SSN' },

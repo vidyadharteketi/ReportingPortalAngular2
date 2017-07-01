@@ -8,4 +8,6 @@ export interface IEmpEligibleWorkDetail {
     TotalHours: string;
     StandardMeasuredEligibility: string;
     BenefitsEffective: string;
+    ControlGroup: string;
+    WorkYear: string;
 }

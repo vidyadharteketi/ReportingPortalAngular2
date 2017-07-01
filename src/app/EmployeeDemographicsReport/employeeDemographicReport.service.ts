@@ -17,7 +17,7 @@ export class EmployeeDemographicReportService {
 
     getEmployeeDemographicsReports(filterCriteria: any): Observable<IEmployeeDemographicDetail[]> {
         let fileName = 'getDemographicsReportData?WorkYear=' + filterCriteria.selectedYear
-            + '&ControlGroup=' + filterCriteria.selectedContorlGroup
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
             + '&ParentCompnay=' + filterCriteria.selectedParentCompany
             + '&Proudctioncompany=' + filterCriteria.selectedProductionCompany
             + '&PayrollCompany=' + filterCriteria.selectedPayrollCompany;
@@ -29,7 +29,7 @@ export class EmployeeDemographicReportService {
 
     downloadExcelReport(filterCriteria: any): void {
         let fileName = 'processDemographicsServiceReportExcelUpload?WorkYear='
-            + filterCriteria.selectedYear + '&ControlGroup=' + filterCriteria.selectedContorlGroup
+            + filterCriteria.selectedYear + '&ControlGroup=' + filterCriteria.selectedControlGroup
             + '&ParentCompnay=' + filterCriteria.selectedParentCompany
             + '&Proudctioncompany=' + filterCriteria.selectedProductionCompany
             + '&PayrollCompany=' + filterCriteria.selectedPayrollCompany;

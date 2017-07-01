@@ -20,14 +20,15 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     TypeOfHours: Array<string>;
 
     public rows: Array<any> = [];
-    public page: number = 1;
-    public itemsPerPage: number = 10;
-    public maxSize: number = 5;
-    public numPages: number = 1;
-    public length: number = 0;
+    public page = 1;
+    public itemsPerPage = 10;
+    public maxSize = 5;
+    public numPages = 1;
+    public length = 0;
 
     public columns: Array<any> = [
-
+        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
         { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
         { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
         { title: 'SSN', className: 'va-m', name: 'SSN' },
@@ -96,7 +97,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     }
 
     employeeEligibleReportsData(): void {
-        let filterCriteria = this.getFilterValues();
+        const filterCriteria = this.getFilterValues();
         this._employeeEligibilityReportService.getEmployeeEligibleReports(filterCriteria).subscribe(empdetails => {
             this.empDetails = empdetails;
             this.onChangeTable(this.config);
@@ -117,7 +118,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        let filterCriteria = this.getFilterValues();
+        const filterCriteria = this.getFilterValues();
         this._employeeEligibilityReportService.downloadExcelReport(filterCriteria);
     }
     public changeSort(data: any, config: any): any {
@@ -125,7 +126,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
             return data;
         }
 
-        let columns = this.config.sorting.columns || [];
+        const columns = this.config.sorting.columns || [];
         let columnName: string = void 0;
         let sort: string = void 0;
 
@@ -160,8 +161,8 @@ export class EmployeeEligibilityReportComponent implements OnInit {
             Object.assign(this.config.sorting, config.sorting);
         }
 
-        let filteredData = this.changeFilter(this.empDetails, this.config);
-        let sortedData = this.changeSort(filteredData, this.config);
+        const filteredData = this.changeFilter(this.empDetails, this.config);
+        const sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
@@ -185,7 +186,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
                 item[config.filtering.columnName].match(this.config.filtering.filterString));
         }
 
-        let tempArray: Array<any> = [];
+        const tempArray: Array<any> = [];
         filteredData.forEach((item: any) => {
             let flag = false;
             this.columns.forEach((column: any) => {
@@ -203,8 +204,8 @@ export class EmployeeEligibilityReportComponent implements OnInit {
     }
 
     public changePage(page: any, data: Array<any> = this.empDetails): Array<any> {
-        let start = (page.page - 1) * page.itemsPerPage;
-        let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
+        const start = (page.page - 1) * page.itemsPerPage;
+        const end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
         return data.slice(start, end);
     }
 

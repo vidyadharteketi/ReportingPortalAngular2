@@ -5,6 +5,11 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { Ng2TableModule } from 'ng2-table';
+import { PaginationModule, TabsModule } from 'ng2-bootstrap';
+import { APPROUTES } from './app.routes';
+import { ExportToExcelService } from './shared/index';
+
 import {
   SideNavComponent, TopNavComponent, ENFTReportComponent, ENFTReportService, OnGoingReportComponent,
   PayrollDataActivityReportComponent, PayrollDataActivityReportService,
@@ -26,16 +31,14 @@ import {
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
   OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
 } from './index';
-import { Ng2TableModule } from 'ng2-table/ng2-table';
-import { PaginationModule, TabsModule } from 'ng2-bootstrap';
-import { APPROUTES } from './app.routes';
-import { ExportToExcelService } from './shared/index';
+
 @NgModule({
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(APPROUTES),
+    RouterModule.forRoot(APPROUTES, { useHash: true }),
     Ng2TableModule,
     PaginationModule.forRoot(),
     TabsModule.forRoot()
@@ -83,3 +86,4 @@ import { ExportToExcelService } from './shared/index';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

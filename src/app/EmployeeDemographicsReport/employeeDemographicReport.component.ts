@@ -23,14 +23,15 @@ export class EmployeeDemographicReportComponent implements OnInit {
     ControlGroups: Array<string>;
 
     public rows: Array<any> = [];
-    public page: number = 1;
-    public itemsPerPage: number = 10;
-    public maxSize: number = 5;
-    public numPages: number = 1;
-    public length: number = 0;
+    public page = 1;
+    public itemsPerPage = 10;
+    public maxSize = 5;
+    public numPages = 1;
+    public length = 0;
 
     public columns: Array<any> = [
-
+        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
         { title: 'Parent Company', className: 'va-m', name: 'ParentCompany' },
         { title: 'Prodcution Company', className: 'va-m', name: 'ProductionCompany' },
         { title: 'Show Name', className: 'va-m', name: 'ShowName' },
@@ -99,7 +100,7 @@ export class EmployeeDemographicReportComponent implements OnInit {
         if (payrollComp === '' || payrollComp === '-1' || payrollComp === undefined) {
             payrollComp = "''";
         }
-        let filterCriteria: any = {
+        const filterCriteria: any = {
             selectedYear: year,
             selectedControlGroup: cg,
             selectedParentCompany: parentComp,
@@ -117,7 +118,7 @@ export class EmployeeDemographicReportComponent implements OnInit {
     }
 
     employeeDemographicsReports(): void {
-        let filterCriteria = this.getFilterValues();
+        const filterCriteria = this.getFilterValues();
         this._employeeDemographicReportService.getEmployeeDemographicsReports(filterCriteria).subscribe(empDemographics => {
             this.employeeDemographicDetails = empDemographics;
             this.onChangeTable(this.config);
@@ -131,7 +132,7 @@ export class EmployeeDemographicReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        let filterCriteria = this.getFilterValues();
+        const filterCriteria = this.getFilterValues();
         this._employeeDemographicReportService.downloadExcelReport(filterCriteria);
     }
 
@@ -140,7 +141,7 @@ export class EmployeeDemographicReportComponent implements OnInit {
             return data;
         }
 
-        let columns = this.config.sorting.columns || [];
+        const columns = this.config.sorting.columns || [];
         let columnName: string = void 0;
         let sort: string = void 0;
 
@@ -175,8 +176,8 @@ export class EmployeeDemographicReportComponent implements OnInit {
             Object.assign(this.config.sorting, config.sorting);
         }
 
-        let filteredData = this.changeFilter(this.employeeDemographicDetails, this.config);
-        let sortedData = this.changeSort(filteredData, this.config);
+        const filteredData = this.changeFilter(this.employeeDemographicDetails, this.config);
+        const sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.length = sortedData.length;
     }
@@ -200,7 +201,7 @@ export class EmployeeDemographicReportComponent implements OnInit {
                 item[config.filtering.columnName].match(this.config.filtering.filterString));
         }
 
-        let tempArray: Array<any> = [];
+        const tempArray: Array<any> = [];
         filteredData.forEach((item: any) => {
             let flag = false;
             this.columns.forEach((column: any) => {
@@ -218,8 +219,8 @@ export class EmployeeDemographicReportComponent implements OnInit {
     }
 
     public changePage(page: any, data: Array<any> = this.employeeDemographicDetails): Array<any> {
-        let start = (page.page - 1) * page.itemsPerPage;
-        let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
+        const start = (page.page - 1) * page.itemsPerPage;
+        const end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
         return data.slice(start, end);
     }
 

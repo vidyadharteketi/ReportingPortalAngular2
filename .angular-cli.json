@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "demo"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/skin/default_skin/css/theme.css",
+        "./assets/allcp/forms/css/forms.min.css",
+        "./assets/js/plugins/datatables/media/css/dataTables.bootstrap.css",
+        "./assets/js/plugins/datatables/extensions/Editor/css/dataTables.editor.css",
+        "./assets/js/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css",
+        "./assets/js/plugins/c3charts/c3.min.css",
+        "./assets/skin/default_skin/css/style.css",
+        "./assets/js/plugins/select2/css/core.css",
+        "styles.css"
+      ],
+      "scripts": [      
+        "./assets/js/plugins/ng-table-excel-export/ng-table-excel-export.js",
+        "./assets/js/jquery/jquery_ui/jquery-ui.min.js",
+        "./assets/js/plugins/jquery.maxlength.min.js",
+        "./assets/js/plugins/jquery.bootstrap-duallistbox.min.js",
+        "./assets/js/plugins/datatables/media/js/jquery.dataTables.js",
+        "./assets/js/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js",
+        "./assets/js/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js",
+        "./assets/js/plugins/datatables/media/js/dataTables.bootstrap.js",
+        "./assets/js/plugins/select2/select2.min.js",
+        "./assets/js/utility/utility.js",
+        "./assets/js/demo/demo.js",
+        "./assets/js/main.js",
+        "./assets/js/demo/widgets_sidebar.js",
+        "./assets/js/pages/user-forms-additional-inputs.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

@@ -82,6 +82,24 @@ export class EmployeeSummaryReportComponent implements OnInit {
             error => this.errorMessage = <any>error);
 
     }
+public onCellClick(data: any): any {
+        console.log(data);
+    }
+    downloadPdf(): void {
+
+    }
+
+    downloadExcel(): void {
+const tbl = document.getElementById('datatable');
+        const btn = document.getElementById('btnDownloadExcel');
+        if (tbl) {
+            console.log(tbl.children[0]);
+        }
+        if (tbl && tbl.children.length > 0) {
+            this._export.excelByTableElement(btn, tbl.children[0], 'Employee Eligibility Report');
+        }
+    }
+
 
     public changeSort(data: any, config: any): any {
         if (!config.sorting) {

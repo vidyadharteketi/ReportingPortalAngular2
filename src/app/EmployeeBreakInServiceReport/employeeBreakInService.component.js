@@ -20,13 +20,14 @@ var EmployeeBreakInServiceReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
+            { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+            { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
             { title: 'Employee Name', className: 'va-m', name: 'FirstName' },
             { title: 'SSN', className: 'va-m', name: 'SSN' },
             { title: 'Service Status', className: 'va-m', name: 'ServiceStatus' },
             { title: 'Week Starting', className: 'va-m', name: 'WeekStarting' },
             { title: 'Week Ending', className: 'va-m', name: 'WeekEnding' },
-            { title: 'Week Count', className: 'va-m', name: 'WeekCount' },
-            { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+            { title: 'Week Count', className: 'va-m', name: 'WeekCount' }
         ];
         this.config = {
             paging: true,

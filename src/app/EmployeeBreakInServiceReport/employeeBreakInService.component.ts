@@ -25,15 +25,14 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
     public length: number = 0;
 
     public columns: Array<any> = [
-
+        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
         { title: 'Employee Name', className: 'va-m', name: 'FirstName' },
         { title: 'SSN', className: 'va-m', name: 'SSN' },
         { title: 'Service Status', className: 'va-m', name: 'ServiceStatus' },
         { title: 'Week Starting', className: 'va-m', name: 'WeekStarting' },
         { title: 'Week Ending', className: 'va-m', name: 'WeekEnding' },
-        { title: 'Week Count', className: 'va-m', name: 'WeekCount' },
-        { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
-
+        { title: 'Week Count', className: 'va-m', name: 'WeekCount' }
     ];
 
     public config: any = {

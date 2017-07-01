@@ -7,4 +7,5 @@ export interface IEmployeeBreakInServiceDetail {
     WeekEnding?: string;
     WeekCount?: string;
     ControlGroup?: string;
+    WorkYear: string;
 }
