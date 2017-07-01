@@ -54,12 +54,12 @@ var EmployeeSummaryReportComponent = (function () {
         };
     }
     EmployeeSummaryReportComponent.prototype.ngOnInit = function () {
-        this.reportRunDate = "2/3/2015 12:00:00 AM";
-        this.planStartDate = "1/1/2016 12:00:00 AM";
-        this.measurmentPeriod = "11 Months";
-        this.newHireMeasurmentPeriod = "";
-        this.adminstrativePeriod = "30 days";
-        this.companyName = " BIG FISH ENTERTAINMENT LLC";
+        this.reportRunDate = '2/3/2015 12:00:00 AM';
+        this.planStartDate = '1/1/2016 12:00:00 AM';
+        this.measurmentPeriod = '11 Months';
+        this.newHireMeasurmentPeriod = '';
+        this.adminstrativePeriod = '30 days';
+        this.companyName = ' BIG FISH ENTERTAINMENT LLC';
         this.employeeEligibleReportsData();
     };
     EmployeeSummaryReportComponent.prototype.employeeEligibleReportsData = function () {

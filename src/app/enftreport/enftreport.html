@@ -6,7 +6,7 @@
         <div class="topbar-left">
             <div class="allcp-form theme-primary">
                 <div class="panel panel-primary" id="p2" data-panel-color="false" data-panel-fullscreen="false" data-panel-remove="false"
-                     data-panel-title="false">
+                    data-panel-title="false">
                     <div class="panel-heading">
                         <span class="panel-title">Eligibility Non Full Time Report</span>
                         <span class="panel-icon pull-right">
@@ -138,12 +138,12 @@
                                     <div class="summaryBlock clearfix">
                                         <div class="row">
                                             <div class="col-sm-3">
-
+                                                <input type="hidden" [(ngModel)]="selectedweekCount" />
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-success btn-lg" (click)="getWeekData(13)">
                                                         13 Weeks
                                                     </button>
-                                                    <button type="button" class="btn btn-success btn-lg"  (click)="getWeekData(13)">
+                                                    <button type="button" class="btn btn-success btn-lg" (click)="getWeekData(13)">
                                                         {{count13Weeks}}
                                                     </button>
                                                 </div>
@@ -153,7 +153,7 @@
                                                     <button type="button" class="btn btn-primary btn-lg" (click)="getWeekData(26)">
                                                         26 Weeks
                                                     </button>
-                                                    <button type="button" class="btn btn-primary btn-lg"  (click)="getWeekData(26)">
+                                                    <button type="button" class="btn btn-primary btn-lg" (click)="getWeekData(26)">
                                                         {{count26Weeks}}
                                                     </button>
                                                 </div>
@@ -163,7 +163,7 @@
                                                     <button type="button" class="btn btn-info btn-lg" (click)="getWeekData(47)">
                                                         47 Weeks
                                                     </button>
-                                                    <button type="button" class="btn btn-info btn-lg"  (click)="getWeekData(47)">
+                                                    <button type="button" class="btn btn-info btn-lg" (click)="getWeekData(47)">
                                                         {{count47Weeks}}
                                                     </button>
                                                 </div>
@@ -173,7 +173,7 @@
                                                     <button type="button" class="btn btn-warning btn-lg" (click)="getWeekData(52)">
                                                         52 Weeks
                                                     </button>
-                                                    <button type="button" class="btn btn-warning btn-lg"  (click)="getWeekData(52)">
+                                                    <button type="button" class="btn btn-warning btn-lg" (click)="getWeekData(52)">
                                                         {{count52Weeks}}
                                                     </button>
                                                 </div>
@@ -207,7 +207,7 @@
                                 <label for="inputEmail3" class="col-sm-2 control-label">Search</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="inputEmail3" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
-                                           (tableChanged)="onChangeTable(config)">
+                                        (tableChanged)="onChangeTable(config)">
                                 </div>
                             </div>
                         </div>
@@ -217,14 +217,15 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="table-responsive over-x_table">
-                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)" (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
+                                (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
                             </ng-table>
                             <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
-                                        [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
-                                        (numPages)="numPages = $event">
-                            </pagination>                         
+                                [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                                (numPages)="numPages = $event">
+                            </pagination>
 
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>

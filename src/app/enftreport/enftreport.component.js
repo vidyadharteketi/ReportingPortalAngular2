@@ -10,11 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var enftreport_service_1 = require("./enftreport.service");
-var export_service_1 = require("../shared/export.service");
 var ENFTReportComponent = (function () {
-    function ENFTReportComponent(_enftreport, _export) {
+    function ENFTReportComponent(_enftreport) {
         this._enftreport = _enftreport;
-        this._export = _export;
         this.workDetails = [];
         this.rows = [];
         this.columns = [
@@ -44,7 +42,7 @@ var ENFTReportComponent = (function () {
         };
     }
     ENFTReportComponent.prototype.ngOnInit = function () {
-        // throw new Error("Method not implemented.");
+        // throw new Error('Method not implemented.');
         var _this = this;
         this._enftreport.getReportData().subscribe(function (data) {
             _this.Years = data.WorkYear;
@@ -53,40 +51,40 @@ var ENFTReportComponent = (function () {
             _this.TypeOfHours = data.UnionType;
             _this.NonFullTimeCatgeories = data.EmployeeType;
         }, function (error) { return _this.errorMessage = error; });
-        this.AvgWeeklyHrsThr = "30";
-        this.selectedYear = "-1";
-        this.selectedHireMonth = "-1";
-        this.selectedControlGroup = "-1";
-        this.selectedTypeOfHours = "-1";
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
+        this.AvgWeeklyHrsThr = '30';
+        this.selectedYear = '-1';
+        this.selectedHireMonth = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedTypeOfHours = '-1';
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
         this.onChangeTable(this.config);
         this.dataLoaded = false;
+        this.selectedweekCount = 13;
     };
     ENFTReportComponent.prototype.getFilterValues = function () {
         var year = this.selectedYear;
-        if (year == "-1") {
+        if (year === '-1') {
             year = "''";
         }
         var month = this.selectedHireMonth;
-        if (month == "-1") {
+        if (month === '-1') {
             month = "''";
-            ;
         }
         var cg = this.selectedControlGroup;
-        if (cg == "All" || cg == "-1") {
+        if (cg === 'All' || cg === '-1') {
             cg = "''";
             ;
         }
         var emptype = this.selectedTypeOfHours;
-        if (emptype == "-1") {
+        if (emptype === '-1') {
             emptype = "''";
             ;
         }
         var cat = this.selectedNonFullTimeCatgeories;
-        if (cat == undefined || cat.length == 0) {
+        if (cat === undefined || cat.length === 0) {
             cat = ["''"];
         }
         var filterCriteria = {
@@ -101,27 +99,27 @@ var ENFTReportComponent = (function () {
         var _this = this;
         this.dataLoaded = false;
         var filterCriteria = this.getFilterValues();
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
-        var counts = this._enftreport.getWeeklyCounts(filterCriteria)
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
+        this._enftreport.getWeeklyCounts(filterCriteria)
             .subscribe(function (counts) {
-            if (counts == undefined || counts == null || (counts != null && counts.reportCountByWeek == null)) {
+            if (counts === undefined || counts == null || (counts != null && counts.reportCountByWeek == null)) {
                 return;
             }
             counts.reportCountByWeek.forEach(function (element) {
                 switch (element.WEEKS_WORKED) {
-                    case "13":
+                    case '13':
                         _this.count13Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "26":
+                    case '26':
                         _this.count26Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "47":
+                    case '47':
                         _this.count47Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "52":
+                    case '52':
                         _this.count52Weeks = element.WEEKS_WORKED_COUNT;
                         break;
                 }
@@ -130,28 +128,22 @@ var ENFTReportComponent = (function () {
     };
     ENFTReportComponent.prototype.getWeekData = function (weekCount) {
         var _this = this;
-        debugger;
+        this.selectedweekCount = weekCount;
         var filterCriteria = this.getFilterValues();
-        filterCriteria.reportCount = weekCount;
+        filterCriteria.reportCount = this.selectedweekCount;
         this._enftreport.getWeekReportData(filterCriteria).subscribe(function (workdetails) {
-            debugger;
             _this.workDetails = workdetails;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
         }, function (error) { return _this.errorMessage = error; });
-        //this._enftreport.getWeekReportData(weekCount);
+        // this._enftreport.getWeekReportData(weekCount);
     };
     ENFTReportComponent.prototype.downloadPdf = function () {
     };
     ENFTReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'New Hire Part Time Report');
+        var filterCriteria = this.getFilterValues();
+        filterCriteria.reportCount = this.selectedweekCount;
+        this._enftreport.downloadExcelReport(filterCriteria);
     };
     ENFTReportComponent.prototype.onCellClick = function (data) {
         console.log(data);
@@ -242,7 +234,7 @@ ENFTReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'enftreport.html'
     }),
-    __metadata("design:paramtypes", [enftreport_service_1.ENFTReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [enftreport_service_1.ENFTReportService])
 ], ENFTReportComponent);
 exports.ENFTReportComponent = ENFTReportComponent;
 //# sourceMappingURL=enftreport.component.js.map

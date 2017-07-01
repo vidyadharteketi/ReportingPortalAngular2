@@ -3,26 +3,37 @@ import { Http, Response } from '@angular/http';
 import { IEmployeeBreakInServiceDetail } from './employeeBreakInServiceDetail';
 import { Observable } from 'rxjs/Observable';
 import { CONFIGURATION } from '../app.config';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class EmployeeBreakInServiceReportService {
-constructor(private _http: Http) { }
 
-private _empBreakInServiceReportUrl = 'app/api/';
+    private _empBreakInServiceReportUrl = CONFIGURATION.baseServiceUrl + 'breakinreportservice/';
+    constructor(private _http: Http) { }
 
-getEmployeeDemographicsReports(): Observable<IEmployeeBreakInServiceDetail[]> {
-        let fileName: string = 'employeebreakinservice.json';        
-        return this._http.get(this._empBreakInServiceReportUrl + fileName)
-            .map((response: Response) => <IEmployeeBreakInServiceDetail[]>response.json())
+    getReportData(): Observable<any> {
+        return this._http.get(this._empBreakInServiceReportUrl + 'getBreakInReportReferenceData')
+            .map((response: Response) => response.json().breakInReferanceData)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
- private handleError(error: Response) {
+    getEmployeeBreakInServiceReports(filterCriteria: any): Observable<IEmployeeBreakInServiceDetail[]> {
+        let fileName = 'getBreakInServiceReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+        return this._http.get(this._empBreakInServiceReportUrl + fileName)
+            .map((response: Response) => <IEmployeeBreakInServiceDetail[]>response.json().breakInReportData)
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    downloadExcelReport(filterCriteria: any): void {
+        let fileName = 'processBreakInServiceReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+
+        window.open(this._empBreakInServiceReportUrl + fileName, '_bank');
+    }
+
+    private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);

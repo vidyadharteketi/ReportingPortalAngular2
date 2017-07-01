@@ -1,9 +1,10 @@
 export interface IEmployeeBreakInServiceDetail {
-
-    employeeName: string;
-    ssnNumber: string;
-    serviceStatus: string;
-    weekStarting: string;
-    weekEnding: string;
-    weekCount: string;
+    FirstName?: string;
+    employeeName?: string;
+    SSN?: string;
+    ServiceStatus?: string;
+    WeekStarting?: string;
+    WeekEnding?: string;
+    WeekCount?: string;
+    ControlGroup?: string;
 }

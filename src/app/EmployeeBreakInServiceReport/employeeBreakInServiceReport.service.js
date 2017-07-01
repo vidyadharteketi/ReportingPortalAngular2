@@ -11,21 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
+var app_config_1 = require("../app.config");
 var EmployeeBreakInServiceReportService = (function () {
     function EmployeeBreakInServiceReportService(_http) {
         this._http = _http;
-        this._empBreakInServiceReportUrl = 'app/api/';
+        this._empBreakInServiceReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'breakinreportservice/';
     }
-    EmployeeBreakInServiceReportService.prototype.getEmployeeDemographicsReports = function () {
-        var fileName = 'employeebreakinservice.json';
-        return this._http.get(this._empBreakInServiceReportUrl + fileName)
-            .map(function (response) { return response.json(); })
+    EmployeeBreakInServiceReportService.prototype.getReportData = function () {
+        return this._http.get(this._empBreakInServiceReportUrl + 'getBreakInReportReferenceData')
+            .map(function (response) { return response.json().breakInReferanceData; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    EmployeeBreakInServiceReportService.prototype.getEmployeeBreakInServiceReports = function (filterCriteria) {
+        var fileName = 'getBreakInServiceReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+        return this._http.get(this._empBreakInServiceReportUrl + fileName)
+            .map(function (response) { return response.json().breakInReportData; })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    EmployeeBreakInServiceReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processBreakInServiceReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+        window.open(this._empBreakInServiceReportUrl + fileName, '_bank');
     };
     EmployeeBreakInServiceReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

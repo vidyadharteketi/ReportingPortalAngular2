@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ErCoverageReportService } from './erCoverageReport.service';
-import { ExportToExcelService } from '../shared/export.service';
+
 @Component({
     moduleId: module.id,
     templateUrl: 'erCoverageReport.html'
@@ -8,12 +8,10 @@ import { ExportToExcelService } from '../shared/export.service';
 
 export class ErCoverageReportComponent implements OnInit {
 
-    constructor(private _erCoverageReportService: ErCoverageReportService, private _export: ExportToExcelService) { }
-
     selectedYear: string;
     selectedHireMonth: string;
     selectedControlGroup: string;
-    annulaizedMonthly: string = "0";
+    annulaizedMonthly: string = '0';
     errorMessage: string;
 
     Years: Array<string>;
@@ -38,7 +36,13 @@ export class ErCoverageReportComponent implements OnInit {
         { title: 'Worked Hours', className: 'va-m', name: 'workedHours' },
         { title: 'Worker Pool FTE Count', className: 'va-m', name: 'workerPoolFteCount' },
     ];
-
+    public config: any = {
+        paging: true,
+        sorting: { columns: this.columns },
+        filtering: { filterString: '' },
+        className: ['table', 'table-striped', 'table-bordered', 'table-hover']
+    };
+    constructor(private _erCoverageReportService: ErCoverageReportService) { }
 
     ngOnInit(): void {
 
@@ -48,22 +52,15 @@ export class ErCoverageReportComponent implements OnInit {
         },
             error => this.errorMessage = <any>error);
 
-        this.selectedYear = "-1";
-        this.selectedHireMonth = "-1";
-        this.selectedControlGroup = "-1";
-        this.annulaizedMonthly = "0"
+        this.selectedYear = '-1';
+        this.selectedHireMonth = '-1';
+        this.selectedControlGroup = '-1';
+        this.annulaizedMonthly = '0';
 
         this.onChangeTable(this.config);
         this.dataLoaded = false;
 
     }
-
-    public config: any = {
-        paging: true,
-        sorting: { columns: this.columns },
-        filtering: { filterString: '' },
-        className: ['table', 'table-striped', 'table-bordered', 'table-hover']
-    };
 
     annualizedMonthlyReportData(): void {
         this.dataLoaded = false;
@@ -78,17 +75,15 @@ export class ErCoverageReportComponent implements OnInit {
 
     }
 
-
-
     getFilterValues(): any {
         let year = this.selectedYear;
-        if (year == "-1") {
+        if (year === '-1') {
             year = "''";
         }
 
         let cg = this.selectedControlGroup;
-        if (cg == "All" || cg == "-1") {
-            cg = "''";;
+        if (cg === 'All' || cg === '-1') {
+            cg = "''";
         }
 
         let filterCriteria: any = {
@@ -101,11 +96,10 @@ export class ErCoverageReportComponent implements OnInit {
     Search(): void {
 
         let filterCriteria = this.getFilterValues();
-        this.annulaizedMonthly = "0";
-        let counts = this._erCoverageReportService.getAnnulaizedMonthlyWorkers(filterCriteria)
+        this.annulaizedMonthly = '0';
+        this._erCoverageReportService.getAnnulaizedMonthlyWorkers(filterCriteria)
             .subscribe(counts => {
-                debugger;
-                if (counts == undefined || counts == null) {
+                if (counts === undefined || counts == null) {
                     return;
                 }
                 counts.forEach((element: any) => {
@@ -122,15 +116,10 @@ export class ErCoverageReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'ER Coverage Report');
+        let filterCriteria = this.getFilterValues();
+        this._erCoverageReportService.downloadExcelReport(filterCriteria);
     }
+
     public onCellClick(data: any): any {
         console.log(data);
     }

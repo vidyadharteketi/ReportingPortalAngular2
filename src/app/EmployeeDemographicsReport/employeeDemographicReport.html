@@ -13,35 +13,115 @@
                            <a id="btnDownloadPdf"  class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
                             <a id="btnDownloadExcel" class="fa fa-file-excel-o" (click)="downloadExcel()" ></a>
                         </span>
-                    </div>                   
+                    </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div class="row">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="inputTableSearch" class="col-sm-2 control-label">Search</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="inputTableSearch" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
-                                                        (tableChanged)="onChangeTable(config)">
-                                                </div>
-                                            </div>
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <label for="selYear" class="col-sm-5 control-label"><i class="fa fa-calendar"></i> Year</label>
+                                        <div class="col-sm-7">
+
+                                            <label class="field select">
+                                                <select id="selYear" name="country" [(ngModel)]="selectedYear" aria-placeholder="Select year">
+                                                    <option value="-1">Select Year</option>
+                                                    <option *ngFor="let year of Years" value={{year}}>
+                                                        {{year}}
+                                                    </option>
+                                                </select>
+                                                <i class="arrow"></i>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <label for="selcontrolgroup" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                                <select id="selcontrolgroup" name="controlgroup" [(ngModel)]="selectedControlGroup">
+                                                    <option value="-1">All</option>
+                                                    <option *ngFor="let group of ControlGroups" value={{group}}>
+                                                        {{group}}
+                                                    </option>
+                                                </select>
+                                                <i class="arrow"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <label for="selParentCompany" class="col-sm-5 control-label"> Parent Company</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                            <select id="selParentCompany" name="parentCompany" [(ngModel)]="selectedParentCompany">
+                                                    <option value="-1">Select</option>
+                                                    <option *ngFor="let company of ParentCompanies" value={{company}}>
+                                                        {{company}}
+                                                    </option>
+                                                </select>
+                                                  <i class="arrow"></i>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="table-responsive over-x_table">
-                                            <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
-                                                (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
-                                            </ng-table>
-                                            <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
-                                                [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
-                                                (numPages)="numPages = $event">
-                                            </pagination>
+                            <div class="row">
 
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <label for="selProductionCompany" class="col-sm-5 control-label"> Production Company</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                            <select id="selProductionCompany" name="productionCompany" [(ngModel)]="selectedProductionCompany">
+                                                    <option value="-1">Select</option>
+                                                    <option *ngFor="let prodCompany of ProductionCompanies" value={{prodCompany}}>
+                                                        {{prodCompany}}
+                                                    </option>
+                                                </select>
+                                                  <i class="arrow"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <label for="selPayrollcompany" class="col-sm-5 control-label"> Payroll Company</label>
+                                        <div class="col-sm-7">
+                                            <label class="field select">
+                                            <select id="selPayrollcompany" name="payrollcompany" [(ngModel)]="selectedPayrollCompany">
+                                                    <option value="-1">Select</option>
+                                                    <option *ngFor="let payrollcompany of PayrollCompanies" value={{payrollcompany}}>
+                                                        {{payrollcompany}}
+                                                    </option>
+                                                </select>
+                                                  <i class="arrow"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-2">
+                                            <button class="btn btn-primary" type="button" (click)="Search()">Filter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -53,5 +133,46 @@
         </div>
     </header>
     <!-- -------------- /Topbar -------------- -->
+    <!-- -------------- Content -------------- -->
+    <section id="content" class="table-layout animated fadeIn" *ngIf="dataLoaded">
+        <div class="panel panel-visible p20" id="spy3">
+            <div class="panel-heading">
+                <div class="panel-title hidden-xs">
+                    Report Details
+                </div>
+            </div>
+            <div class="panel-body pn">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputTableSearch" class="col-sm-2 control-label">Search</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="inputTableSearch" placeholder="Search" *ngIf="config.filtering" [ngTableFiltering]="config.filtering"
+                                            (tableChanged)="onChangeTable(config)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="table-responsive over-x_table">
+                                <ng-table id="datatable" ngclass="table table-striped table-bordered table-hover" [config]="config" (tableChanged)="onChangeTable(config)"
+                                    (cellClicked)="onCellClick($event)" [rows]="rows" [columns]="columns">
+                                </ng-table>
+                                <pagination *ngIf="config.paging" class="pagination-sm" [(ngModel)]="page" [totalItems]="length" [itemsPerPage]="itemsPerPage"
+                                    [maxSize]="maxSize" [boundaryLinks]="false" [rotate]="false" (pageChanged)="onChangeTable(config, $event)"
+                                    (numPages)="numPages = $event">
+                                </pagination>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>

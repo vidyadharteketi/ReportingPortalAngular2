@@ -6,6 +6,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+// import { EmployeeBreakInServiceReportService } from './employeeBreakInServiceReport.service';
+// import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
+// import { ExportToExcelService } from '../shared/export.service';
 var ListCustomerComponent = (function () {
     function ListCustomerComponent() {
     }

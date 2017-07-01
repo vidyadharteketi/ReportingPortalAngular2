@@ -1,19 +1,18 @@
-export interface IEmployeeDemographicDetail{
-    
-    parentCompany: string;
-    productionCompany: string;
-    showName: string;
-    payRollCompany: string;
-    employeeName: string;
-    unionStatus: string;
-    ssnNumber: string;
-    acaEmploymentBasis: string;
-    scheduleCode: string;
-    payRate: string;
-    jobDescription: string;
-    gender: string;
-    dateOfBirth: string;
-    email: string;
-    address: string;
+export interface IEmployeeDemographicDetail {
+    ParentCompany: string;
+    ProductionCompany: string;
+    ShowName: string;
+    PayrollCompany: string;
+    EmployeeName: string;
+    UnionStatus: string;
+    SSN: string;
+    ACAEmploymentBasis: string;
+    ScheduleCode: string;
+    PayRate: string;
+    JobDescription: string;
+    Gender: string;
+    DateOfBirth: string;
+    Email: string;
+    Address: string;
 
 }

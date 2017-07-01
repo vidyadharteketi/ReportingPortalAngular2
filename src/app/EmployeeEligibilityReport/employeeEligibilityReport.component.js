@@ -10,11 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var employeeEligibilityReport_service_1 = require("./employeeEligibilityReport.service");
-var export_service_1 = require("../shared/export.service");
 var EmployeeEligibilityReportComponent = (function () {
-    function EmployeeEligibilityReportComponent(_employeeEligibilityReportService, _export) {
+    function EmployeeEligibilityReportComponent(_employeeEligibilityReportService) {
         this._employeeEligibilityReportService = _employeeEligibilityReportService;
-        this._export = _export;
         this.rows = [];
         this.page = 1;
         this.itemsPerPage = 10;
@@ -22,15 +20,15 @@ var EmployeeEligibilityReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
-            { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-            { title: 'Union Status', className: 'va-m', name: 'unionStatus' },
-            { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-            { title: 'Most Recent Show', className: 'va-m', name: 'mostRecentShow' },
-            { title: 'Most Recent Job Title', className: 'va-m', name: 'mostRecentJobTitle' },
-            { title: 'Avg Weekly Hours', className: 'va-m', name: 'averageWeeklyHours' },
-            { title: 'Total Hours', className: 'va-m', name: 'totalHours' },
-            { title: 'Standard Measured Eligibility', className: 'va-m', name: 'standardMeasuredEligibility' },
-            { title: 'Benefits Effective', className: 'va-m', name: 'benefitsEffective' },
+            { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
+            { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
+            { title: 'SSN', className: 'va-m', name: 'SSN' },
+            { title: 'Most Recent Show', className: 'va-m', name: 'MostRecentShow' },
+            { title: 'Most Recent Job Title', className: 'va-m', name: 'MostRecentJobTitle' },
+            { title: 'Avg Weekly Hours', className: 'va-m', name: 'AverageWeeklyHours' },
+            { title: 'Total Hours', className: 'va-m', name: 'TotalHours' },
+            { title: 'Standard Measured Eligibility', className: 'va-m', name: 'StandardMeasuredEligibility' },
+            { title: 'Benefits Effective', className: 'va-m', name: 'BenefitsEffective' },
         ];
         this.config = {
             paging: true,
@@ -41,29 +39,61 @@ var EmployeeEligibilityReportComponent = (function () {
         this.empDetails = [];
     }
     EmployeeEligibilityReportComponent.prototype.ngOnInit = function () {
-        this.onChangeTable(this.config);
-        this.dataLoaded = false;
-        this.employeeEligibleReportsData();
+        var _this = this;
+        this._employeeEligibilityReportService.getReportReferenceData().subscribe(function (data) {
+            _this.Years = data.WorkYear;
+            _this.ControlGroups = data.ControlGroup;
+            _this.UnionStatus = data.UnionStatus;
+            _this.TypeOfHours = data.TypeOfHours;
+        }, function (error) { return _this.errorMessage = error; });
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedUnionStatus = '-1';
+        this.selectedTypeOfHours = '-1';
+    };
+    EmployeeEligibilityReportComponent.prototype.getFilterValues = function () {
+        var year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
+        var cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1' || cg === undefined) {
+            cg = "''";
+        }
+        var us = this.selectedUnionStatus;
+        if (us === '' || us === '-1' || us === undefined) {
+            us = "''";
+        }
+        var th = this.selectedTypeOfHours;
+        if (th === '' || th === '-1' || th === undefined) {
+            th = "''";
+        }
+        var filterCriteria = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedUnionStatus: us,
+            selectedTypeOfHours: th
+        };
+        return filterCriteria;
     };
     EmployeeEligibilityReportComponent.prototype.employeeEligibleReportsData = function () {
         var _this = this;
-        this._employeeEligibilityReportService.getEmployeeEligibleReports().subscribe(function (empdetails) {
+        var filterCriteria = this.getFilterValues();
+        this._employeeEligibilityReportService.getEmployeeEligibleReports(filterCriteria).subscribe(function (empdetails) {
             _this.empDetails = empdetails;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
         }, function (error) { return _this.errorMessage = error; });
     };
+    EmployeeEligibilityReportComponent.prototype.Search = function () {
+        this.dataLoaded = false;
+        this.employeeEligibleReportsData();
+    };
     EmployeeEligibilityReportComponent.prototype.downloadPdf = function () {
     };
     EmployeeEligibilityReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'Employee Eligibility Report');
+        var filterCriteria = this.getFilterValues();
+        this._employeeEligibilityReportService.downloadExcelReport(filterCriteria);
     };
     EmployeeEligibilityReportComponent.prototype.changeSort = function (data, config) {
         if (!config.sorting) {
@@ -151,7 +181,7 @@ EmployeeEligibilityReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'employeeEligibilityReport.html'
     }),
-    __metadata("design:paramtypes", [employeeEligibilityReport_service_1.EmployeeEligibilityReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [employeeEligibilityReport_service_1.EmployeeEligibilityReportService])
 ], EmployeeEligibilityReportComponent);
 exports.EmployeeEligibilityReportComponent = EmployeeEligibilityReportComponent;
 //# sourceMappingURL=employeeEligibilityReport.component.js.map

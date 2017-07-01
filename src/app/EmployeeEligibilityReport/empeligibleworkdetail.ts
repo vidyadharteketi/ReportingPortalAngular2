@@ -1,13 +1,11 @@
-export interface IEmpEligibleWorkDetail{
-    
-    employeeName: string;
-    unionStatus: string;
-    ssnNumber: string;
-    mostRecentShow: string;
-    mostRecentJobTitle: string;
-    averageWeeklyHours: string;
-    totalHours: string;
-    standardMeasuredEligibility: string;
-    benefitsEffective: string;
-    
+export interface IEmpEligibleWorkDetail {
+    EmployeeName: string;
+    UnionStatus: string;
+    SSN: string;
+    MostRecentShow: string;
+    MostRecentJobTitle: string;
+    AverageWeeklyHours: string;
+    TotalHours: string;
+    StandardMeasuredEligibility: string;
+    BenefitsEffective: string;
 }

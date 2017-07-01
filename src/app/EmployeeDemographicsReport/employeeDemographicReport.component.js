@@ -10,11 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var employeeDemographicReport_service_1 = require("./employeeDemographicReport.service");
-var export_service_1 = require("../shared/export.service");
 var EmployeeDemographicReportComponent = (function () {
-    function EmployeeDemographicReportComponent(_employeeDemographicReportService, _export) {
+    function EmployeeDemographicReportComponent(_employeeDemographicReportService) {
         this._employeeDemographicReportService = _employeeDemographicReportService;
-        this._export = _export;
         this.rows = [];
         this.page = 1;
         this.itemsPerPage = 10;
@@ -22,21 +20,21 @@ var EmployeeDemographicReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
-            { title: 'Parent Company', className: 'va-m', name: 'parentCompany' },
-            { title: 'Prodcution Company', className: 'va-m', name: 'productionCompany' },
-            { title: 'Show Name', className: 'va-m', name: 'showName' },
-            { title: 'Pay Roll Company', className: 'va-m', name: 'payRollCompany' },
-            { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-            { title: 'Union Status', className: 'va-m', name: 'unionStatus' },
-            { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-            { title: 'ACA Employment Basis', className: 'va-m', name: 'acaEmploymentBasis' },
-            { title: 'Schedule Code', className: 'va-m', name: 'scheduleCode' },
-            { title: 'Pay Rate', className: 'va-m', name: 'payRate' },
-            { title: 'Job Description', className: 'va-m', name: 'jobDescription' },
-            { title: 'Gender', className: 'va-m', name: 'gender' },
-            { title: 'Date of Birth', className: 'va-m', name: 'dateOfBirth' },
-            { title: 'Email', className: 'va-m', name: 'email' },
-            { title: 'Address', className: 'va-m', name: 'address' }
+            { title: 'Parent Company', className: 'va-m', name: 'ParentCompany' },
+            { title: 'Prodcution Company', className: 'va-m', name: 'ProductionCompany' },
+            { title: 'Show Name', className: 'va-m', name: 'ShowName' },
+            { title: 'Pay Roll Company', className: 'va-m', name: 'PayrollCompany' },
+            { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
+            { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
+            { title: 'SSN', className: 'va-m', name: 'SSN' },
+            { title: 'ACA Employment Basis', className: 'va-m', name: 'ACAEmploymentBasis' },
+            { title: 'Schedule Code', className: 'va-m', name: 'ScheduleCode' },
+            { title: 'Pay Rate', className: 'va-m', name: 'PayRate' },
+            { title: 'Job Description', className: 'va-m', name: 'JobDescription' },
+            { title: 'Gender', className: 'va-m', name: 'Gender' },
+            { title: 'Date of Birth', className: 'va-m', name: 'DateOfBirth' },
+            { title: 'Email', className: 'va-m', name: 'Email' },
+            { title: 'Address', className: 'va-m', name: 'Address' }
         ];
         this.config = {
             paging: true,
@@ -47,13 +45,59 @@ var EmployeeDemographicReportComponent = (function () {
         this.employeeDemographicDetails = [];
     }
     EmployeeDemographicReportComponent.prototype.ngOnInit = function () {
-        this.onChangeTable(this.config);
+        var _this = this;
+        this._employeeDemographicReportService.getReportData().subscribe(function (data) {
+            _this.Years = data.WorkYear;
+            _this.ControlGroups = data.ControlGroup;
+            _this.ParentCompanies = data.ParentCompany;
+            _this.ProductionCompanies = data.ProductionCompany;
+            _this.PayrollCompanies = data.PayrollCompany;
+        }, function (error) { return _this.errorMessage = error; });
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedParentCompany = '-1';
+        this.selectedProductionCompany = '-1';
+        this.selectedPayrollCompany = '-1';
+    };
+    EmployeeDemographicReportComponent.prototype.getFilterValues = function () {
+        var year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
+        var cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1' || cg === undefined) {
+            cg = "''";
+        }
+        var parentComp = this.selectedParentCompany;
+        if (parentComp === '' || parentComp === '-1' || parentComp === undefined) {
+            parentComp = "''";
+        }
+        var prodComp = this.selectedProductionCompany;
+        if (prodComp === '' || prodComp === '-1' || prodComp === undefined) {
+            prodComp = "''";
+        }
+        var payrollComp = this.selectedPayrollCompany;
+        if (payrollComp === '' || payrollComp === '-1' || payrollComp === undefined) {
+            payrollComp = "''";
+        }
+        var filterCriteria = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedParentCompany: parentComp,
+            selectedProductionCompany: prodComp,
+            selectedPayrollCompany: payrollComp
+        };
+        return filterCriteria;
+    };
+    EmployeeDemographicReportComponent.prototype.Search = function () {
+        // this.onChangeTable(this.config);
         this.dataLoaded = false;
         this.employeeDemographicsReports();
     };
     EmployeeDemographicReportComponent.prototype.employeeDemographicsReports = function () {
         var _this = this;
-        this._employeeDemographicReportService.getEmployeeDemographicsReports().subscribe(function (empDemographics) {
+        var filterCriteria = this.getFilterValues();
+        this._employeeDemographicReportService.getEmployeeDemographicsReports(filterCriteria).subscribe(function (empDemographics) {
             _this.employeeDemographicDetails = empDemographics;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
@@ -62,14 +106,8 @@ var EmployeeDemographicReportComponent = (function () {
     EmployeeDemographicReportComponent.prototype.downloadPdf = function () {
     };
     EmployeeDemographicReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'Employee Demographic Report');
+        var filterCriteria = this.getFilterValues();
+        this._employeeDemographicReportService.downloadExcelReport(filterCriteria);
     };
     EmployeeDemographicReportComponent.prototype.changeSort = function (data, config) {
         if (!config.sorting) {
@@ -157,7 +195,7 @@ EmployeeDemographicReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'employeeDemographicReport.html'
     }),
-    __metadata("design:paramtypes", [employeeDemographicReport_service_1.EmployeeDemographicReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [employeeDemographicReport_service_1.EmployeeDemographicReportService])
 ], EmployeeDemographicReportComponent);
 exports.EmployeeDemographicReportComponent = EmployeeDemographicReportComponent;
 //# sourceMappingURL=employeeDemographicReport.component.js.map

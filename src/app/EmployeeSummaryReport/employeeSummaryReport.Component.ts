@@ -4,50 +4,25 @@ import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, Ng
 import { ExportToExcelService } from '../shared/export.service';
 
 @Component({
-  moduleId:module.id,
-  templateUrl: 'employeeSummaryReport.html',
+    moduleId: module.id,
+    templateUrl: 'employeeSummaryReport.html',
 })
 
-export class EmployeeSummaryReportComponent implements OnInit
- {
-    reportRunDate:string;
-    planStartDate:string;
-    measurmentPeriod:string;
-    newHireMeasurmentPeriod:string;
-    adminstrativePeriod:string;
-    companyName:string;
+export class EmployeeSummaryReportComponent implements OnInit {
+    reportRunDate: string;
+    planStartDate: string;
+    measurmentPeriod: string;
+    newHireMeasurmentPeriod: string;
+    adminstrativePeriod: string;
+    companyName: string;
     empDetails: Array<any> = [];
     public rows: Array<any> = [];
     dataLoaded: boolean;
     errorMessage: string;
 
-    constructor(private _employeeSummaryReportService: EmployeeSummaryReportService,private _export:ExportToExcelService) { }
 
-    ngOnInit(): void 
-    {
-        this.reportRunDate="2/3/2015 12:00:00 AM";
-        this.planStartDate="1/1/2016 12:00:00 AM";
-        this.measurmentPeriod="11 Months";
-        this.newHireMeasurmentPeriod="";
-        this.adminstrativePeriod="30 days";
-        this.companyName=" BIG FISH ENTERTAINMENT LLC";
-        this.employeeEligibleReportsData();
-
-    }
-
-     employeeEligibleReportsData(): void {
-        this._employeeSummaryReportService.getEmployeeSummaryReports().subscribe(empdetails => {
-            this.empDetails =empdetails ;
-            this.onChangeTable(this.config);
-            this.dataLoaded = true;
-        },
-            error => this.errorMessage = <any>error);
-
-    }
-
-    
     public columns: Array<any> = [
-        
+
         { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
         { title: 'Union Status', className: 'va-m', name: 'unionStatus' },
         { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
@@ -70,7 +45,7 @@ export class EmployeeSummaryReportComponent implements OnInit
         { title: 'Intially Measure Eligibility', className: 'va-m', name: 'initialMeasureEligibility' },
         { title: 'Intially Benefits Effective', className: 'va-m', name: 'initialBenefitsEffective' },
         { title: 'Intially Stability Period', className: 'va-m', name: 'initialStabilityPeriod' }
-       
+
     ];
     public page: number = 1;
     public itemsPerPage: number = 4;
@@ -84,6 +59,29 @@ export class EmployeeSummaryReportComponent implements OnInit
         filtering: { filterString: '' },
         className: ['table', 'table-striped', 'table-bordered', 'table-hover']
     };
+
+    constructor(private _employeeSummaryReportService: EmployeeSummaryReportService, private _export: ExportToExcelService) { }
+
+    ngOnInit(): void {
+        this.reportRunDate = '2/3/2015 12:00:00 AM';
+        this.planStartDate = '1/1/2016 12:00:00 AM';
+        this.measurmentPeriod = '11 Months';
+        this.newHireMeasurmentPeriod = '';
+        this.adminstrativePeriod = '30 days';
+        this.companyName = ' BIG FISH ENTERTAINMENT LLC';
+        this.employeeEligibleReportsData();
+
+    }
+
+    employeeEligibleReportsData(): void {
+        this._employeeSummaryReportService.getEmployeeSummaryReports().subscribe(empdetails => {
+            this.empDetails = empdetails;
+            this.onChangeTable(this.config);
+            this.dataLoaded = true;
+        },
+            error => this.errorMessage = <any>error);
+
+    }
 
     public changeSort(data: any, config: any): any {
         if (!config.sorting) {

@@ -11,21 +11,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
+var app_config_1 = require("../app.config");
 var EmployeeEligibilityReportService = (function () {
     function EmployeeEligibilityReportService(_http) {
         this._http = _http;
-        this._empEligibleReportUrl = 'app/api/';
+        this._empEligibleReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'eligibilityreportservice/';
     }
-    EmployeeEligibilityReportService.prototype.getEmployeeEligibleReports = function () {
-        var fileName = 'empeligibility.json';
-        return this._http.get(this._empEligibleReportUrl + fileName)
-            .map(function (response) { return response.json(); })
+    EmployeeEligibilityReportService.prototype.getReportReferenceData = function () {
+        return this._http.get(this._empEligibleReportUrl + 'getEligibilityReferenceData')
+            .map(function (response) { return response.json().eligibilityReferanceData; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    EmployeeEligibilityReportService.prototype.getEmployeeEligibleReports = function (filterCriteria) {
+        var fileName = 'getEligibilityReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '&TypeOfHours=' + filterCriteria.selectedTypeOfHours
+            + '&UnionStatus=' + filterCriteria.selectedUnionStatus;
+        return this._http.get(this._empEligibleReportUrl + fileName)
+            .map(function (response) { return response.json().eligibilityReportData; })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    EmployeeEligibilityReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processEligibilityServiceReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '&TypeOfHours=' + filterCriteria.selectedTypeOfHours
+            + '&UnionStatus=' + filterCriteria.selectedUnionStatus;
+        window.open(this._empEligibleReportUrl + fileName, '_bank');
     };
     EmployeeEligibilityReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

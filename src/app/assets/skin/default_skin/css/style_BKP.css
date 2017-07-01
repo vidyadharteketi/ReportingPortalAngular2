@@ -24,7 +24,8 @@ body.sb-l-m .sidebar-menu > li > a:hover > .sidebar-title { background-color:#67
 body.sb-l-m .sidebar-menu li > ul > li > a {
     padding: 0px 15px 0px 15px;
 }
-table.dataTable thead th {background-color:#2a2f43 !important; color:#fff;}
+/*table.dataTable thead th {background-color:#2a2f43 !important; color:#fff;}*/
+.table.dataTable thead th {background-color:#0b6598 !important; color:#fff;}
 .over-x_table thead th {background-color:#0b6598 !important; color:#fff;}
 
 .allcp-form .select .fa{
@@ -47,23 +48,3 @@ table.dataTable thead th {background-color:#2a2f43 !important; color:#fff;}
 
 .summaryBlock .btn-group{ display:inline-block;margin-right:20px;}
 .summaryBlock .btn-group .btn:first-child{margin-right:2px;}
-
-.bg-dark, .sidebar-left-content {
-    background-color: #0d79ba !important;
-}
-#sidebar_left, .sidebar-menu > li > ul {
-    background-color: #105781 !important;
-}
-.sidebar-left-content {
-    -webkit-box-shadow: -39px 7px 0 0 #105781 inset;
-    box-shadow: -39px 7px 0 0 #105781 inset;
-}
-.sidebar-menu .sidebar-label {
-    color: #fff;
-}
-.navbar-logo-wrapper {
-    background-color: #de662f !important;
-}
-body.sb-l-m .sidebar-menu > li > a:hover > .sidebar-title, body.sb-l-m .sidebar-menu > li > a > .sidebar-title {
-    background-color: #0d79ba ;
-}

@@ -15,11 +15,11 @@ var ExportToExcelService = (function () {
     };
     ExportToExcelService.prototype.excelByTableElement = function (anchor, table, sheetName, excelName) {
         if (excelName === void 0) { excelName = 'export'; }
-        var link = ExcellentExport.excelByTableElement(anchor, table, sheetName, excelName);
+        ExcellentExport.excelByTableElement(anchor, table, sheetName, excelName);
     };
     ExportToExcelService.prototype.csvByTableElement = function (anchor, table, sheetName, excelName) {
         if (excelName === void 0) { excelName = 'export'; }
-        var link = ExcellentExport.csvByTableElement(anchor, table, sheetName, excelName);
+        ExcellentExport.csvByTableElement(anchor, table, sheetName, excelName);
     };
     return ExportToExcelService;
 }());

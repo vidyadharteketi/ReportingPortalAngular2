@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-//import { EmployeeBreakInServiceReportService } from './employeeBreakInServiceReport.service';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
-import { ExportToExcelService } from '../shared/export.service';
+import { Component } from '@angular/core';
+
 
 @Component({
     moduleId: module.id,
     templateUrl: 'addCustomer.html'
 
 })
-export class AddCustomerComponent {}
+export class AddCustomerComponent { }

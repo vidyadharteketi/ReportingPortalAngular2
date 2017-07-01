@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewHireFullTimeService } from './nhftreport.service';
-import { ExportToExcelService } from '../shared/export.service';
+
 @Component({
     moduleId: module.id,
     selector: 'nhftreport',
@@ -9,12 +9,12 @@ import { ExportToExcelService } from '../shared/export.service';
 
 export class NewHireFullTimeComponent implements OnInit {
 
-    constructor(private _newHireFullTimeService: NewHireFullTimeService, private _export: ExportToExcelService) { }
+
 
     selectedYear: string;
     selectedHireMonth: string;
     selectedControlGroup: string;
-    eligibleFullTimeWorkers: string = "0";
+    eligibleFullTimeWorkers: string = '0';
     errorMessage: string;
 
     Years: Array<string>;
@@ -45,27 +45,6 @@ export class NewHireFullTimeComponent implements OnInit {
         { title: 'Total Hours', className: 'va-m', name: 'totalHours' },
 
     ];
-
-
-    ngOnInit(): void {
-         this._newHireFullTimeService.getReportData().subscribe(data => {
-
-            this.Years = data.WorkYear;
-            this.Months = data.WorkMonth;
-            this.ControlGroups = data.ControlGroup;
-        },
-            error => this.errorMessage = <any>error);
-
-        this.selectedYear = "-1";
-        this.selectedHireMonth = "-1";
-        this.selectedControlGroup = "-1";
-        this.eligibleFullTimeWorkers = "0"
-
-        this.onChangeTable(this.config);
-        this.dataLoaded = false;
-
-    }
-
     public config: any = {
         paging: true,
         sorting: { columns: this.columns },
@@ -73,9 +52,32 @@ export class NewHireFullTimeComponent implements OnInit {
         className: ['table', 'table-striped', 'table-bordered', 'table-hover']
     };
 
+    constructor(private _newHireFullTimeService: NewHireFullTimeService) { }
+
+    ngOnInit(): void {
+        this._newHireFullTimeService.getReportData().subscribe(data => {
+
+            this.Years = data.WorkYear;
+            this.Months = data.WorkMonth;
+            this.ControlGroups = data.ControlGroup;
+        },
+            error => this.errorMessage = <any>error);
+
+        this.selectedYear = '-1';
+        this.selectedHireMonth = '-1';
+        this.selectedControlGroup = '-1';
+        this.eligibleFullTimeWorkers = '0';
+
+        this.onChangeTable(this.config);
+        this.dataLoaded = false;
+
+    }
+
+
+
     eligibleFullTimeReportData(): void {
         let filterCriteria = this.getFilterValues();
-        filterCriteria.acaEligibleCount=this.eligibleFullTimeWorkers;
+        filterCriteria.acaEligibleCount = this.eligibleFullTimeWorkers;
         this._newHireFullTimeService.getEligibleFullTimeReportData(filterCriteria).subscribe(workdetails => {
             this.workerDetails = workdetails;
             this.onChangeTable(this.config);
@@ -88,15 +90,15 @@ export class NewHireFullTimeComponent implements OnInit {
 
     getFilterValues(): any {
         let year = this.selectedYear;
-        if (year == "-1") {
+        if (year === '-1') {
             year = "''";
         }
         let month = this.selectedHireMonth;
-        if (month == "-1") {
-            month = "''";;
+        if (month === '-1') {
+            month = "''";
         }
         let cg = this.selectedControlGroup;
-        if (cg == "All" || cg == "-1") {
+        if (cg === "All" || cg === '-1') {
             cg = "''";;
         }
 
@@ -110,12 +112,10 @@ export class NewHireFullTimeComponent implements OnInit {
     Search(): void {
         this.dataLoaded = false;
         let filterCriteria = this.getFilterValues();
-        this.eligibleFullTimeWorkers = "0";
-
-        let counts = this._newHireFullTimeService.getEligibleFullTimeWorkers(filterCriteria)
+        this.eligibleFullTimeWorkers = '0';
+        this._newHireFullTimeService.getEligibleFullTimeWorkers(filterCriteria)
             .subscribe(counts => {
-                debugger;
-                if (counts == undefined || counts == null) {
+                if (counts === undefined || counts == null) {
                     return;
                 }
                 counts.forEach((element: any) => {
@@ -134,14 +134,9 @@ export class NewHireFullTimeComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'New Hire Full Time Report');
+        let filterCriteria = this.getFilterValues();
+
+        this._newHireFullTimeService.downloadExcelReport(filterCriteria);
     }
     public onCellClick(data: any): any {
         console.log(data);

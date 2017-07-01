@@ -9,7 +9,7 @@ export interface IWorkDetails {
     hireDate: string;
     unionType: string;
     totalHours: string;
-    weeksSinceLastWorked:string;
-    employeeType: string; 
+    weeksSinceLastWorked: string;
+    employeeType: string;
     avgHours: string;
 }

@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var LoginComponent = (function () {
     function LoginComponent() {
-        this.route = "aca";
-        this.dashboard = "dashboard";
+        this.route = 'aca';
+        this.dashboard = 'dashboard';
     }
     LoginComponent.prototype.login = function () {
         console.log('login/submitted');

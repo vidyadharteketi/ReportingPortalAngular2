@@ -1,5 +1,4 @@
-export interface InhftWorkDetail
-{
+export interface InhftWorkDetail {
     WorkYear: string;
     workMonth: string;
     controlGroup: string;
@@ -14,5 +13,4 @@ export interface InhftWorkDetail
     payrollSource: string;
     avgHours: string;
     totalHours: string;
-    
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ENFTReportService } from './enftreport.service';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
-import { ExportToExcelService } from '../shared/export.service';
+
 
 @Component({
     moduleId: module.id,
@@ -17,6 +16,7 @@ export class ENFTReportComponent implements OnInit {
     selectedTypeOfHours: string;
     selectedNonFullTimeCatgeories: Array<string>;
     AvgWeeklyHrsThr: string;
+    selectedweekCount: number;
 
     Years: Array<string>;
     Months: Array<string>;
@@ -59,12 +59,12 @@ export class ENFTReportComponent implements OnInit {
         className: ['table', 'table-striped', 'table-bordered', 'table-hover']
     };
 
-    constructor(private _enftreport: ENFTReportService, private _export: ExportToExcelService) {
+    constructor(private _enftreport: ENFTReportService) {
 
     }
 
     ngOnInit(): void {
-        // throw new Error("Method not implemented.");
+        // throw new Error('Method not implemented.');
 
         this._enftreport.getReportData().subscribe(data => {
 
@@ -76,47 +76,48 @@ export class ENFTReportComponent implements OnInit {
         },
             error => this.errorMessage = <any>error);
 
-        this.AvgWeeklyHrsThr = "30";
+        this.AvgWeeklyHrsThr = '30';
 
-        this.selectedYear = "-1";
-        this.selectedHireMonth = "-1";
-        this.selectedControlGroup = "-1";
-        this.selectedTypeOfHours = "-1";
+        this.selectedYear = '-1';
+        this.selectedHireMonth = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedTypeOfHours = '-1';
 
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
 
         this.onChangeTable(this.config);
         this.dataLoaded = false;
+        this.selectedweekCount = 13;
     }
     getFilterValues(): any {
         let year = this.selectedYear;
-        if (year == "-1") {
+        if (year === '-1') {
             year = "''";
         }
         let month = this.selectedHireMonth;
-        if (month == "-1") {
-            month = "''";;
+        if (month === '-1') {
+            month = "''";
         }
         let cg = this.selectedControlGroup;
-        if (cg == "All" || cg == "-1") {
+        if (cg === 'All' || cg === '-1') {
             cg = "''";;
         }
         let emptype = this.selectedTypeOfHours;
-        if (emptype == "-1") {
+        if (emptype === '-1') {
             emptype = "''";;
         }
         let cat = this.selectedNonFullTimeCatgeories;
-        if (cat == undefined || cat.length == 0) {
+        if (cat === undefined || cat.length === 0) {
             cat = ["''"];
         }
         let filterCriteria: any = {
             selectedYear: year, selectedHireMonth: month, selectedControlGroup: cg,
             selectedTypeOfHours: emptype, selectedNonFullTimeCatgeories: cat,
             avgWeeklyThreshold: this.AvgWeeklyHrsThr,
-            reportCount:13
+            reportCount: 13
         };
 
         return filterCriteria;
@@ -124,27 +125,27 @@ export class ENFTReportComponent implements OnInit {
     Search(): void {
         this.dataLoaded = false;
         let filterCriteria = this.getFilterValues();
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
-        let counts = this._enftreport.getWeeklyCounts(filterCriteria)
-            .subscribe(counts => {                
-                if (counts == undefined || counts == null || (counts != null && counts.reportCountByWeek == null)) {
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
+        this._enftreport.getWeeklyCounts(filterCriteria)
+            .subscribe(counts => {
+                if (counts === undefined || counts == null || (counts != null && counts.reportCountByWeek == null)) {
                     return;
                 }
                 counts.reportCountByWeek.forEach((element: any) => {
                     switch (element.WEEKS_WORKED) {
-                        case "13":
+                        case '13':
                             this.count13Weeks = element.WEEKS_WORKED_COUNT;
                             break;
-                        case "26":
+                        case '26':
                             this.count26Weeks = element.WEEKS_WORKED_COUNT;
                             break;
-                        case "47":
+                        case '47':
                             this.count47Weeks = element.WEEKS_WORKED_COUNT;
                             break;
-                        case "52":
+                        case '52':
                             this.count52Weeks = element.WEEKS_WORKED_COUNT;
                             break;
                     }
@@ -156,18 +157,19 @@ export class ENFTReportComponent implements OnInit {
     }
 
     getWeekData(weekCount: number): void {
-        
-        debugger;
-         let filterCriteria = this.getFilterValues();
-         filterCriteria.reportCount=weekCount;
+
+        this.selectedweekCount = weekCount;
+
+        let filterCriteria = this.getFilterValues();
+        filterCriteria.reportCount = this.selectedweekCount;
+
         this._enftreport.getWeekReportData(filterCriteria).subscribe(workdetails => {
-            debugger;
             this.workDetails = workdetails;
             this.onChangeTable(this.config);
             this.dataLoaded = true;
         },
             error => this.errorMessage = <any>error);
-        //this._enftreport.getWeekReportData(weekCount);
+        // this._enftreport.getWeekReportData(weekCount);
 
     }
 
@@ -176,14 +178,9 @@ export class ENFTReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'New Hire Part Time Report');
+        let filterCriteria = this.getFilterValues();
+        filterCriteria.reportCount = this.selectedweekCount;
+        this._enftreport.downloadExcelReport(filterCriteria);
     }
     public onCellClick(data: any): any {
         console.log(data);

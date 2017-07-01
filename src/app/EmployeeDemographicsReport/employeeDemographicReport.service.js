@@ -11,21 +11,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
+var app_config_1 = require("../app.config");
 var EmployeeDemographicReportService = (function () {
     function EmployeeDemographicReportService(_http) {
         this._http = _http;
-        this._empDemographicsReportUrl = 'app/api/';
+        this._empDemographicsReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'demographicsreportservice/';
     }
-    EmployeeDemographicReportService.prototype.getEmployeeDemographicsReports = function () {
-        var fileName = 'employeedemographic.json';
-        return this._http.get(this._empDemographicsReportUrl + fileName)
-            .map(function (response) { return response.json(); })
+    EmployeeDemographicReportService.prototype.getReportData = function () {
+        return this._http.get(this._empDemographicsReportUrl + 'getDemographicsReferenceData')
+            .map(function (response) { return response.json().demoGraphicsReferanceData; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    EmployeeDemographicReportService.prototype.getEmployeeDemographicsReports = function (filterCriteria) {
+        var fileName = 'getDemographicsReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedContorlGroup
+            + '&ParentCompnay=' + filterCriteria.selectedParentCompany
+            + '&Proudctioncompany=' + filterCriteria.selectedProductionCompany
+            + '&PayrollCompany=' + filterCriteria.selectedPayrollCompany;
+        return this._http.get(this._empDemographicsReportUrl + fileName)
+            .map(function (response) { return response.json().demoGraphicsReportData; })
+            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
+            .catch(this.handleError);
+    };
+    EmployeeDemographicReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processDemographicsServiceReportExcelUpload?WorkYear='
+            + filterCriteria.selectedYear + '&ControlGroup=' + filterCriteria.selectedContorlGroup
+            + '&ParentCompnay=' + filterCriteria.selectedParentCompany
+            + '&Proudctioncompany=' + filterCriteria.selectedProductionCompany
+            + '&PayrollCompany=' + filterCriteria.selectedPayrollCompany;
+        window.open(this._empDemographicsReportUrl + fileName, '_bank');
     };
     EmployeeDemographicReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

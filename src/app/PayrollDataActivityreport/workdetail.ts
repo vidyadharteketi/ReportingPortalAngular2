@@ -1,8 +1,8 @@
 export interface IWorkDetails {
     ssnNumber: string;
     // employeeName: string;
-    firstName:string;
-    lastName:string;
+    firstName: string;
+    lastName: string;
     ein: string;
     productionCompany: string;
     hireDate: string;

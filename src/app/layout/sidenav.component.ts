@@ -25,10 +25,10 @@ export class SideNavComponent {
     onboardingpersonalinformation: string = CONFIGURATION.onboardingpersonalinformation;
     uploaddata: string = CONFIGURATION.uploaddata;
     aledataupload: string = CONFIGURATION.aledataupload;
-    payrolldataupload:string=CONFIGURATION.payrolldataupload;
-    insurancedataupload:string=CONFIGURATION.insurancedataupload;
-    onezeroninefourdataupload:string=CONFIGURATION.onezeroninefourdataupload;
-    onezeroninefivedataupload:string=CONFIGURATION.onezeroninefivedataupload;
-    controlgroup=CONFIGURATION.controlgroup;
-    ale=CONFIGURATION.ale;
+    payrolldataupload: string = CONFIGURATION.payrolldataupload;
+    insurancedataupload: string = CONFIGURATION.insurancedataupload;
+    onezeroninefourdataupload: string = CONFIGURATION.onezeroninefourdataupload;
+    onezeroninefivedataupload: string = CONFIGURATION.onezeroninefivedataupload;
+    controlgroup = CONFIGURATION.controlgroup;
+    ale = CONFIGURATION.ale;
 }

@@ -11,69 +11,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
 var app_config_1 = require("../app.config");
 var OnGoingReportService = (function () {
     function OnGoingReportService(_http) {
         this._http = _http;
-        this._onGoingReportUrl = app_config_1.CONFIGURATION.baseServiceUrl;
+        this._onGoingReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'ongoingreportservice/';
     }
     OnGoingReportService.prototype.getReportData = function () {
-        return this._http.get(this._onGoingReportUrl + 'eligibilityReportOngoing/getOnGoingReportReferenceData')
-            .map(function (response) { return response.json().eligibilityReportOngoingVO; })
+        return this._http.get(this._onGoingReportUrl + 'getonGoingreportreferencedata')
+            .map(function (response) { return response.json().ongoingReportVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OnGoingReportService.prototype.getOnGoingReportDataCount = function (filterCriteria) {
-        var fileName = "eligibilityReportOngoing/getOnGoingCountByWeeks?MeasurementEndDate=" + filterCriteria.selectedMeasuredDate
-            + "&AvgWeeklyHours=" + filterCriteria.avgWeeklyThreshold
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup
-            + "&UnionType=" + filterCriteria.selectedTypeOfHours;
+        var fileName = 'getOnGoingReportCountByWeek?MeasurementEndDate=' + filterCriteria.selectedMeasuredDate
+            + '&AvgWeeklyHours=' + filterCriteria.avgWeeklyThreshold
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '&UnionType=' + filterCriteria.selectedTypeOfHours;
         return this._http.get(this._onGoingReportUrl + fileName)
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     OnGoingReportService.prototype.getOnGoingReportData = function (filterCriteria) {
-        debugger;
-        var fileName = "eligibilityReportOngoing/getOnGoingReportsByWeeksCount?MeasurementEndDate=" + filterCriteria.selectedMeasuredDate
-            + "&AvgWeeklyHours=" + filterCriteria.avgWeeklyThreshold
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup
-            + "&UnionType=" + filterCriteria.selectedTypeOfHours
-            + "&ReportOfWeek=" + filterCriteria.reportCount;
+        var fileName = 'getOnGoingReportReportData?MeasurementEndDate='
+            + filterCriteria.selectedMeasuredDate
+            + '&AvgWeeklyHours=' + filterCriteria.avgWeeklyThreshold
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '&UnionType=' + filterCriteria.selectedTypeOfHours
+            + '&ReportOfWeek=' + filterCriteria.reportCount;
         return this._http.get(this._onGoingReportUrl + fileName)
             .map(function (response) { return response.json().onGoingReportsByWeekCount; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    OnGoingReportService.prototype.getMeasurementEndDates = function () { return ['26-10-2016', '29-10-2017']; };
-    OnGoingReportService.prototype.getControlGroups = function () { return ['Revolution', 'Cast & Crew']; };
-    OnGoingReportService.prototype.getTypeOfHours = function () { return ['Union', 'Non Union']; };
-    OnGoingReportService.prototype.getWeeklyCounts = function () { return { count13Weeks: "3", count26Weeks: "4", count47Weeks: "5", count52Weeks: "6" }; };
-    OnGoingReportService.prototype.getWeekReportData = function (weekCount) {
-        var fileName = '';
-        switch (weekCount) {
-            case 13:
-                fileName = "ogreport13.json";
-                break;
-            case 26:
-                fileName = "ogreport26.json";
-                break;
-            case 47:
-                break;
-            case 52:
-                break;
-        }
-        return this._http.get(this._onGoingReportUrl + fileName)
-            .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
-            .catch(this.handleError);
+    OnGoingReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processOnGoingReportExcelUpload?MeasurementEndDate='
+            + filterCriteria.selectedMeasuredDate
+            + '&AvgWeeklyHours=' + filterCriteria.avgWeeklyThreshold
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup
+            + '&UnionType=' + filterCriteria.selectedTypeOfHours
+            + '&ReportOfWeek=' + filterCriteria.reportCount;
+        window.open(this._onGoingReportUrl + fileName, '_bank');
     };
     OnGoingReportService.prototype.handleError = function (error) {
-        debugger;
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         console.error(error);

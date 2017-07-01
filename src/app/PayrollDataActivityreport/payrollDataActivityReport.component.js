@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var payrollDataActivityReport_service_1 = require("./payrollDataActivityReport.service");
-var export_service_1 = require("../shared/export.service");
 var PayrollDataActivityReportComponent = (function () {
-    function PayrollDataActivityReportComponent(_pdareportsrv, _export) {
+    function PayrollDataActivityReportComponent(_pdareportsrv) {
         this._pdareportsrv = _pdareportsrv;
-        this._export = _export;
         this.workDetails = [];
         this.rows = [];
         this.columns = [
@@ -58,8 +56,8 @@ var PayrollDataActivityReportComponent = (function () {
     }
     PayrollDataActivityReportComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.controlGroupControl = new forms_1.FormControl("", forms_1.Validators.required);
-        this.yearControl = new forms_1.FormControl("-1");
+        this.controlGroupControl = new forms_1.FormControl('', forms_1.Validators.required);
+        this.yearControl = new forms_1.FormControl('-1');
         this.pdaReportForm = new forms_1.FormGroup({
             controlGroup: this.controlGroupControl,
             yearControl: this.yearControl
@@ -68,21 +66,21 @@ var PayrollDataActivityReportComponent = (function () {
             _this.ControlGroups = data.ControlGroups;
             _this.Years = data.WorkYears;
         }, function (error) { return _this.errorMessage = error; });
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
         this.onChangeTable(this.config);
         this.dataLoaded = false;
     };
     PayrollDataActivityReportComponent.prototype.getFilterValues = function () {
         var cg = this.controlGroupControl.value;
-        if (cg == undefined || cg == "All" || cg == "") {
+        if (cg === undefined || cg === "All" || cg === "") {
             cg = "''";
             ;
         }
         var year = this.yearControl.value;
-        if (year == undefined || year == "" || year == "-1") {
+        if (year === undefined || year === '' || year === '-1') {
             year = "''";
             ;
         }
@@ -97,7 +95,6 @@ var PayrollDataActivityReportComponent = (function () {
         this.dataLoaded = false;
         var filterCriteria = this.getFilterValues();
         this._pdareportsrv.getPayrollDataActivityReportData(filterCriteria).subscribe(function (workdetails) {
-            debugger;
             _this.workDetails = workdetails;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
@@ -106,16 +103,10 @@ var PayrollDataActivityReportComponent = (function () {
     PayrollDataActivityReportComponent.prototype.downloadPdf = function () {
     };
     PayrollDataActivityReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'Payroll Data Activity Report');
+        var filterCriteria = this.getFilterValues();
+        this._pdareportsrv.downloadExcelReport(filterCriteria);
     };
-    //Validations
+    // Validations
     PayrollDataActivityReportComponent.prototype.validateControlGroups = function () {
         return this.controlGroupControl.valid || this.controlGroupControl.untouched;
     };
@@ -208,7 +199,7 @@ PayrollDataActivityReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: './payrollDataActivityReport.html'
     }),
-    __metadata("design:paramtypes", [payrollDataActivityReport_service_1.PayrollDataActivityReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [payrollDataActivityReport_service_1.PayrollDataActivityReportService])
 ], PayrollDataActivityReportComponent);
 exports.PayrollDataActivityReportComponent = PayrollDataActivityReportComponent;
 //# sourceMappingURL=payrollDataActivityReport.component.js.map

@@ -12,50 +12,29 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 var app_config_1 = require("../app.config");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
 var PayrollDataActivityReportService = (function () {
     function PayrollDataActivityReportService(_http) {
         this._http = _http;
-        this._pdaReportUrl = app_config_1.CONFIGURATION.baseServiceUrl;
+        this._pdaReportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'payrolldataactivityreportservice/';
     }
     PayrollDataActivityReportService.prototype.getReportData = function () {
-        return this._http.get(this._pdaReportUrl + 'payrollDataActivityReport/getPayrollReferenceData')
+        return this._http.get(this._pdaReportUrl + 'getPayrollDataActivityReportReferenceData')
             .map(function (response) { return response.json().payrollRefDataVO; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     PayrollDataActivityReportService.prototype.getPayrollDataActivityReportData = function (filterCriteria) {
-        var fileName = "payrollDataActivityReport/getReportsForPayrollDataActivity?WorkYear=" + filterCriteria.selectedYear
-            + "&ControlGroup=" + filterCriteria.selectedControlGroup;
+        var fileName = 'getPayrollDataActivityReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
         return this._http.get(this._pdaReportUrl + fileName)
             .map(function (response) { return response.json().reportsForPayrollDataActivity; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
-    PayrollDataActivityReportService.prototype.getYears = function () { return ['2016', '2017', '2018']; };
-    PayrollDataActivityReportService.prototype.getControlGroups = function () { return ['Revolution', 'Cast & Crew']; };
-    PayrollDataActivityReportService.prototype.getWeeklyCounts = function () { return { count13Weeks: "3", count26Weeks: "4", count47Weeks: "5", count52Weeks: "6" }; };
-    PayrollDataActivityReportService.prototype.getWeekReportData = function (weekCount) {
-        var fileName = '';
-        switch (weekCount) {
-            case 13:
-                fileName = "pdareport13.json";
-                break;
-            case 26:
-                fileName = "pdareport26.json";
-                break;
-            case 47:
-                break;
-            case 52:
-                break;
-        }
-        return this._http.get(this._pdaReportUrl + fileName)
-            .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
-            .catch(this.handleError);
+    PayrollDataActivityReportService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = 'processPayrollDataActivityReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+        window.open(this._pdaReportUrl + fileName, '_bank');
     };
     PayrollDataActivityReportService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

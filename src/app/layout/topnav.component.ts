@@ -1,10 +1,10 @@
-import {Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector:'topnav',
-    templateUrl:'topnav.html'
+    selector: 'topnav',
+    templateUrl: 'topnav.html'
 })
-export class TopNavComponent{
+export class TopNavComponent {
 
 }

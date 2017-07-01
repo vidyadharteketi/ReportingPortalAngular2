@@ -10,12 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var erCoverageReport_service_1 = require("./erCoverageReport.service");
-var export_service_1 = require("../shared/export.service");
 var ErCoverageReportComponent = (function () {
-    function ErCoverageReportComponent(_erCoverageReportService, _export) {
+    function ErCoverageReportComponent(_erCoverageReportService) {
         this._erCoverageReportService = _erCoverageReportService;
-        this._export = _export;
-        this.annulaizedMonthly = "0";
+        this.annulaizedMonthly = '0';
         this.workerDetails = [];
         this.rows = [];
         this.page = 1;
@@ -46,10 +44,10 @@ var ErCoverageReportComponent = (function () {
             _this.Years = data.WorkYears;
             _this.ControlGroups = data.ControlGroups;
         }, function (error) { return _this.errorMessage = error; });
-        this.selectedYear = "-1";
-        this.selectedHireMonth = "-1";
-        this.selectedControlGroup = "-1";
-        this.annulaizedMonthly = "0";
+        this.selectedYear = '-1';
+        this.selectedHireMonth = '-1';
+        this.selectedControlGroup = '-1';
+        this.annulaizedMonthly = '0';
         this.onChangeTable(this.config);
         this.dataLoaded = false;
     };
@@ -66,13 +64,12 @@ var ErCoverageReportComponent = (function () {
     };
     ErCoverageReportComponent.prototype.getFilterValues = function () {
         var year = this.selectedYear;
-        if (year == "-1") {
+        if (year === '-1') {
             year = "''";
         }
         var cg = this.selectedControlGroup;
-        if (cg == "All" || cg == "-1") {
+        if (cg === 'All' || cg === '-1') {
             cg = "''";
-            ;
         }
         var filterCriteria = {
             selectedYear: year, selectedControlGroup: cg
@@ -82,11 +79,10 @@ var ErCoverageReportComponent = (function () {
     ErCoverageReportComponent.prototype.Search = function () {
         var _this = this;
         var filterCriteria = this.getFilterValues();
-        this.annulaizedMonthly = "0";
-        var counts = this._erCoverageReportService.getAnnulaizedMonthlyWorkers(filterCriteria)
+        this.annulaizedMonthly = '0';
+        this._erCoverageReportService.getAnnulaizedMonthlyWorkers(filterCriteria)
             .subscribe(function (counts) {
-            debugger;
-            if (counts == undefined || counts == null) {
+            if (counts === undefined || counts == null) {
                 return;
             }
             counts.forEach(function (element) {
@@ -97,14 +93,8 @@ var ErCoverageReportComponent = (function () {
     ErCoverageReportComponent.prototype.downloadPdf = function () {
     };
     ErCoverageReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'ER Coverage Report');
+        var filterCriteria = this.getFilterValues();
+        this._erCoverageReportService.downloadExcelReport(filterCriteria);
     };
     ErCoverageReportComponent.prototype.onCellClick = function (data) {
         console.log(data);
@@ -195,7 +185,7 @@ ErCoverageReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'erCoverageReport.html'
     }),
-    __metadata("design:paramtypes", [erCoverageReport_service_1.ErCoverageReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [erCoverageReport_service_1.ErCoverageReportService])
 ], ErCoverageReportComponent);
 exports.ErCoverageReportComponent = ErCoverageReportComponent;
 //# sourceMappingURL=erCoverageReport.component.js.map

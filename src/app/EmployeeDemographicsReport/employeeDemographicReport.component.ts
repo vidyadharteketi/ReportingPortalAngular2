@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeDemographicReportService } from './employeeDemographicReport.service';
-import { NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective } from 'ng2-table/ng2-table';
-import { ExportToExcelService } from '../shared/export.service';
 
 @Component({
     moduleId: module.id,
@@ -11,6 +9,19 @@ import { ExportToExcelService } from '../shared/export.service';
 export class EmployeeDemographicReportComponent implements OnInit {
 
     dataLoaded: boolean;
+
+    selectedYear: string;
+    selectedControlGroup: string;
+    selectedParentCompany: string;
+    selectedProductionCompany: string;
+    selectedPayrollCompany: string;
+
+    ParentCompanies: Array<string>;
+    ProductionCompanies: Array<string>;
+    PayrollCompanies: Array<string>;
+    Years: Array<string>;
+    ControlGroups: Array<string>;
+
     public rows: Array<any> = [];
     public page: number = 1;
     public itemsPerPage: number = 10;
@@ -20,21 +31,21 @@ export class EmployeeDemographicReportComponent implements OnInit {
 
     public columns: Array<any> = [
 
-        { title: 'Parent Company', className: 'va-m', name: 'parentCompany' },
-        { title: 'Prodcution Company', className: 'va-m', name: 'productionCompany' },
-        { title: 'Show Name', className: 'va-m', name: 'showName' },
-        { title: 'Pay Roll Company', className: 'va-m', name: 'payRollCompany' },
-        { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-        { title: 'Union Status', className: 'va-m', name: 'unionStatus' },
-        { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-        { title: 'ACA Employment Basis', className: 'va-m', name: 'acaEmploymentBasis' },
-        { title: 'Schedule Code', className: 'va-m', name: 'scheduleCode' },
-        { title: 'Pay Rate', className: 'va-m', name: 'payRate' },
-        { title: 'Job Description', className: 'va-m', name: 'jobDescription' },
-        { title: 'Gender', className: 'va-m', name: 'gender' },
-        { title: 'Date of Birth', className: 'va-m', name: 'dateOfBirth' },
-        { title: 'Email', className: 'va-m', name: 'email' },
-        { title: 'Address', className: 'va-m', name: 'address' }
+        { title: 'Parent Company', className: 'va-m', name: 'ParentCompany' },
+        { title: 'Prodcution Company', className: 'va-m', name: 'ProductionCompany' },
+        { title: 'Show Name', className: 'va-m', name: 'ShowName' },
+        { title: 'Pay Roll Company', className: 'va-m', name: 'PayrollCompany' },
+        { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
+        { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
+        { title: 'SSN', className: 'va-m', name: 'SSN' },
+        { title: 'ACA Employment Basis', className: 'va-m', name: 'ACAEmploymentBasis' },
+        { title: 'Schedule Code', className: 'va-m', name: 'ScheduleCode' },
+        { title: 'Pay Rate', className: 'va-m', name: 'PayRate' },
+        { title: 'Job Description', className: 'va-m', name: 'JobDescription' },
+        { title: 'Gender', className: 'va-m', name: 'Gender' },
+        { title: 'Date of Birth', className: 'va-m', name: 'DateOfBirth' },
+        { title: 'Email', className: 'va-m', name: 'Email' },
+        { title: 'Address', className: 'va-m', name: 'Address' }
     ];
 
     public config: any = {
@@ -46,18 +57,68 @@ export class EmployeeDemographicReportComponent implements OnInit {
 
     employeeDemographicDetails: Array<any> = [];
     errorMessage: string;
-    constructor(private _employeeDemographicReportService: EmployeeDemographicReportService,private _export:ExportToExcelService) { }
+    constructor(private _employeeDemographicReportService: EmployeeDemographicReportService) { }
 
     ngOnInit(): void {
 
-        this.onChangeTable(this.config);
-        this.dataLoaded = false;
-        this.employeeDemographicsReports();
+        this._employeeDemographicReportService.getReportData().subscribe(data => {
+            this.Years = data.WorkYear;
+            this.ControlGroups = data.ControlGroup;
+            this.ParentCompanies = data.ParentCompany;
+            this.ProductionCompanies = data.ProductionCompany;
+            this.PayrollCompanies = data.PayrollCompany;
 
+        },
+            error => this.errorMessage = <any>error);
+
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+        this.selectedParentCompany = '-1';
+        this.selectedProductionCompany = '-1';
+        this.selectedPayrollCompany = '-1';
+    }
+    getFilterValues(): any {
+        let year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
+
+        let cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1' || cg === undefined) {
+            cg = "''";
+        }
+        let parentComp = this.selectedParentCompany;
+        if (parentComp === '' || parentComp === '-1' || parentComp === undefined) {
+            parentComp = "''";
+        }
+        let prodComp = this.selectedProductionCompany;
+        if (prodComp === '' || prodComp === '-1' || prodComp === undefined) {
+            prodComp = "''";
+        }
+        let payrollComp = this.selectedPayrollCompany;
+        if (payrollComp === '' || payrollComp === '-1' || payrollComp === undefined) {
+            payrollComp = "''";
+        }
+        let filterCriteria: any = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedParentCompany: parentComp,
+            selectedProductionCompany: prodComp,
+            selectedPayrollCompany: payrollComp
+        };
+
+        return filterCriteria;
+    }
+    Search(): void {
+        // this.onChangeTable(this.config);
+        this.dataLoaded = false;
+
+        this.employeeDemographicsReports();
     }
 
     employeeDemographicsReports(): void {
-        this._employeeDemographicReportService.getEmployeeDemographicsReports().subscribe(empDemographics => {
+        let filterCriteria = this.getFilterValues();
+        this._employeeDemographicReportService.getEmployeeDemographicsReports(filterCriteria).subscribe(empDemographics => {
             this.employeeDemographicDetails = empDemographics;
             this.onChangeTable(this.config);
             this.dataLoaded = true;
@@ -70,15 +131,10 @@ export class EmployeeDemographicReportComponent implements OnInit {
     }
 
     downloadExcel(): void {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'Employee Demographic Report');
+        let filterCriteria = this.getFilterValues();
+        this._employeeDemographicReportService.downloadExcelReport(filterCriteria);
     }
+
     public changeSort(data: any, config: any): any {
         if (!config.sorting) {
             return data;

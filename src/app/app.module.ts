@@ -1,6 +1,6 @@
+import './rxjs-extension';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -61,7 +61,7 @@ import { ExportToExcelService } from './shared/index';
     EmployeeEligibilityReportComponent,
     EmployeeDemographicReportComponent,
     EmployeeBreakInServiceReportComponent,
-    EmployeeSummaryReportComponent,    
+    EmployeeSummaryReportComponent,
     InsuranceDataUploadComponent,
     OneZeroNineFourDataUploadComponent,
     OneZeroNineFiveDataUploadComponent,

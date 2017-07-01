@@ -10,11 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var employeeBreakInServiceReport_service_1 = require("./employeeBreakInServiceReport.service");
-var export_service_1 = require("../shared/export.service");
 var EmployeeBreakInServiceReportComponent = (function () {
-    function EmployeeBreakInServiceReportComponent(_employeeBreakInServiceReportService, _export) {
+    function EmployeeBreakInServiceReportComponent(_employeeBreakInServiceReportService) {
         this._employeeBreakInServiceReportService = _employeeBreakInServiceReportService;
-        this._export = _export;
         this.rows = [];
         this.page = 1;
         this.itemsPerPage = 5;
@@ -22,12 +20,13 @@ var EmployeeBreakInServiceReportComponent = (function () {
         this.numPages = 1;
         this.length = 0;
         this.columns = [
-            { title: 'Employee Name', className: 'va-m', name: 'employeeName' },
-            { title: 'SSN', className: 'va-m', name: 'ssnNumber' },
-            { title: 'Service Status', className: 'va-m', name: 'serviceStatus' },
-            { title: 'Week Starting', className: 'va-m', name: 'weekStarting' },
-            { title: 'Week Ending', className: 'va-m', name: 'weekEnding' },
-            { title: 'Week Count', className: 'va-m', name: 'weekCount' },
+            { title: 'Employee Name', className: 'va-m', name: 'FirstName' },
+            { title: 'SSN', className: 'va-m', name: 'SSN' },
+            { title: 'Service Status', className: 'va-m', name: 'ServiceStatus' },
+            { title: 'Week Starting', className: 'va-m', name: 'WeekStarting' },
+            { title: 'Week Ending', className: 'va-m', name: 'WeekEnding' },
+            { title: 'Week Count', className: 'va-m', name: 'WeekCount' },
+            { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
         ];
         this.config = {
             paging: true,
@@ -38,13 +37,56 @@ var EmployeeBreakInServiceReportComponent = (function () {
         this.employeeBeakInService = [];
     }
     EmployeeBreakInServiceReportComponent.prototype.ngOnInit = function () {
-        this.onChangeTable(this.config);
+        var _this = this;
+        this._employeeBreakInServiceReportService.getReportData().subscribe(function (data) {
+            _this.Years = data.WorkYear;
+            _this.ControlGroups = data.ControlGroup;
+            _this.selectedWeekStarting = data.WeekStarting;
+            _this.selectedWeekEnding = data.WeekEnding;
+        }, function (error) { return _this.errorMessage = error; });
+        if (this.selectedWeekStarting === '') {
+            this.selectedWeekStarting = '2016-12-30';
+        }
+        if (this.selectedWeekEnding === '') {
+            this.selectedWeekEnding = '2017-12-30';
+        }
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+    };
+    EmployeeBreakInServiceReportComponent.prototype.getFilterValues = function () {
+        var year = this.selectedYear;
+        if (year === '-1') {
+            year = "''";
+        }
+        var cg = this.selectedControlGroup;
+        if (cg === 'All' || cg === '-1') {
+            cg = "''";
+        }
+        var ws = this.selectedWeekStarting;
+        if (ws === '' || ws === undefined) {
+            ws = "''";
+        }
+        var we = this.selectedWeekEnding;
+        if (we === '' || we === undefined) {
+            we = "''";
+        }
+        var filterCriteria = {
+            selectedYear: year,
+            selectedControlGroup: cg,
+            selectedWeekStart: ws,
+            selectedWeekEnding: we
+        };
+        return filterCriteria;
+    };
+    EmployeeBreakInServiceReportComponent.prototype.Search = function () {
+        // this.onChangeTable(this.config);
         this.dataLoaded = false;
         this.employeeBreakInServiceReports();
     };
     EmployeeBreakInServiceReportComponent.prototype.employeeBreakInServiceReports = function () {
         var _this = this;
-        this._employeeBreakInServiceReportService.getEmployeeDemographicsReports().subscribe(function (empbreakinservice) {
+        var filterCriteria = this.getFilterValues();
+        this._employeeBreakInServiceReportService.getEmployeeBreakInServiceReports(filterCriteria).subscribe(function (empbreakinservice) {
             _this.employeeBeakInService = empbreakinservice;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
@@ -53,14 +95,8 @@ var EmployeeBreakInServiceReportComponent = (function () {
     EmployeeBreakInServiceReportComponent.prototype.downloadPdf = function () {
     };
     EmployeeBreakInServiceReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'Break In Service Report', 'EmployeeBreakInService');
+        var filterCriteria = this.getFilterValues();
+        this._employeeBreakInServiceReportService.downloadExcelReport(filterCriteria);
     };
     EmployeeBreakInServiceReportComponent.prototype.changeSort = function (data, config) {
         if (!config.sorting) {
@@ -148,7 +184,7 @@ EmployeeBreakInServiceReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: 'employeeBreakInServiceReport.html'
     }),
-    __metadata("design:paramtypes", [employeeBreakInServiceReport_service_1.EmployeeBreakInServiceReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [employeeBreakInServiceReport_service_1.EmployeeBreakInServiceReportService])
 ], EmployeeBreakInServiceReportComponent);
 exports.EmployeeBreakInServiceReportComponent = EmployeeBreakInServiceReportComponent;
 //# sourceMappingURL=employeeBreakInService.component.js.map

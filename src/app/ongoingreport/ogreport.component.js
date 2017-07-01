@@ -11,11 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var ogreport_service_1 = require("./ogreport.service");
-var export_service_1 = require("../shared/export.service");
 var OnGoingReportComponent = (function () {
-    function OnGoingReportComponent(_ogreportsrv, _export) {
+    function OnGoingReportComponent(_ogreportsrv) {
         this._ogreportsrv = _ogreportsrv;
-        this._export = _export;
         this.workDetails = [];
         this.rows = [];
         this.columns = [
@@ -47,10 +45,11 @@ var OnGoingReportComponent = (function () {
     }
     OnGoingReportComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.controlGroupControl = new forms_1.FormControl("", forms_1.Validators.required);
-        this.typeOfHoursControl = new forms_1.FormControl("", forms_1.Validators.required);
-        this.measurementEndDateControl = new forms_1.FormControl("", forms_1.Validators.required);
-        this.avgWeeklyThresholdControl = new forms_1.FormControl("30", forms_1.Validators.required);
+        this.controlGroupControl = new forms_1.FormControl('', forms_1.Validators.required);
+        this.typeOfHoursControl = new forms_1.FormControl('', forms_1.Validators.required);
+        this.measurementEndDateControl = new forms_1.FormControl('', forms_1.Validators.required);
+        this.avgWeeklyThresholdControl = new forms_1.FormControl('30', forms_1.Validators.required);
+        this.selectedweekCount = 13;
         this.ogReportForm = new forms_1.FormGroup({
             controlGroup: this.controlGroupControl,
             typeOfHour: this.typeOfHoursControl,
@@ -62,30 +61,30 @@ var OnGoingReportComponent = (function () {
             _this.controlGroups = data.ControlGroup;
             _this.typeOfHours = data.typeOfHours;
         }, function (error) { return _this.errorMessage = error; });
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
         this.onChangeTable(this.config);
         this.dataLoaded = false;
     };
     OnGoingReportComponent.prototype.getFilterValues = function () {
         var measurementDate = this.measurementEndDateControl.value;
-        if (measurementDate == undefined || measurementDate == "") {
+        if (measurementDate === undefined || measurementDate === '') {
             measurementDate = "''";
         }
         var cg = this.controlGroupControl.value;
-        if (cg == undefined || cg == "All" || cg == "") {
+        if (cg === undefined || cg === "All" || cg === '') {
             cg = "''";
             ;
         }
         var emptype = this.typeOfHoursControl.value;
-        if (emptype == undefined || emptype == "") {
+        if (emptype === undefined || emptype === '') {
             emptype = "''";
             ;
         }
         var cat = this.avgWeeklyThresholdControl.value;
-        if (cat == undefined || cat == "") {
+        if (cat === undefined || cat === '') {
             cat = "''";
         }
         var filterCriteria = {
@@ -93,7 +92,7 @@ var OnGoingReportComponent = (function () {
             selectedControlGroup: cg,
             selectedTypeOfHours: emptype,
             avgWeeklyThreshold: cat,
-            reportCount: 13
+            reportCount: this.selectedweekCount
         };
         return filterCriteria;
     };
@@ -101,27 +100,26 @@ var OnGoingReportComponent = (function () {
         var _this = this;
         this.dataLoaded = false;
         var filterCriteria = this.getFilterValues();
-        this.count13Weeks = "0";
-        this.count26Weeks = "0";
-        this.count47Weeks = "0";
-        this.count52Weeks = "0";
-        var counts = this._ogreportsrv.getOnGoingReportDataCount(filterCriteria).subscribe(function (counts) {
-            debugger;
-            if (counts == undefined || counts == null || (counts != null && counts.onGoingCountByWeeks == null)) {
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
+        this._ogreportsrv.getOnGoingReportDataCount(filterCriteria).subscribe(function (counts) {
+            if (counts === undefined || counts == null || (counts != null && counts.onGoingCountByWeeks == null)) {
                 return;
             }
             counts.onGoingCountByWeeks.forEach(function (element) {
                 switch (element.WEEKS_WORKED) {
-                    case "13":
+                    case '13':
                         _this.count13Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "26":
+                    case '26':
                         _this.count26Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "47":
+                    case '47':
                         _this.count47Weeks = element.WEEKS_WORKED_COUNT;
                         break;
-                    case "52":
+                    case '52':
                         _this.count52Weeks = element.WEEKS_WORKED_COUNT;
                         break;
                 }
@@ -130,10 +128,10 @@ var OnGoingReportComponent = (function () {
     };
     OnGoingReportComponent.prototype.getWeekData = function (weekCount) {
         var _this = this;
+        this.selectedweekCount = weekCount;
         var filterCriteria = this.getFilterValues();
-        filterCriteria.reportCount = weekCount;
+        filterCriteria.reportCount = this.selectedweekCount;
         this._ogreportsrv.getOnGoingReportData(filterCriteria).subscribe(function (workdetails) {
-            debugger;
             _this.workDetails = workdetails;
             _this.onChangeTable(_this.config);
             _this.dataLoaded = true;
@@ -142,16 +140,11 @@ var OnGoingReportComponent = (function () {
     OnGoingReportComponent.prototype.downloadPdf = function () {
     };
     OnGoingReportComponent.prototype.downloadExcel = function () {
-        debugger;
-        var tbl = document.getElementById('datatable');
-        var btn = document.getElementById('btnDownloadExcel');
-        if (tbl) {
-            console.log(tbl.children[0]);
-        }
-        if (tbl && tbl.children.length > 0)
-            this._export.excelByTableElement(btn, tbl.children[0], 'On Going Report');
+        var filterCriteria = this.getFilterValues();
+        filterCriteria.reportCount = this.selectedweekCount;
+        this._ogreportsrv.downloadExcelReport(filterCriteria);
     };
-    //Validations
+    // Validations
     OnGoingReportComponent.prototype.validateControlGroups = function () {
         return this.controlGroupControl.valid || this.controlGroupControl.untouched;
     };
@@ -253,7 +246,7 @@ OnGoingReportComponent = __decorate([
         moduleId: module.id,
         templateUrl: './ogreport.html'
     }),
-    __metadata("design:paramtypes", [ogreport_service_1.OnGoingReportService, export_service_1.ExportToExcelService])
+    __metadata("design:paramtypes", [ogreport_service_1.OnGoingReportService])
 ], OnGoingReportComponent);
 exports.OnGoingReportComponent = OnGoingReportComponent;
 //# sourceMappingURL=ogreport.component.js.map

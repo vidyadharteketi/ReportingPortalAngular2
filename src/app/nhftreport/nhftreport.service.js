@@ -11,24 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
-require("rxjs/add/operator/do");
-require("rxjs/add/operator/catch");
-require("rxjs/add/operator/map");
-require("rxjs/add/observable/throw");
 var app_config_1 = require("../app.config");
 var NewHireFullTimeService = (function () {
     function NewHireFullTimeService(_http) {
         this._http = _http;
-        this._nhftreportUrl = app_config_1.CONFIGURATION.baseServiceUrl;
+        this._nhftreportUrl = app_config_1.CONFIGURATION.baseServiceUrl + 'newhiresfulltimereportservice/';
     }
     NewHireFullTimeService.prototype.getReportData = function () {
-        return this._http.get(this._nhftreportUrl + 'newHiresFullTime/getNewHireFullTimeReferenceData')
+        return this._http.get(this._nhftreportUrl + 'getNewHiresFullTimeReportReferenceData')
             .map(function (response) { return response.json().EligibilityNewHiresFullTimeReferenceData; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
     NewHireFullTimeService.prototype.getEligibleFullTimeWorkers = function (filterCriteria) {
-        var fileName = "newHiresFullTime/getACAEligibleCount?WorkYear=" + filterCriteria.selectedYear
+        var fileName = "getNewHiresFullTimeCountByWeek?WorkYear=" + filterCriteria.selectedYear
             + "&WorkMonth=" + filterCriteria.selectedHireMonth
             + "&ControlGroup=" + filterCriteria.selectedControlGroup;
         return this._http.get(this._nhftreportUrl + fileName)
@@ -38,13 +34,19 @@ var NewHireFullTimeService = (function () {
         // return { eftworkers: "26" }; 
     };
     NewHireFullTimeService.prototype.getEligibleFullTimeReportData = function (filterCriteria) {
-        var fileName = "newHiresFullTime/getReportByACAEligibleCount?WorkYear=" + filterCriteria.selectedYear
+        var fileName = "getNewHiresFullTimeReportData?WorkYear=" + filterCriteria.selectedYear
             + "&WorkMonth=" + filterCriteria.selectedHireMonth
             + "&ControlGroup=" + filterCriteria.selectedControlGroup;
         return this._http.get(this._nhftreportUrl + fileName)
             .map(function (response) { return response.json().reportByACAEligibleCount; })
             .do(function (data) { return console.log('All: ' + JSON.stringify(data)); })
             .catch(this.handleError);
+    };
+    NewHireFullTimeService.prototype.downloadExcelReport = function (filterCriteria) {
+        var fileName = "processNewHireFullTimeExcelUpload?WorkYear=" + filterCriteria.selectedYear
+            + "&WorkMonth=" + filterCriteria.selectedHireMonth
+            + "&ControlGroup=" + filterCriteria.selectedControlGroup;
+        window.open(this._nhftreportUrl + fileName, '_bank');
     };
     NewHireFullTimeService.prototype.handleError = function (error) {
         // in a real world app, we may send the server to some remote logging infrastructure

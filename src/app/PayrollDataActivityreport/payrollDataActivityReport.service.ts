@@ -5,58 +5,37 @@ import { Observable } from 'rxjs/Observable';
 
 import { CONFIGURATION } from '../app.config';
 
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/throw';
+
 
 @Injectable()
 export class PayrollDataActivityReportService {
-    private _pdaReportUrl = CONFIGURATION.baseServiceUrl;
+    private _pdaReportUrl = CONFIGURATION.baseServiceUrl + 'payrolldataactivityreportservice/';
     constructor(private _http: Http) {
 
     }
 
     getReportData(): Observable<any> {
-        return this._http.get(this._pdaReportUrl + 'payrollDataActivityReport/getPayrollReferenceData')
+        return this._http.get(this._pdaReportUrl + 'getPayrollDataActivityReportReferenceData')
             .map((response: Response) => response.json().payrollRefDataVO)
-            .do(data =>console.log('All: ' + JSON.stringify(data)))
+            .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
-    
-    getPayrollDataActivityReportData(filterCriteria:any): Observable<IWorkDetails[]> {
 
-      let fileName:string ="payrollDataActivityReport/getReportsForPayrollDataActivity?WorkYear="+filterCriteria.selectedYear       
-        +"&ControlGroup="+filterCriteria.selectedControlGroup       
+    getPayrollDataActivityReportData(filterCriteria: any): Observable<IWorkDetails[]> {
+
+        let fileName = 'getPayrollDataActivityReportData?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
         return this._http.get(this._pdaReportUrl + fileName)
             .map((response: Response) => <IWorkDetails[]>response.json().reportsForPayrollDataActivity)
             .do(data => console.log('All: ' + JSON.stringify(data)))
-            .catch(this.handleError);       
-    }
-      getYears() { return ['2016', '2017', '2018'] }
-
-    getControlGroups() { return ['Revolution', 'Cast & Crew'] }
-
-    getWeeklyCounts(): any { return { count13Weeks: "3", count26Weeks: "4", count47Weeks: "5", count52Weeks: "6" }; }
-
-    getWeekReportData(weekCount: number): Observable<IWorkDetails[]> {
-        let fileName: string = '';
-        switch (weekCount) {
-            case 13:
-                fileName = "pdareport13.json";
-                break;
-            case 26:
-                fileName = "pdareport26.json";
-                break;
-            case 47:
-                break;
-            case 52:
-                break;
-        }
-        return this._http.get(this._pdaReportUrl + fileName)
-            .map((response: Response) => <IWorkDetails[]>response.json())
-            .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
+    }
+
+    downloadExcelReport(filterCriteria: any): void {
+        let fileName = 'processPayrollDataActivityReportExcelUpload?WorkYear=' + filterCriteria.selectedYear
+            + '&ControlGroup=' + filterCriteria.selectedControlGroup;
+
+        window.open(this._pdaReportUrl + fileName, '_bank');
     }
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure

@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  route: string = "aca";
-  dashboard: string = "dashboard";
+  route: string = 'aca';
+  dashboard: string = 'dashboard';
 
   login(): void {
-      console.log('login/submitted');
+    console.log('login/submitted');
   }
 }
