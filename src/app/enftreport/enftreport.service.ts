@@ -42,7 +42,7 @@ export class ENFTReportService {
     }
 
     getWeekReportData(filterCriteria: any): Observable<IWorkDetails[]> {
-        let fileName = 'getNewHiresNonFullTimeReportData?WorkYear=' + filterCriteria.selectedYear
+        const fileName = 'getNewHiresNonFullTimeReportData?WorkYear=' + filterCriteria.selectedYear
             + '&WorkMonth=' + filterCriteria.selectedHireMonth
             + '&ControlGroup=' + filterCriteria.selectedControlGroup
             + '&UnionType=' + filterCriteria.selectedTypeOfHours
@@ -53,7 +53,7 @@ export class ENFTReportService {
             .catch(this.handleError);
     }
     downloadExcelReport(filterCriteria: any): void {
-        let fileName = 'processnewhiresnonfulltimeexcelzipdownload?WorkYear=' + filterCriteria.selectedYear
+        const fileName = 'processnewhiresnonfulltimeexcelzipdownload?WorkYear=' + filterCriteria.selectedYear
             + '&WorkMonth=' + filterCriteria.selectedHireMonth
             + '&ControlGroup=' + filterCriteria.selectedControlGroup
             + '&UnionType=' + filterCriteria.selectedTypeOfHours

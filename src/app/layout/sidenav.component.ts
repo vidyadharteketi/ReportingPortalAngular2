@@ -3,7 +3,7 @@ import { CONFIGURATION } from '../app.config';
 
 @Component({
     moduleId: module.id,
-    selector: 'sidenav',
+    selector: 'app-sidenav',
     templateUrl: 'sidenav.html'
 })
 export class SideNavComponent {
@@ -31,4 +31,5 @@ export class SideNavComponent {
     onezeroninefivedataupload: string = CONFIGURATION.onezeroninefivedataupload;
     controlgroup = CONFIGURATION.controlgroup;
     ale = CONFIGURATION.ale;
+    aledetails = CONFIGURATION.aledetails;
 }

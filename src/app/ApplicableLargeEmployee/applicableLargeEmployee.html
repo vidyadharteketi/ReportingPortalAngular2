@@ -10,132 +10,250 @@
                         <!--<span class="panel-title">Client Onboarding - Personall Information</span>                        -->
                         <span class="panel-title">ALE</span>
                     </div>
-                    <!-- -------------- Content -------------- -->
-                    <section id="content" class="table-layout animated fadeIn">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- -------------- Standard Fields -------------- -->
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <span class="panel-title">Applicable Large Employee Form</span>
-                                    </div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="txtALEName" class="col-lg-3 control-label">ALE Name</label>
-                                                <div class="col-lg-8">
-                                                    <div>
-                                                        <input type="text" id="txtALEName" class="form-control" placeholder="ALE Name...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtFEIN" class="col-lg-3 control-label"> FEIN</label>
-                                                <div class="col-lg-4">
-                                                    <div>
-                                                        <input type="text" id="txtFEIN" class="form-control" placeholder="FEIN...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtAddress1" class="col-lg-3 control-label">Address 1</label>
-                                                <div class="col-lg-7">
-                                                    <div>
-                                                        <input type="text" id="txtAddress1" class="form-control" placeholder="Address 1...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtAddress2" class="col-lg-3 control-label">Address 2</label>
-                                                <div class="col-lg-7">
-                                                    <div>
-                                                        <input type="text" id="txtAddress2" class="form-control" placeholder="Address 2...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-2 control-label" for="txtCity">City</label>
-                                                <div class="col-lg-2">
-                                                    <div>
-                                                        <input class="form-control" id="txtCity" placeholder="City..." />
-                                                    </div>
-                                                </div>
+                    <div class="panel-body">
+                        <!-- -------------- Content -------------- -->
+                        <section id="content" class="table-layout animated fadeIn">
+                            <!-- -------------- Products Status Table -------------- -->
+                            <div class="row">
+                                <div class="col-xs-12">
 
-                                                <label class="col-lg-2 control-label" for="txtState">State</label>
-                                                <div class="col-lg-2">
-                                                    <div>
-                                                        <input class="form-control" id="txtState" placeholder="State..." />
-                                                    </div>
-                                                </div>
+                                    <div class="panel">
+                                        <div class="panel-heading">
+                                            <span class="panel-title hidden-xs"> Applicable Large Employee</span>
+                                        </div>
+                                        <div class="panel-body pn">
+                                            <div class="table-responsive">
+                                                <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                                    <thead>
+                                                        <tr class="bg-light">
+                                                            <th class="text-center"></th>
+                                                            <th class="text-center"></th>
+                                                            <th class="">Id</th>
+                                                            <th class="">FEIN</th>
+                                                            <th class="">Name</th>
+                                                            <th class="">Active</th>
+                                                            <th class="">Deleted</th>
+                                                            <th class="text-right">Address1</th>
+                                                            <th class="text-right">Address2</th>
+                                                            <th class="text-right">City</th>
+                                                            <th class="text-right">Province</th>
+                                                            <th class="text-right">State</th>
+                                                            <th class="text-right">Zip</th>
+                                                            <th class="text-right">Country</th>
+                                                            <th class="text-right">First Name</th>
+                                                            <th class="text-right">Last Name</th>
+                                                            <th class="text-right">Contact Number</th>
+                                                            <th class="text-right">Modified By</th>
+                                                            <th class="text-right">Modified Date</th>
+                                                            <th class="text-right">Created By</th>
+                                                            <th class="text-right">Created Date</th>
+                                                            <th class="text-right">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let row of data">
+                                                            <td class="text-center">
+                                                                <label class="option block mn">
+                                                                <input type="checkbox" name="inputname" value="FR">
+                                                                <span class="checkbox mn"></span>
+                                                            </label>
+                                                            </td>
+                                                            <td class="w100">
+                                                                <img class="img-responsive mw40 ib mr10" title="user" src="assets/img/pages/products/1.jpg">
+                                                            </td>
+                                                            <td class="">{{row?.aleId}}</td>
+                                                            <td class="">{{row?.aleFein}}</td>
+                                                            <td class="">{{row?.aleName}}</td>
+                                                            <td class="">{{row?.active}}</td>
+                                                            <td class="">{{row?.deleted}}</td>
+                                                            <td class="">{{row?.aleAddress1}}</td>
+                                                            <td class="">{{row?.aleAddress2}}</td>
+                                                            <td class="">{{row?.aleCity}}</td>
+                                                            <td class="">{{row?.aleProvince}}</td>
+                                                            <td class="">{{row?.aleState}}</td>
+                                                            <td class="">{{row?.aleZip}}</td>
+                                                            <td class="">{{row?.aleCountry}}</td>
+                                                            <td class="">{{row?.aleContactFirstName}}</td>
+                                                            <td class="">{{row?.aleContactLastName}}</td>
+                                                            <td class="">{{row?.aleContactContactNumber}}</td>
+                                                            <td class="">{{row?.modifiedBy}}</td>
+                                                            <td class="">{{row?.modifiedDate}}</td>
+                                                            <!--<td class="">{{row?.controlGroupId}}</td>-->
+                                                            <td class="">{{row?.createdBy}}</td>
+                                                            <td class="">{{row?.createdDate}}</td>
 
-                                                <label class="col-lg-2 control-label" for="txtZip">ZIP</label>
-                                                <div class="col-lg-2">
-                                                    <div>
-                                                        <input class="form-control" id="txtZip" placeholder="ZIP..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-2 control-label" for="txtProvince">Province</label>
-                                                <div class="col-lg-4">
-                                                    <div>
-                                                        <input class="form-control" id="txtProvince" placeholder="Province..." />
-                                                    </div>
-                                                </div>
-                                                <label class="col-lg-3 control-label" for="ddlCountry">Country</label>
-                                                <div class="col-lg-3">
-                                                    <div>
-                                                        <select id="ddlCountry">
-                                                            <option>United States</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                    <div class="panel panel-primary">
-                                                        <div class="panel-body">
-                                                            <fieldset>
-                                                                <legend>ACA Contact</legend>
-                                                                <div class="form-group">
-                                                                    <label for="txtFirstName" class="col-lg-3 control-label">First Name</label>
-                                                                    <div class="col-lg-5">
-                                                                        <div>
-                                                                            <input type="text" id="txtFirstName" class="form-control" placeholder="First Name">
-                                                                        </div>
-                                                                    </div>
+                                                            <td class="text-right">
+                                                                <div class="btn-group text-right">
+                                                                    <button type="button" class="btn btn-success br2 btn-xs fs12 " data-toggle="modal" data-target="#myModal" (click)="editAle(row?.aleId,row?.aleName,row?.aleFein)"> Edit</button>
+                                                                    <button type="button" class="btn btn-danger br2 btn-xs fs12 " data-toggle="modal" data-target="#myModall" (click)="deleteAle(row?.aleId,row?.aleName,row?.aleFein)"> Delete</button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li>
+                                                                            <a href="#" data-toggle="modal" data-target="#myModal">Edit</a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a href="#">Delete</a>
+                                                                        </li>
+                                                                    </ul>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtLastName" class="col-lg-3 control-label">Last Name</label>
-                                                                    <div class="col-lg-5">
-                                                                        <div>
-                                                                            <input type="text" id="txtLastName" class="form-control" placeholder="Last Name">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="txtPhoneNo" class="col-lg-3 control-label">Phone No.</label>
-                                                                    <div class="col-lg-3">
-                                                                        <div>
-                                                                            <input type="text" id="txtPhoneNo" class="form-control" placeholder="Phone No">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <!-- -------------- /Content -------------- -->
+                        </section>
+                        <!-- -------------- /Content -------------- -->
+                    </div>
                 </div>
             </div>
         </div>
     </header>
     <!-- -------------- /Topbar -------------- -->
+</section>
+
+<section>
+    <div class="allcp-form theme-primary">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title"></div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- -------------- Standard Fields -------------- -->
+                        <form class="form-horizontal" role="form" (ngSubmit)="updateAle()" [formGroup]="aleForm">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <span class="panel-title">Applicable Large Employee Form</span>
+                                </div>
+                                <div class="panel-body">
+
+                                    <div class="form-group">
+                                        <label for="txtALEName" class="col-lg-3 control-label">ALE Name</label>
+                                        <div class="col-lg-8">
+                                            <div>
+                                                <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtFEIN" class="col-lg-3 control-label"> FEIN</label>
+                                        <div class="col-lg-4">
+                                            <div>
+                                                <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtAddress1" class="col-lg-3 control-label">Address 1</label>
+                                        <div class="col-lg-7">
+                                            <div>
+                                                <input type="text" formControlName="address1Control" id="txtAddress1" class="form-control" placeholder="Address 1...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="txtAddress2" class="col-lg-3 control-label">Address 2</label>
+                                        <div class="col-lg-7">
+                                            <div>
+                                                <input type="text" formControlName="address2Control" id="txtAddress2" class="form-control" placeholder="Address 2...">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="txtCity">City</label>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <input formControlName="cityControl" class="form-control" id="txtCity" placeholder="City..." />
+                                            </div>
+                                        </div>
+
+                                        <label class="col-lg-2 control-label" for="txtState">State</label>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <input formControlName="stateControl" class="form-control" id="txtState" placeholder="State..." />
+                                            </div>
+                                        </div>
+
+                                        <label class="col-lg-2 control-label" for="txtZip">ZIP</label>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <input formControlName="zipControl" class="form-control" id="txtZip" placeholder="ZIP..." />
+                                            </div>
+                                        </div>
+                                        <label class="col-lg-2 control-label" for="chkActive">Active</label>
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <input id="chkActive" type="checkbox" checked formControlName="isActiveControl" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label" for="txtProvince">Province</label>
+                                        <div class="col-lg-4">
+                                            <div>
+                                                <input formControlName="provinanceControl" class="form-control" id="txtProvince" placeholder="Province..." />
+                                            </div>
+                                        </div>
+                                        <label class="col-lg-3 control-label" for="ddlCountry">Country</label>
+                                        <div class="col-lg-3">
+                                            <div>
+                                                <select id="ddlCountry" formControlName="countryControl">
+                                                            <option>United States</option>
+                                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-body">
+                                                    <fieldset>
+                                                        <legend>ACA Contact</legend>
+                                                        <div class="form-group">
+                                                            <label for="txtFirstName" class="col-lg-3 control-label">First Name</label>
+                                                            <div class="col-lg-5">
+                                                                <div>
+                                                                    <input formControlName="contactFirstNameControl" type="text" id="txtFirstName" class="form-control" placeholder="First Name">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtLastName" class="col-lg-3 control-label">Last Name</label>
+                                                            <div class="col-lg-5">
+                                                                <div>
+                                                                    <input formControlName="contactLastNameControl" type="text" id="txtLastName" class="form-control" placeholder="Last Name">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txtPhoneNo" class="col-lg-3 control-label">Phone No.</label>
+                                                            <div class="col-lg-3">
+                                                                <div>
+                                                                    <input formControlName="contactNumberControl" type="text" id="txtPhoneNo" class="form-control" placeholder="Phone No">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="panel-footer text-right">
+                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()"> Submit</button>
+                                    <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

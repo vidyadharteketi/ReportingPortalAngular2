@@ -45,7 +45,7 @@
                                         <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-calendar"></i> Hire Month</label>
                                         <div class="col-sm-7">
                                             <label class="field select">
-                                                <select id="selmonth" name="month" [(ngModel)]="selectedHireMonth">
+                                                <select id="selmonth" name="month" [(ngModel)]="selectedHireMonth" >
                                                     <option value="-1">Select Month</option>
                                                     <option *ngFor="let month of Months" value={{month}}>
                                                         {{month}}
@@ -55,25 +55,14 @@
                                             </label>
                                         </div>
                                     </div>
-
-
-
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-5">
 
 
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
                                         <div class="col-sm-7">
-                                            <label class="field select">
-                                                <select id="selcontrolgroup" name="controlgroup" [(ngModel)]="selectedControlGroup">
-                                                    <option value="-1">All</option>
-                                                    <option *ngFor="let group of ControlGroups" value={{group}}>
-                                                        {{group}}
-                                                    </option>
-                                                </select>
-                                                <i class="arrow"></i>
-                                            </label>
+                                            <ss-multiselect-dropdown [options]="myOptions" [settings]="mySettings" [texts]="myTexts" [(ngModel)]="selectedControlGroup"></ss-multiselect-dropdown>
                                         </div>
                                     </div>
 
@@ -111,7 +100,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-6">
 
                                     <div class="form-group">
                                         <label for="inputPassword3" class="col-sm-3 control-label"><i class="fa fa-user"></i> Non Full Time Categories</label>
@@ -127,9 +116,10 @@
                                             <button class="btn btn-primary" type="button" (click)="Search()">Filter</button>
                                         </div>
                                     </div>
-
                                 </div>
-
+                                <div class="col-sm-2">
+                                    <button class="btn btn-primary" type="button" (click)="reset()">Reset</button>
+                                </div>
                             </div>
                             <hr class="short" />
                             <div class="row">

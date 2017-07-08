@@ -12,100 +12,92 @@
                     </div>
                     <!-- -------------- Content -------------- -->
                     <section id="content" class="table-layout animated fadeIn">
+
+                        <!-- -------------- Products Status Table -------------- -->
                         <div class="row">
-                            <div class="col-md-6">
-                                <!-- -------------- Standard Fields -------------- -->
+                            <div class="col-xs-12">
+
                                 <div class="panel">
                                     <div class="panel-heading">
-                                        <span class="panel-title">On Boarding Control Group Form</span>
+                                        <span class="panel-title hidden-xs"> Control groups</span>
                                     </div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="txtControlGroup" class="col-lg-5 control-label">Control Group Name</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input type="text" id="txtControlGroup" class="form-control" placeholder="Control group Name...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtControlGroupEIN" class="col-lg-5 control-label">Control Group EIN</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input type="text" id="txtControlGroupEIN" class="form-control" placeholder="EIN...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtAcaCustomer" class="col-lg-5 control-label">Aca Custormer</label>
+                                    <div class="panel-body pn">
+                                        <div class="table-responsive">
+                                            <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
+                                                <thead>
+                                                    <tr class="bg-light">
+                                                        <th class="text-center"></th>
+                                                        <th class="text-center"></th>
+                                                        <th class="">Id</th>
+                                                        <th class="">EIN</th>
+                                                        <th class="">Name</th>
+                                                        <th class="">Active</th>
+                                                        <th class="">Deleted</th>
+                                                        <th class="text-right">Measurement Start Date</th>
+                                                        <th class="text-right">Measurement End Date</th>
+                                                        <th class="text-right">Measurement End Date1</th>
+                                                        <th class="text-right">Measurement End Date2</th>
+                                                        <th class="text-right">Measurement End Date3</th>
+                                                        <th class="text-right">Measurement End Date4</th>
+                                                        <th class="text-right">Modified By</th>
+                                                        <th class="text-right">Modified Date</th>
+                                                        <th class="text-right">Created By</th>
+                                                        <th class="text-right">Created Date</th>
+                                                        <th class="text-right">Action</th>
 
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input type="text" id="txtAcaCustomer" class="form-control" placeholder="Aca Customer...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="txtMeasureStartDate" class="col-lg-5 control-label">Measure Start Date</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input type="text" id="txtMeasureStartDate" class="form-control" placeholder="Measure Start Date...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-5 control-label" for="txtMeasureEndDate">Measure End Date</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input class="form-control" id="txtMeasureEndDate" placeholder="Measure Start Date..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-5 control-label" for="txtMeasureEndDate1">Measure End Date 1</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input class="form-control" id="txtMeasureEndDate1" placeholder="Measure Start Date 1..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-5 control-label" for="txtMeasureEndDate2">Measure End Date 2</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input class="form-control" id="txtMeasureEndDate2" placeholder="Measure Start Date 2..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-5 control-label" for="txtMeasureEndDate3">Measure End Date 3</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input class="form-control" id="txtMeasureEndDate3" placeholder="Measure Start Date 3..." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-lg-5 control-label" for="chkActive">Active</label>
-                                                <div class="col-lg-6">
-                                                    <div>
-                                                        <input  id="chkActive" type="checkbox" checked/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-lg-8">
-                                                    <div>
-                                                        <button type="submit" class="btn btn-bordered btn-primary pull-right">Save</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let row of data">
+                                                        <td class="text-center">
+                                                            <label class="option block mn">
+                                                                <input type="checkbox" name="inputname" value="FR">
+                                                                <span class="checkbox mn"></span>
+                                                            </label>
+                                                        </td>
+                                                        <td class="w100">
+                                                            <img class="img-responsive mw40 ib mr10" title="user" src="assets/img/pages/products/1.jpg">
+                                                        </td>
+                                                        <td class="">{{row?.controlGroupId}}</td>
+                                                        <td class="">{{row?.controlGroupEIN}}</td>
+                                                        <td class="">{{row?.controlGroupName}}</td>
+                                                        <td class="">{{row?.active}}</td>
+                                                        <td class="">{{row?.deleted}}</td>
+                                                        <td class="">{{row?.measurementStartDate}}</td>
+                                                        <td class="">{{row?.measurementEndDate}}</td>
+                                                        <td class="">{{row?.measurementEndDate1}}</td>
+                                                        <td class="">{{row?.measurementEndDate2}}</td>
+                                                        <td class="">{{row?.measurementEndDate3}}</td>
+                                                        <td class="">{{row?.measurementEndDate4}}</td>
+                                                        <td class="">{{row?.modifiedBy}}</td>
+                                                        <td class="">{{row?.modifiedDate}}</td>
+                                                        <!--<td class="">{{row?.controlGroupId}}</td>-->
+                                                        <td class="">{{row?.createdBy}}</td>
+                                                        <td class="">{{row?.createdDate}}</td>
+
+                                                        <td class="text-right">
+                                                            <div class="btn-group text-right">
+                                                                <button type="button" class="btn btn-success br2 btn-xs fs12 " data-toggle="modal" data-target="#myModal" (click)="editControlGroup(row?.controlGroupId,row?.controlGroupName)"> Edit</button>
+                                                                <button type="button" class="btn btn-danger br2 btn-xs fs12 " data-toggle="modal" data-target="#myModall" (click)="deleteControlGroup(row?.controlGroupId,row?.controlGroupName)"> Delete</button>
+                                                                <ul class="dropdown-menu" role="menu">
+                                                                    <li>
+                                                                        <a href="#" data-toggle="modal" data-target="#myModal">Edit</a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#">Delete</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </section>
                     <!-- -------------- /Content -------------- -->
                 </div>
@@ -114,3 +106,151 @@
     </header>
     <!-- -------------- /Topbar -------------- -->
 </section>
+<!-- Open---Modal -->
+
+<div class="" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- <not closed> -->
+    <div class="modal-dialog modal-lg" role="document">
+        <!-- <not closed> -->
+        <div class="modal-content">
+            <!-- <not closed> -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Control Group</h4>
+            </div>
+            <div class="modal-body">
+                <!-- <not closed> -->
+                <div class="chute chute-center">
+                    <!-- <not closed> -->
+                    <div class="allcp-form theme-primary center-block">
+                        <!-- <closed> -->
+                        <form method="post" (ngSubmit)="updateControlGroup()" id="allcp-form" novalidate="novalidate">
+                            <!-- <not closed> -->
+                            <div class="panel-body">
+                                <!-- <not closed> -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <!-- -------------- Standard Fields -------------- -->
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <span class="panel-title">On Boarding Control Group Form</span>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" role="form" [formGroup]="cgForm">
+                                                    <div class="form-group">
+                                                        <label for="txtControlGroup" class="col-lg-5 control-label">Control Group Name</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input type="text" id="txtControlGroup" formControlName="nameControl" class="form-control" placeholder="Control group Name...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="txtControlGroupEIN" class="col-lg-5 control-label">Control Group EIN</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input type="text" id="txtControlGroupEIN" formControlName="EINControl" class="form-control" placeholder="EIN...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="form-group">
+                                                        <label for="txtAcaCustomer" class="col-lg-5 control-label">Aca Custormer</label>
+
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input type="text" id="txtAcaCustomer"  formControlName="EINControl" class="form-control" placeholder="Aca Customer...">
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                    <div class="form-group">
+                                                        <label for="txtMeasureStartDate" class="col-lg-5 control-label">Measure Start Date</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input type="text" id="txtMeasureStartDate" formControlName="measurementStartDateControl" class="form-control" placeholder="Measure Start Date...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="txtMeasureEndDate">Measure End Date</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input class="form-control" id="txtMeasureEndDate" formControlName="measurementEndDateControl" placeholder="Measure Start Date..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="txtMeasureEndDate1">Measure End Date 1</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input class="form-control" id="txtMeasureEndDate1" formControlName="measureEndDate1Control" placeholder="Measure Start Date 1..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="txtMeasureEndDate2">Measure End Date 2</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input class="form-control" id="txtMeasureEndDate2" formControlName="measureEndDate2Control" placeholder="Measure Start Date 2..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="txtMeasureEndDate3">Measure End Date 3</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input class="form-control" id="txtMeasureEndDate3" formControlName="measureEndDate3Control" placeholder="Measure Start Date 3..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="txtMeasureEndDate4">Measure End Date 4</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input class="form-control" id="txtMeasureEndDate4" formControlName="measureEndDate4Control" placeholder="Measure Start Date 4..." />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-5 control-label" for="chkActive">Active</label>
+                                                        <div class="col-lg-6">
+                                                            <div>
+                                                                <input id="chkActive" type="checkbox" checked formControlName="isActiveControl"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer text-right">
+                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()"> Submit</button>
+                                <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModall" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
+            </div>
+            <div class="panel-footer text-right">
+                <button type="submit" class="btn btn-bordered btn-primary mb5"> Confirm</button>
+                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!---Closed--Model-->

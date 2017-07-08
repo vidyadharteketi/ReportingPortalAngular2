@@ -9,6 +9,7 @@ export * from './EmployeeDemographicsReport/index';
 export * from './EmployeeBreakInServiceReport/index';
 export * from './ControlGroup/index';
 export * from './ApplicableLargeEmployee/index';
+export * from './ApplicableLargeEmployeeDetails/index';
 export * from './AddCustomer/index';
 export * from './ListCustomer/index';
 export * from './OnBoardingPersonalInformation/index';

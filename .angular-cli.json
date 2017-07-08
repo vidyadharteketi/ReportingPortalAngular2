@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/skin/default_skin/css/theme.css",
+        "./assets/skin/default_skin/css/theme.min.css",
         "./assets/allcp/forms/css/forms.min.css",
         "./assets/js/plugins/datatables/media/css/dataTables.bootstrap.css",
         "./assets/js/plugins/datatables/extensions/Editor/css/dataTables.editor.css",
@@ -28,9 +28,10 @@
         "./assets/js/plugins/c3charts/c3.min.css",
         "./assets/skin/default_skin/css/style.css",
         "./assets/js/plugins/select2/css/core.css",
+        "./assets/js/plugins/magnific/magnific-popup.css",
         "styles.css"
       ],
-      "scripts": [      
+      "scripts": [
         "./assets/js/plugins/ng-table-excel-export/ng-table-excel-export.js",
         "./assets/js/jquery/jquery_ui/jquery-ui.min.js",
         "./assets/js/plugins/jquery.maxlength.min.js",
@@ -40,6 +41,7 @@
         "./assets/js/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js",
         "./assets/js/plugins/datatables/media/js/dataTables.bootstrap.js",
         "./assets/js/plugins/select2/select2.min.js",
+        "./assets/js/pages/management-tools-modals.js",
         "./assets/js/utility/utility.js",
         "./assets/js/demo/demo.js",
         "./assets/js/main.js",
