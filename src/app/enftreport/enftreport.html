@@ -15,16 +15,14 @@
                         </span>
                     </div>
                     <div class="panel-body">
-                        <div class="form-horizontal">
+                        <div class="form-horizontal form-dump">
+                            
+                            <div class="panel-box">
                             <div class="row">
                                 <div class="col-sm-3">
-
-
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-calendar"></i> Year</label>
-                                        <div class="col-sm-7">
-
-                                            <label class="field select">
+                                        <label for="inputEmail3" class="control-label"><h6><i class="fa fa-calendar"></i> Select Element</h6></label>
+                                        <label class="field select">
                                                 <select id="selYear" name="country" [(ngModel)]="selectedYear" aria-placeholder="Select year">
                                                     <option value="-1">Select Year</option>
                                                     <option *ngFor="let year of Years" value={{year}}>
@@ -33,17 +31,12 @@
                                                 </select>
                                                 <i class="arrow"></i>
                                             </label>
-
                                         </div>
-                                    </div>
-
-                                </div>
+                                   </div>
                                 <div class="col-sm-3">
-
-
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-calendar"></i> Hire Month</label>
-                                        <div class="col-sm-7">
+                                        <label for="inputEmail3" class="control-label"><h6><i class="fa fa-calendar"></i> Hire Month</h6></label>
+                                        <div class="">
                                             <label class="field select">
                                                 <select id="selmonth" name="month" [(ngModel)]="selectedHireMonth" >
                                                     <option value="-1">Select Month</option>
@@ -56,38 +49,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-5">
-
-
+                                <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
-                                        <div class="col-sm-7">
+                                        <label for="inputEmail3" class="control-label"><h6><i class="fa fa-group"></i> Control Group</h6></label>
+                                        <div class="block">
                                             <ss-multiselect-dropdown [options]="myOptions" [settings]="mySettings" [texts]="myTexts" [(ngModel)]="selectedControlGroup"></ss-multiselect-dropdown>
                                         </div>
                                     </div>
-
                                 </div>
-
                                 <div class="col-sm-3">
-
-
                                     <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-8 control-label"><i class="fa fa-clock-o"></i> Avg. Weekly Hours Tresshold</label>
-                                        <div class="col-sm-4">
+                                        <label for="inputPassword3" class="control-label"><h6><i class="fa fa-clock-o"></i> Avg. Weekly Hours Tresshold</h6></label>
+                                        <div class="">
                                             <input type="text" class="form-control" [(ngModel)]="AvgWeeklyHrsThr" id="inputPassword3">
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
-
                             <div class="row">
 
+                                
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-5 control-label"><i class="fa fa-dashboard"></i> Type of Hours</label>
-                                        <div class="col-sm-7">
+                                       <label class="control-label"><h6><i class="fa fa-dashboard"></i> Type of Hours</h6></label>
+                                        <div class="">
                                             <label class="field select">
                                                 <select id="selTypeofHours" name="typeofHours" [(ngModel)]="selectedTypeOfHours">
                                                     <option value="-1">All</option>
@@ -100,26 +85,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-3">
+                                     <div class="form-group">
+                                    <label class="control-label"><h6>Multiple Select</h6></label>
 
-                                    <div class="form-group">
-                                        <label for="inputPassword3" class="col-sm-3 control-label"><i class="fa fa-user"></i> Non Full Time Categories</label>
-                                        <div class="col-sm-7">
-                                            <select class="select2-multiple form-control select-primary" multiple="multiple" [(ngModel)]="selectedNonFullTimeCatgeories">
-                                                <option *ngFor="let category of NonFullTimeCatgeories" value={{category}}>
-                                                    {{category}}
-                                                </option>
-                                            </select>
-
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <button class="btn btn-primary" type="button" (click)="Search()">Filter</button>
-                                        </div>
+                                    <div class="">
+                                        <select class="select2-multiple form-control select-primary"
+                                                multiple="multiple">
+                                            <option value="iphone4">iPhone 4</option>
+                                            <option value="iphone5">iPhone 5</option>
+                                            <option value="iphone6">iPhone 6</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-primary" type="button" (click)="reset()">Reset</button>
                                 </div>
+                                     <div class="col-sm-2">
+                                         <label class="control-label"><h6>&nbsp;</h6></label>
+                                            <button class="btn btn-primary btn-block" type="button" (click)="Search()">Filter</button>
+                                     </div>
+                                <div class="col-sm-2">
+                                     <label class="control-label"><h6>&nbsp;</h6></label>
+                                    <button class="btn btn-primary btn-block" type="button" (click)="reset()">Reset</button>
+                                </div>
+                            </div>
                             </div>
                             <hr class="short" />
                             <div class="row">

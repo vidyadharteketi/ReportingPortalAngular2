@@ -25193,4 +25193,23 @@ legend {
     text-align: center !important;
     background: #fff !important;
 }
+#topbar {
+  margin-top: 66px;
+}
+.nano.affix>.nano-pane {
+  background: rgb(13, 121, 186) !important;
+}
+.nano.affix>.nano-pane>.nano-slider {
+  background: #de662f  !important;
+}
+.panel-box {
+  background: #f5f5f5;
+  padding: 10px 0px;
+}
+.panel-box .row {margin-left: 0px;margin-right: 0px;}
+.dropdown-inline[_ngcontent-c1] {
+    display: block !important;
+}
+.btn-block {overflow: none;}
+.form-dump .form-group {margin-left: 0px !important;margin-right: 0px !important;}
 /*# sourceMappingURL=../css/theme.map */
