@@ -50,6 +50,7 @@ export class ApplicableLargeEmployeeDetailsService {
     }
 
     getAleDetailsById(id: string, detailsId: string, taxYear: string): Observable<IApplicableLargeEmployeeDetails> {
+        debugger;
         return this._http.get(this._aleUrl + 'loadaledetails?AleId=' + id + '&AleDetailsId=' + detailsId + '&AleTaxYear=' + taxYear)
             .map((response: Response) => response.json().aceDetails)
             .do(data => console.log('Get ALE by Id : ' + JSON.stringify(data)))
@@ -63,6 +64,19 @@ export class ApplicableLargeEmployeeDetailsService {
             .catch(this.handleError);
     }
 
+    getAleMap(): Observable<any> {
+        return this._http.get(CONFIGURATION.baseDataBoardingUrl + 'aleservice/' + 'loadallalemap')
+            .map((response: Response) => response.json().aleMap)
+            .do(data => console.log('Get All ALE map: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    getControlGroupMap(): Observable<any> {
+        return this._http.get(CONFIGURATION.baseDataBoardingUrl + 'controlgroupservice/' + 'loadallcontrolgroupmap')
+            .map((response: Response) => response.json().controlGroupMap)
+            .do(data => console.log('Get All control group map: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console

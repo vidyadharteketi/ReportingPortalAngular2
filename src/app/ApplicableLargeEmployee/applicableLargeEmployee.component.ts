@@ -12,7 +12,6 @@ import { IApplicableLargeEmployee } from './applicableLargeEmployee';
 
 export class ApplicableLargeEmployeeComponent implements OnInit {
 
-
     data: Array<IApplicableLargeEmployee>;
     dataLoaded: boolean;
     errorMessage: string;
@@ -21,8 +20,8 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
     aleForm: FormGroup;
     private idControl: FormControl;
     private FEINControl: FormControl;
-    private isActiveControl: FormControl;
-    private isDeletedControl: FormControl;
+    // private isActiveControl: FormControl;
+    // private isDeletedControl: FormControl;
     private nameControl: FormControl;
     private address1Control: FormControl;
     private address2Control: FormControl;
@@ -47,8 +46,8 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
     initializeControls(): void {
         this.idControl = new FormControl('');
         this.FEINControl = new FormControl('');
-        this.isActiveControl = new FormControl('');
-        this.isDeletedControl = new FormControl('');
+        // this.isActiveControl = new FormControl('');
+        // this.isDeletedControl = new FormControl('');
         this.nameControl = new FormControl('');
         this.address1Control = new FormControl('');
         this.address2Control = new FormControl('');
@@ -62,10 +61,10 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
         this.contactNumberControl = new FormControl('');
 
         this.aleForm = new FormGroup({
-            idControl: this.idControl,
+           // idControl: this.idControl,
             FEINControl: this.FEINControl,
-            isActiveControl: this.isActiveControl,
-            isDeletedControl: this.isDeletedControl,
+            // isActiveControl: this.isActiveControl,
+            // isDeletedControl: this.isDeletedControl,
             nameControl: this.nameControl,
             address1Control: this.address1Control,
             address2Control: this.address2Control,
@@ -101,16 +100,16 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
         this.nameControl.setValue(obj.aleName);
         // obj.CreatedBy = '';
         // obj.CreatedDate = '';
-        let active = false;
-        if (obj.active === 'true') {
-            active = true;
-        }
-        this.isActiveControl.setValue(active);
-        let deleted = false;
-        if (obj.deleted === 'true') {
-            deleted = true;
-        }
-        this.isDeletedControl.setValue(deleted);
+        // let active = false;
+        // if (obj.active === 'true') {
+        //     active = true;
+        // }
+        // this.isActiveControl.setValue(active);
+        // let deleted = false;
+        // if (obj.deleted === 'true') {
+        //     deleted = true;
+        // }
+        // this.isDeletedControl.setValue(deleted);
         this.address1Control.setValue(obj.aleAddress1);
         this.address2Control.setValue(obj.aleAddress2);
         this.cityControl.setValue(obj.aleCity);
@@ -123,7 +122,7 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
         this.contactNumberControl.setValue(obj.aleContactContactNumber);
         this.zipControl.setValue(obj.aleZip);
 
-        obj.modifiedBy = '';
+        //obj.modifiedBy = '';
     }
 
     fillControlGroupObjectFromForm(): void {
@@ -133,10 +132,10 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
         this.aleObj.aleName = this.nameControl.value;
         this.aleObj.aleAddress1 = this.address1Control.value;
         this.aleObj.aleAddress2 = this.address2Control.value;
-        this.aleObj.createdBy = '';
-        this.aleObj.createdDate = '';
-        this.aleObj.active = this.isActiveControl.value;
-        this.aleObj.deleted = this.isDeletedControl.value;
+        // this.aleObj.createdBy = '';
+        // this.aleObj.createdDate = '';
+        // this.aleObj.active = this.isActiveControl.value;
+        // this.aleObj.deleted = this.isDeletedControl.value;
         this.aleObj.aleCity = this.cityControl.value;
         this.aleObj.aleState = this.stateControl.value;
         this.aleObj.aleCountry = this.countryControl.value;
@@ -162,7 +161,7 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
     }
 
     editAle(id: string, name: string, fein: string): void {
-        this._service.getAleById(id, name, fein)
+         this._service.getAleById(id, name, fein)
             .subscribe(data => {
                 this.fillFormControlWithControlGroup(data);
             }, error => this.errorMessage = <any>error);
@@ -179,14 +178,13 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
     }
 
     deleteAle(id: string, name: string, fein: string): void {
-
-        if (confirm('Are you sure to delete ' + name)) {
+       // if (confirm('Are you sure to delete ' + name)) {
             this._service.removeAle(id, name, fein)
                 .subscribe(data => {
                     if (data.result === 1) {
                         this.loadGridData();
                     }
                 }, error => this.errorMessage = <any>error);
-        }
+        // }
     }
 }

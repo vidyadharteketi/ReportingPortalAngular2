@@ -112,8 +112,16 @@ export class ControlGroupComponent implements OnInit {
         this.controlGroupObj.controlGroupName = this.nameControl.value;
         this.controlGroupObj.createdBy = '';
         this.controlGroupObj.createdDate = '';
-        this.controlGroupObj.active = this.isActiveControl.value;
-        this.controlGroupObj.deleted = this.isDeletedControl.value;
+        let active = 'false';
+        if (this.isActiveControl.value === true) {
+            active = 'true';
+        }
+        this.controlGroupObj.active = active;
+        let deleted = 'false';
+        if (this.isDeletedControl.value === true) {
+            deleted = 'true';
+        }
+        this.controlGroupObj.deleted = deleted;
         this.controlGroupObj.measurementStartDate = this.measurementStartDateControl.value;
         this.controlGroupObj.measurementEndDate = this.measurementEndDateControl.value;
         this.controlGroupObj.measurementEndDate1 = this.measureEndDate1Control.value;
@@ -128,6 +136,7 @@ export class ControlGroupComponent implements OnInit {
     }
 
     createControlGroup(): void {
+
         this.fillControlGroupObjectFromForm();
         this._service.addControlGroup(this.controlGroupObj)
             .subscribe(data => {
@@ -138,11 +147,13 @@ export class ControlGroupComponent implements OnInit {
     }
 
     editControlGroup(id: string, name: string): void {
+
         this._service.getControlGroupById(id, name)
             .subscribe(data => {
                 this.fillFormControlWithControlGroup(data);
             }, error => this.errorMessage = <any>error);
     }
+
 
     updateControlGroup(): void {
         this.fillControlGroupObjectFromForm();
@@ -159,6 +170,7 @@ export class ControlGroupComponent implements OnInit {
         if (confirm('Are you sure to delete ' + name)) {
             this._service.removeControlGroup(id, name)
                 .subscribe(data => {
+                    debugger;
                     if (data.result === 1) {
                         this.loadGridData();
                     }

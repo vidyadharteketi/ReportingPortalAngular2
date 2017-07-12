@@ -17,6 +17,9 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     dataLoaded: boolean;
     errorMessage: string;
     aleDetailsObj: IApplicableLargeEmployeeDetails;
+    isEdit: boolean;
+    controlGroupMap: Array<any>;
+    aleMap: Array<any>;
 
     aleDetailsForm: FormGroup;
     private aleDetailsIdControl: FormControl;
@@ -66,6 +69,9 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.initializeControls();
         this.loadGridData();
+        this._service.getAleMap().subscribe(data => this.aleMap = data, error => this.errorMessage = <any>error);
+        this._service.getControlGroupMap().subscribe(data => this.controlGroupMap = data, error => this.errorMessage = <any>error);
+        this.isEdit = false;
     }
 
     initializeControls(): void {
@@ -262,10 +268,16 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
             }, error => this.errorMessage = <any>error);
     }
 
-    editAleDetails(id: string, detailsId: string, taxYear: string): void {
+    editAleDetails(id: string, detailsId: string, taxYear: string, edit: boolean): void {
+        this.isEdit = false;
+        // if (isEdit === 'true') {
+        this.isEdit = edit;
+        // }
+
         this._service.getAleDetailsById(id, detailsId, taxYear)
             .subscribe(data => {
                 this.fillFormControlWithControlGroup(data);
+
             }, error => this.errorMessage = <any>error);
     }
 
@@ -275,6 +287,7 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
             .subscribe(data => {
                 if (data.result === 1) {
                     this.loadGridData();
+                    this.isEdit = false;
                 }
             }, error => this.errorMessage = <any>error);
     }

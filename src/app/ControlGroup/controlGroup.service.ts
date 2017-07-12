@@ -11,10 +11,23 @@ export class ControlGroupService {
 
   constructor(private _http: Http) { }
 
-  addControlGroup(newObj: IControlGroup) {
+  addControlGroup(obj: IControlGroup) {
+    debugger;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    const content = JSON.stringify(newObj);
+    //const content = JSON.stringify(newObj);
+    const content = JSON.stringify({
+      //controlGroupId: obj.controlGroupId,
+      controlGroupEIN: obj.controlGroupEIN,
+      controlGroupName: obj.controlGroupName,
+      active: obj.active,
+      measurementStartDate: obj.measurementStartDate,
+      measurementEndDate: obj.measurementEndDate,
+      measurementEndDate1: obj.measurementEndDate1,
+      measurementEndDate2: obj.measurementEndDate2,
+      measurementEndDate3: obj.measurementEndDate3,
+      measurementEndDate4: obj.measurementEndDate4
+    });
 
     return this._http.post(this._cgUrl + 'addcontrolgroup', content, {
       headers: headers
@@ -24,6 +37,7 @@ export class ControlGroupService {
   }
 
   removeControlGroup(id: string, name: string): Observable<any> {
+    //debugger
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('ControlGroupId', id);

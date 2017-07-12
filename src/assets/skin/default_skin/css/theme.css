@@ -25129,11 +25129,11 @@ body.basic-timeline .panel-clone {
   height: 34px;border-radius: 3px;
 }
 .allcp-form .select .arrow {top: 5px;}
-.allcp-form .section {margin-bottom: 4px;}
+.allcp-form .section {margin-bottom: 4px !important;}
 .allcp-list  input {padding: 5px !important;height: 27px !important}
 .label-list {line-height: 27px; display: block;text-align: center;}
 .allcp-form .panel-body {padding: 0px;}
-.allcp-form .panel {border: none;}
+.allcp-form .panel {border: none !important;}
 .allcp-form .button {
     color: #243140;
     border: 0;
@@ -25194,7 +25194,7 @@ legend {
     background: #fff !important;
 }
 #topbar {
-  margin-top: 66px;
+  margin-top: 0px;
 }
 .nano.affix>.nano-pane {
   background: rgb(13, 121, 186) !important;
@@ -25212,4 +25212,22 @@ legend {
 }
 .btn-block {overflow: none;}
 .form-dump .form-group {margin-left: 0px !important;margin-right: 0px !important;}
+.panel-primary>.panel-heading, .panel-primary>.panel-heading .badge {background: transparent !important;}
+.panel-primary>.panel-heading {border-color: none !important;}
+.allcp-form .panel-heading .panel-title {
+    font-size: 24px !important;
+    font: 700 20px/24px 'Lato';
+    font-weight: bold;
+}
+.panel-primary>.panel-heading>.panel-title {
+    color: #0d79ba !important;
+}
+.table>thead>tr>th {text-transform: capitalize !important;}
+.no-padding {padding: 0px !important;}
+#content_wrapper {padding-top: 66px;}
+.form-horizontal .control-label {text-align: left !important;}
+.hgfgt input {vertical-align: middle;margin-left: 10px;}
+.allcp-form .no-padding {paddin: 0px 25px !important;}
+.open>.dropdown-menu {min-width: auto !important; position: absolute !important;-webkit-box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);}
 /*# sourceMappingURL=../css/theme.map */
