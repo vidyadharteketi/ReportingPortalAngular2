@@ -4,7 +4,7 @@
     <header id="topbar" class="ph10 alt allcp-form theme-primary">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <span class="panel-title">Welcome Sipra Soft </span>
+                <span class="panel-title">Applicable Large Employee</span>
             </div>
         </div>
     </header>
@@ -20,12 +20,12 @@
                             <div class="allcp-form theme-primary btn-bordered center-block">
                                 <div class="section row">
                                     <div class="col-md-4 ph10 mb5">
-                                        <h6 class="">Search for products</h6>
+                                        <h6 class="">Name</h6>
                                         <label for="itemsearch" class="field">
-                                            <input type="search" name="itemsearch" id="itemsearch" class="gui-input" placeholder="Search for products">
+                                            <input type="search" name="itemsearch" id="itemsearch" class="gui-input" placeholder="Name . . .">
                                         </label>
                                     </div>
-                                    <div class="col-md-4 ph10 mb5">
+                                    <div class="col-md-4 ph10 mb5" style="display: none">
                                         <h6 class="">Filtering</h6>
                                         <label class="field select">
                                                 <select id="language" name="language">
@@ -74,18 +74,18 @@
                                             <th class="">Id</th>-->
                                             <th class="">FEIN</th>
                                             <th class="">Name</th>
-                                            <!--<th class="">Active</th>-->
+                                            <th class="text-right">First Name</th>
+                                            <th class="text-right">Last Name</th>
+                                            <th class="text-right">Contact Number</th>
+                                            <!--<th class="">Active</th>
                                             <th class="">Deleted</th>
                                             <th class="text-right">Address1</th>
-                                            <th class="text-right">Address2</th>
+                                            <th class="text-right">Address2</th>-->
                                             <th class="text-right">City</th>
                                             <th class="text-right">Province</th>
                                             <th class="text-right">State</th>
                                             <th class="text-right">Zip</th>
                                             <th class="text-right">Country</th>
-                                            <th class="text-right">First Name</th>
-                                            <th class="text-right">Last Name</th>
-                                            <th class="text-right">Contact Number</th>
                                             <!--<th class="text-right">Modified By</th>
                                             <th class="text-right">Modified Date</th>
                                             <th class="text-right">Created By</th>
@@ -107,18 +107,19 @@
                                             <!--<td class="">{{row?.aleId}}</td>-->
                                             <td class="">{{row?.aleFein}}</td>
                                             <td class="">{{row?.aleName}}</td>
-                                            <!--<td class="">{{row?.active}}</td>-->
+                                            <td class="">{{row?.aleContactFirstName}}</td>
+                                            <td class="">{{row?.aleContactLastName}}</td>
+                                            <td class="">{{row?.aleContactContactNumber}}</td>
+                                            
+                                            <!--<td class="">{{row?.active}}</td
                                             <td class="">{{row?.deleted}}</td>
                                             <td class="">{{row?.aleAddress1}}</td>
-                                            <td class="">{{row?.aleAddress2}}</td>
+                                            <td class="">{{row?.aleAddress2}}</td>>-->
                                             <td class="">{{row?.aleCity}}</td>
                                             <td class="">{{row?.aleProvince}}</td>
                                             <td class="">{{row?.aleState}}</td>
                                             <td class="">{{row?.aleZip}}</td>
                                             <td class="">{{row?.aleCountry}}</td>
-                                            <td class="">{{row?.aleContactFirstName}}</td>
-                                            <td class="">{{row?.aleContactLastName}}</td>
-                                            <td class="">{{row?.aleContactContactNumber}}</td>
                                             <!--<td class="">{{row?.modifiedBy}}</td>
                                             <td class="">{{row?.modifiedDate}}</td>
                                             <td class="">{{row?.controlGroupId}}</td>
