@@ -73,6 +73,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
      reset(): void {
         this.selectedYear = '-1';
         this.selectedControlGroup = '-1';
+        this.dataLoaded = false;
     }
 
     getFilterValues(): any {

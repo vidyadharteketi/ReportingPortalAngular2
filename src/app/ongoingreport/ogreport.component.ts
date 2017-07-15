@@ -94,6 +94,24 @@ export class OnGoingReportComponent implements OnInit {
         this.dataLoaded = false;
     }
 
+      reset(): void {
+
+        // this.controlGroups=['-1'];
+        // this.typeOfHours=['-1'];
+        // this.measurementEndDates=['-1'];
+        this.dataLoaded=false;
+
+    // this.measurementEndDates='';
+    // controlGroups: Array<string>;
+    // typeOfHours: Array<string>;
+    
+        this.count13Weeks = '0';
+        this.count26Weeks = '0';
+        this.count47Weeks = '0';
+        this.count52Weeks = '0';
+        this.dataLoaded = false;
+        this.selectedweekCount = 13;
+    }
     getFilterValues(): any {
         let measurementDate = this.measurementEndDateControl.value;
         if (measurementDate === undefined || measurementDate === '') {

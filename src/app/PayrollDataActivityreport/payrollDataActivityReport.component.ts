@@ -91,7 +91,12 @@ export class PayrollDataActivityReportComponent implements OnInit {
         this.onChangeTable(this.config);
         this.dataLoaded = false;
     }
-
+    reset():void{
+        this.dataLoaded=false;
+        //  this.Years=['-1'];
+        //this.ControlGroups=['-1'];
+        
+    }
     getFilterValues(): any {
 
         let cg = this.controlGroupControl.value;

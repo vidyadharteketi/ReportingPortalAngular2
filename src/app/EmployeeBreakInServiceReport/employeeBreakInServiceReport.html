@@ -39,12 +39,12 @@
 
                                 </div>
 
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
 
 
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
-                                        <div class="col-sm-7">
+                                        <div class="col-sm-6">
                                             <label class="field select">
                                                 <select id="selcontrolgroup" name="controlgroup" [(ngModel)]="selectedControlGroup">
                                                     <option value="-1">All</option>
@@ -62,8 +62,11 @@
 
 
                                     <div class="form-group">
-                                        <div class="col-sm-2">
+                                        <div class="col-sm-4">
                                             <button class="btn btn-primary" type="button" (click)="Search()">Filter</button>
+                                        </div>
+                                         <div class="col-sm-3">
+                                            <button class="btn btn-primary" type="button" (click)="reset()">Reset</button>
                                         </div>
                                     </div>
                                 </div>
