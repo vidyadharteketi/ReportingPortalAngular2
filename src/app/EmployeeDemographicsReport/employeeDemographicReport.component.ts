@@ -78,6 +78,10 @@ export class EmployeeDemographicReportComponent implements OnInit {
         this.selectedProductionCompany = '-1';
         this.selectedPayrollCompany = '-1';
     }
+    reset(): void {
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+    }
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {

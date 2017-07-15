@@ -13,7 +13,7 @@
     <!-- -------------- Filter , New ControlGroup , ControlGroup ,  -------------- -->
     <section id="content" class="table-layout animated fadeIn">
         <div class="chute chute-center">
-            <div class="row">
+            <div class="row" style="display:none">
                 <div class="col-xs-12">
                     <div class="panel mb25 mt5">
                         <form method="post" action="/" id="allcp-form">
@@ -294,8 +294,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right">
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5"> Submit</button>
-                                    <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createAle()" data-dismiss="modal"> Submit</button>
+                                    <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </div>
                         </form>
@@ -437,8 +437,8 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right">
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateAle()"> Submit</button>
-                                    <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateAle()" data-dismiss="modal"> Submit</button>
+                                    <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </div>
                         </form>
@@ -462,8 +462,8 @@
                 <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
             </div>
             <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5"> Confirm</button>
-                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
+                <button type="submit" class="btn btn-bordered btn-primary mb5" data-dismiss="modal"> Confirm</button>
+                <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
             </div>
         </div>
     </div>
