@@ -1,6 +1,6 @@
 export const CONFIGURATION = {
-    'baseServiceUrl': 'http://13.59.27.17:8080/ReportingPortalWebAPI/rest/',
-    'baseDataBoardingUrl': 'http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/',
+    'baseServiceUrl': 'http://siprasoftware.com:8080/ReportingPortalWebAPI/rest/',
+    'baseDataBoardingUrl': 'http://siprasoftware.com:8080/DataOnBoardingWebAPI/rest/',
     'reportingroute': 'reporting',
     'dashboard': 'dashboard',
     'nftreport': 'nhftreport',
