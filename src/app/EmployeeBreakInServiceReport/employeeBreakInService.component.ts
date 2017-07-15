@@ -64,6 +64,11 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
         this.selectedYear = '-1';
         this.selectedControlGroup = '-1';
     }
+    reset(): void {
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+        this.dataLoaded = false;
+    }
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {

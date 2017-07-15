@@ -218,15 +218,15 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
 
     fillControlGroupObjectFromForm(): void {
         this.aleDetailsObj = <IApplicableLargeEmployeeDetails>{};
-        this.aleDetailsObj.aleDetailsId = this.aleDetailsIdControl.value;
-        this.aleDetailsObj.aleId = this.aleIdControl.value;
-        this.aleDetailsObj.aleTaxYear = this.aleTaxYearControl.value;
-        this.aleDetailsObj.isAcaSubscriber = this.isAcaSubscriberControl.value;
-        this.aleDetailsObj.isFilingAuthoritative1094c = this.isFilingAuthoritative1094cControl.value;
-        this.aleDetailsObj.isAcaReportingShared = this.isAcaReportingSharedControl.value;
-        this.aleDetailsObj.hTransitionRelief = this.hTransitionReliefControl.value;
-        this.aleDetailsObj.additional1095cCount = this.additional1095cCountControl.value;
-        this.aleDetailsObj.controlGroupId = this.controlGroupIdControl.value;
+        this.aleDetailsObj.aleDetailsId = this.aleDetailsIdControl.value;//primary
+        this.aleDetailsObj.aleId = this.aleIdControl.value;//dropdown
+        this.aleDetailsObj.aleTaxYear = this.aleTaxYearControl.value;//text
+        this.aleDetailsObj.isAcaSubscriber = this.isAcaSubscriberControl.value;//radio
+        this.aleDetailsObj.isFilingAuthoritative1094c = this.isFilingAuthoritative1094cControl.value;//radio
+        this.aleDetailsObj.isAcaReportingShared = this.isAcaReportingSharedControl.value;//radio
+        this.aleDetailsObj.hTransitionRelief = this.hTransitionReliefControl.value;//radio
+        this.aleDetailsObj.additional1095cCount = this.additional1095cCountControl.value;//text
+        this.aleDetailsObj.controlGroupId = this.controlGroupIdControl.value;//dropdown
         this.aleDetailsObj.additiontionalFulltimeEeJan = this.additiontionalFulltimeEeJanControl.value;
         this.aleDetailsObj.additiontionalFulltimeEeFeb = this.additiontionalFulltimeEeFebControl.value;
         this.aleDetailsObj.additiontionalFulltimeEeMar = this.additiontionalFulltimeEeMarControl.value;
@@ -251,7 +251,7 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
         this.aleDetailsObj.additiontionalTotalEeOct = this.additiontionalTotalEeOctControl.value;
         this.aleDetailsObj.additiontionalTotalEeNov = this.additiontionalTotalEeNovControl.value;
         this.aleDetailsObj.additiontionalTotalEeDec = this.additiontionalTotalEeDecControl.value;
-        this.aleDetailsObj.active = this.activeControl.value;
+        this.aleDetailsObj.active = this.activeControl.value;//checkbx
     }
 
     validateForm(): boolean {
@@ -259,6 +259,7 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     }
 
     createAleDetails(): void {
+        debugger;
         this.fillControlGroupObjectFromForm();
         this._service.addAleDetails(this.aleDetailsObj)
             .subscribe(data => {

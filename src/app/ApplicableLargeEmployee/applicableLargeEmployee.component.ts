@@ -125,6 +125,21 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
         //obj.modifiedBy = '';
     }
 
+    clearControlGroupObjectFromForm()
+    {
+        this.FEINControl.setValue('');    
+        this.nameControl.setValue('');
+        this.address1Control.setValue('');
+        this.address2Control.setValue('');
+        this.stateControl.setValue('');
+        this.provinanceControl.setValue('');
+        this.zipControl.setValue('');
+        this.cityControl.setValue('');
+        this.countryControl.setValue('');
+        this.contactFirstNameControl.setValue('');
+        this.contactLastNameControl.setValue('');
+        this.contactNumberControl.setValue('');
+    }
     fillControlGroupObjectFromForm(): void {
         this.aleObj = <IApplicableLargeEmployee>{};
         this.aleObj.aleId = this.idControl.value;

@@ -74,7 +74,13 @@ export class ErCoverageReportComponent implements OnInit {
             error => this.errorMessage = <any>error);
 
     }
-
+    reset(): void {
+        this.dataLoaded=false;     
+        this.selectedYear='-1';
+        this.selectedControlGroup='-1';
+        this.annulaizedMonthly='0';
+        
+    }
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {

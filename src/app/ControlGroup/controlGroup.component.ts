@@ -131,6 +131,21 @@ export class ControlGroupComponent implements OnInit {
         this.controlGroupObj.modifiedBy = '';
     }
 
+
+     clearControlGroupObjectFromForm(): void {
+        this.idControl.setValue('');
+        this.EINControl.setValue('');
+        //this.isActiveControl.setValue('');
+        //this.isDeletedControl.setValue('');
+        this.nameControl.setValue('');
+        this.measurementStartDateControl.setValue('');
+        this.measurementEndDateControl.setValue('');
+        this.measureEndDate1Control.setValue('');
+        this.measureEndDate2Control.setValue('');
+        this.measureEndDate3Control.setValue('');
+        this.measureEndDate4Control.setValue('');
+    }
+
     validateForm(): boolean {
         return true;
     }
@@ -161,6 +176,11 @@ export class ControlGroupComponent implements OnInit {
             .subscribe(data => {
                 if (data.result === 1) {
                     this.loadGridData();
+                    
+                    
+                    
+
+
                 }
             }, error => this.errorMessage = <any>error);
     }

@@ -57,7 +57,7 @@
                 <div class="col-xs-12">
                     <div class="panel">
                         <div class="panel-custom">
-                            <a href="#" data-toggle="modal" data-target="#myModalNew" class="btn btn-primary btn-sm ml10 text-right" title="New User">
+                            <a href="#" data-toggle="modal" data-target="#myModalNew" (click)="clearControlGroupObjectFromForm()" class="btn btn-primary btn-sm ml10 text-right" title="New User">
                                <span class="fa fa-plus pr5"></span> New ALE</a>
                         </div>
                         <div style="clear: both;"></div>
@@ -177,122 +177,115 @@
                 <div class="chute chute-center">
                     <div class="allcp-form theme-primary center-block">
                         <form class="form-horizontal" method="post" role="form" (ngSubmit)="createAle()" [formGroup]="aleForm"  novalidate="novalidate">
-                            <div class="panel">
-                                <div class="panel-heading">
-                                    <span class="panel-title">Applicable Large Employee Form</span>
-                                </div>
-                                <div class="panel-body">                                    <div class="form-group">
-                                    <label for="txtALEName" class="col-lg-3 control-label">ALE Name</label>
-                                        <div class="col-lg-8">
-                                            <div>
-                                                <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
-                                            </div>
+                                
+                                <div class="panel-body"> 
+                                    
+                                     <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtALEName" class="col-lg-3 control-label"><h6 class="label-item">ALE Name</h6></label>
+                                            <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtFEIN" class="col-lg-3 control-label"><h6 class="label-item">FEIN</h6></label>
+                                            <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtFEIN" class="col-lg-3 control-label"> FEIN</label>
-                                        <div class="col-lg-4">
-                                            <div>
-                                                <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtAddress1" class="col-lg-3 control-label">Address 1</label>
-                                        <div class="col-lg-7">
-                                            <div>
-                                                <input type="text" formControlName="address1Control" id="txtAddress1" class="form-control" placeholder="Address 1...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtAddress2" class="col-lg-3 control-label">Address 2</label>
-                                        <div class="col-lg-7">
-                                            <div>
-                                                <input type="text" formControlName="address2Control" id="txtAddress2" class="form-control" placeholder="Address 2...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="txtCity">City</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="cityControl" class="form-control" id="txtCity" placeholder="City..." />
-                                            </div>
-                                        </div>
 
-                                        <label class="col-lg-2 control-label" for="txtState">State</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="stateControl" class="form-control" id="txtState" placeholder="State..." />
-                                            </div>
-                                        </div>
 
-                                        <label class="col-lg-2 control-label" for="txtZip">ZIP</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="zipControl" class="form-control" id="txtZip" placeholder="ZIP..." />
-                                            </div>
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtAddress1" class="col-lg-3 control-label"><h6 class="label-item">Address 1</h6></label>
+                                            <input type="text" formControlName="address1Control" id="txtAddress1" class="form-control" placeholder="Address 1...">
                                         </div>
-                                        <label class="col-lg-2 control-label" for="chkActive">Active</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input id="chkActive" type="checkbox" checked formControlName="isActiveControl" />
-                                            </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtAddress2" class="col-lg-3 control-label"><h6 class="label-item">Address 2</h6></label>
+                                            <input type="text" formControlName="address2Control" id="txtAddress2" class="form-control" placeholder="Address 2...">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="txtProvince">Province</label>
-                                        <div class="col-lg-4">
-                                            <div>
-                                                <input formControlName="provinanceControl" class="form-control" id="txtProvince" placeholder="Province..." />
-                                            </div>
+                                                        
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtCity"><h6 class="label-item">City</h6></label>
+                                            <input formControlName="cityControl" class="form-control" id="txtCity" placeholder="City..." />
                                         </div>
-                                        <label class="col-lg-3 control-label" for="ddlCountry">Country</label>
-                                        <div class="col-lg-3">
-                                            <div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtState"><h6 class="label-item">State</h6></label>
+                                            <input formControlName="stateControl" class="form-control" id="txtState" placeholder="State..." />
+                                        </div>
+                                    </div>
+                                                                              
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtProvince"><h6 class="label-item">Province</h6></label>
+                                            <input formControlName="provinanceControl" class="form-control" id="txtProvince" placeholder="Province..." />
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                              <label class="col-lg-3 control-label" for="ddlCountry"><h6 class="label-item">Country</h6></label>
+                                              <label class="field select">
                                                 <select id="ddlCountry" formControlName="countryControl">
                                                     <option>United States</option>
                                                 </select>
-                                            </div>
+                                                <i class="arrow"></i>
+                                              </label>
+                                               
                                         </div>
                                     </div>
+                                                
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtZip"><h6 class="label-item">ZIP</h6></label>
+                                            <input formControlName="zipControl" class="form-control" id="txtZip" placeholder="ZIP..." />
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtFirstName" class="col-lg-5 control-label"><h6 class="label-item">Contact First Name</h6></label>
+                                            <input formControlName="contactFirstNameControl" type="text" id="txtFirstName" class="form-control" placeholder="First Name">
+                                        </div>
+                                     
+                                    </div>
+<!-- 
+
+                               
                                     <div class="form-group">
                                         <div class="col-lg-12">
                                             <div class="panel panel-primary">
-                                                <div class="panel-body">
-                                                    <fieldset>
-                                                        <legend>ACA Contact</legend>
-                                                        <div class="form-group">
-                                                            <label for="txtFirstName" class="col-lg-3 control-label">First Name</label>
-                                                            <div class="col-lg-5">
-                                                                <div>
-                                                                    <input formControlName="contactFirstNameControl" type="text" id="txtFirstName" class="form-control" placeholder="First Name">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtLastName" class="col-lg-3 control-label">Last Name</label>
-                                                            <div class="col-lg-5">
-                                                                <div>
-                                                                    <input formControlName="contactLastNameControl" type="text" id="txtLastName" class="form-control" placeholder="Last Name">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtPhoneNo" class="col-lg-3 control-label">Phone No.</label>
-                                                            <div class="col-lg-3">
-                                                                <div>
-                                                                    <input formControlName="contactNumberControl" type="text" id="txtPhoneNo" class="form-control" placeholder="Phone No">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
+                                                <div class="panel-body"> -->
+                                            
+
+                                    <div class="section row">
+                                        
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtLastName" class="col-lg-5 control-label"><h6 class="label-item">Contact Last Name</h6></label>
+                                            <input formControlName="contactLastNameControl" type="text" id="txtLastName" class="form-control" placeholder="Last Name">
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtPhoneNo" class="col-lg-3 control-label"><h6 class="label-item">Phone No.</h6></label>
+                                            <input formControlName="contactNumberControl" type="text" id="txtPhoneNo" class="form-control" placeholder="Phone No">
                                         </div>
                                     </div>
-                                </div>
+
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="chkActive"><h6 class="label-item">Active</h6></label>                                            
+                                            <label class="block mt15 option option-primary">
+                                            <input id="chkActive" type="checkbox" checked formControlName="isActiveControl" />
+                                            <span class="checkbox"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            
+                                        </div>
+                                    </div>
+                                                      
+                                                    
+                                                <!-- </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                             
                                 <div class="panel-footer text-right">
                                     <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createAle()" data-dismiss="modal"> Submit</button>
                                     <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
@@ -319,123 +312,118 @@
                 <div class="chute chute-center">
                     <div class="allcp-form theme-primary center-block">
                         <form class="form-horizontal" role="form" (ngSubmit)="updateAle()" [formGroup]="aleForm">
-                            <div class="panel">
-                                <div class="panel-heading">
-                                    <span class="panel-title">Applicable Large Employee Form</span>
-                                </div>
-                                <div class="panel-body">                                    
-                                    <div class="form-group">
-                                    <label for="txtALEName" class="col-lg-3 control-label">ALE Name</label>
-                                        <div class="col-lg-8">
-                                            <div>
-                                                <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
-                                            </div>
+                                <div class="panel-body">   
+                                    
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtALEName" class="col-lg-3 control-label"><h6 class="label-item">ALE Name</h6></label>
+                                            <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtFEIN" class="col-lg-3 control-label"><h6 class="label-item">FEIN</h6></label>
+										    <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="txtFEIN" class="col-lg-3 control-label"> FEIN</label>
-                                        <div class="col-lg-4">
-                                            <div>
-                                                <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtAddress1" class="col-lg-3 control-label">Address 1</label>
-                                        <div class="col-lg-7">
-                                            <div>
-                                                <input type="text" formControlName="address1Control" id="txtAddress1" class="form-control" placeholder="Address 1...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="txtAddress2" class="col-lg-3 control-label">Address 2</label>
-                                        <div class="col-lg-7">
-                                            <div>
-                                                <input type="text" formControlName="address2Control" id="txtAddress2" class="form-control" placeholder="Address 2...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="txtCity">City</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="cityControl" class="form-control" id="txtCity" placeholder="City..." />
-                                            </div>
-                                        </div>
 
-                                        <label class="col-lg-2 control-label" for="txtState">State</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="stateControl" class="form-control" id="txtState" placeholder="State..." />
-                                            </div>
+                                     <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtAddress1" class="col-lg-3 control-label"><h6 class="label-item">Address 1</h6></label>
+                                            <input type="text" formControlName="address1Control" id="txtAddress1" class="form-control" placeholder="Address 1...">
                                         </div>
-
-                                        <label class="col-lg-2 control-label" for="txtZip">ZIP</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input formControlName="zipControl" class="form-control" id="txtZip" placeholder="ZIP..." />
-                                            </div>
-                                        </div>
-                                        <label class="col-lg-2 control-label" for="chkActive">Active</label>
-                                        <div class="col-lg-2">
-                                            <div>
-                                                <input id="chkActive" type="checkbox" checked formControlName="isActiveControl" />
-                                            </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label for="txtAddress2" class="col-lg-3 control-label"><h6 class="label-item">Address 2</h6></label>
+										    <input type="text" formControlName="address2Control" id="txtAddress2" class="form-control" placeholder="Address 2...">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label" for="txtProvince">Province</label>
-                                        <div class="col-lg-4">
-                                            <div>
-                                                <input formControlName="provinanceControl" class="form-control" id="txtProvince" placeholder="Province..." />
-                                            </div>
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtCity"><h6 class="label-item">City</h6></label>
+                                            <input formControlName="cityControl" class="form-control" id="txtCity" placeholder="City..." />
                                         </div>
-                                        <label class="col-lg-3 control-label" for="ddlCountry">Country</label>
-                                        <div class="col-lg-3">
-                                            <div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtState"><h6 class="label-item">State</h6></label>
+										    <input formControlName="stateControl" class="form-control" id="txtState" placeholder="State..." />
+                                        </div>
+                                    </div>
+
+                                    <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtProvince"><h6 class="label-item">Province</h6></label>
+                                            <input formControlName="provinanceControl" class="form-control" id="txtProvince" placeholder="Province..." />
+                                        </div>
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-3 control-label" for="ddlCountry"><h6 class="label-item">Country</h6></label>
+										  
+                                            
+                                            <label class="field select">
                                                 <select id="ddlCountry" formControlName="countryControl">
                                                     <option>United States</option>
                                                 </select>
-                                            </div>
+                                                <i class="arrow"></i>
+                                            </label>
+                                        
+                                        </div>
+
+                                        
+
+                                    </div>
+
+                                     <div class="section row">
+                                        <div class="col-md-6 ph10 mb5">
+                                            <label class="col-lg-2 control-label" for="txtZip"><h6 class="label-item">ZIP</h6></label>
+                                            <input formControlName="zipControl" class="form-control" id="txtZip" placeholder="ZIP..." />
+                                        </div>
+                                         <div class="col-md-6 ph10 mb5">
+                                            <label for="txtFirstName" class="col-lg-5 control-label"><h6 class="label-item">Contact First Name</h6></label>
+                                            <input formControlName="contactFirstNameControl" type="text" id="txtFirstName" class="form-control" placeholder="First Name">
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                  
+                                    
+                                 
+                                    <!-- <div class="form-group">
                                         <div class="col-lg-12">
                                             <div class="panel panel-primary">
                                                 <div class="panel-body">
                                                     <fieldset>
-                                                        <legend>ACA Contact</legend>
-                                                        <div class="form-group">
-                                                            <label for="txtFirstName" class="col-lg-3 control-label">First Name</label>
-                                                            <div class="col-lg-5">
-                                                                <div>
-                                                                    <input formControlName="contactFirstNameControl" type="text" id="txtFirstName" class="form-control" placeholder="First Name">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtLastName" class="col-lg-3 control-label">Last Name</label>
-                                                            <div class="col-lg-5">
-                                                                <div>
+                                                        <legend>ACA Contact</legend> -->
+
+                                                           <div class="section row">
+                                                               
+                                                                <div class="col-md-6 ph10 mb5">
+                                                                    <label for="txtLastName" class="col-lg-5 control-label"><h6 class="label-item">Contact Last Name</h6></label>
                                                                     <input formControlName="contactLastNameControl" type="text" id="txtLastName" class="form-control" placeholder="Last Name">
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="txtPhoneNo" class="col-lg-3 control-label">Phone No.</label>
-                                                            <div class="col-lg-3">
-                                                                <div>
+                                                                 <div class="col-md-6 ph10 mb5">
+                                                                    <label for="txtPhoneNo" class="col-lg-3 control-label"><h6 class="label-item">Phone No.</h6></label>
                                                                     <input formControlName="contactNumberControl" type="text" id="txtPhoneNo" class="form-control" placeholder="Phone No">
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </fieldset>
+
+
+                                                           <div class="section row">
+                                                               
+
+                                                                <div class="col-md-6 ph10 mb5">
+                                                                    <label class="col-lg-2 control-label" for="chkActive"><h6 class="label-item">Active</h6></label>
+                                                                    <label class="block mt15 option option-primary">
+                                                                        <input id="chkActive" type="checkbox" checked formControlName="isActiveControl" /> 
+                                                                        <span class="checkbox"></span>
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="col-md-6 ph10 mb5">
+                                                                </div>
+                                                            </div>
+                                                        
+                                                        
+                                                    <!-- </fieldset>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> -->
+                                
                                 <div class="panel-footer text-right">
                                     <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateAle()" data-dismiss="modal"> Submit</button>
                                     <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>

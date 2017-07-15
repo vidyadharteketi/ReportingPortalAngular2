@@ -86,18 +86,31 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
+                                    
                                      <div class="form-group">
-                                    <label class="control-label"><h6>Multiple Select</h6></label>
+                                       <label class="control-label"><h6><i class="fa fa-dashboard"></i> Non Full Time Categories</h6></label>
+                                        <div class="">
+                                            <label class="field select">
+                                                <select class="select2-multiple form-control select-primary" multiple="multiple" [(ngModel)]="selectedNonFullTimeCatgeories">
+                                                <option *ngFor="let category of NonFullTimeCatgeories" value={{category}}>
+                                                    {{category}}
+                                                </option>
+                                            </select>
+                                            </label>
+                                        </div>
+                                    </div>
 
-                                    <div class="">
+
+                                  
+                                    <!-- <div class="">
                                         <select class="select2-multiple form-control select-primary"
                                                 multiple="multiple">
                                             <option value="iphone4">iPhone 4</option>
                                             <option value="iphone5">iPhone 5</option>
                                             <option value="iphone6">iPhone 6</option>
                                         </select>
-                                    </div>
-                                </div>
+                                    </div> -->
+                                
                                 </div>
                                      <div class="col-sm-2">
                                          <label class="control-label"><h6>&nbsp;</h6></label>
