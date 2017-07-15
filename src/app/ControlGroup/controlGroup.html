@@ -13,7 +13,7 @@
     <!-- -------------- Filter , New ControlGroup , ControlGroup ,  -------------- -->
     <section id="content" class="table-layout animated fadeIn">
         <div class="chute chute-center">
-               <div class="row">
+               <div class="row"  style="display: none">
                    <div class="col-xs-12">
                        <div class="panel mb25 mt5">
                             <form method="post" action="/" id="allcp-form">
@@ -121,7 +121,7 @@
                                             <td class="text-right">                                                
                                                 <div class="btn-group text-right">
                                                     <button type="button" class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
-                                                        data-toggle="dropdown" aria-expanded="false"> Active
+                                                        data-toggle="dropdown" aria-expanded="false"> Action
                                                         <span class="caret ml5"></span>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
@@ -175,7 +175,7 @@
                                             <div class="panel-body no-padding">
                                                 <form class="form-horizontal" role="form" [formGroup]="cgForm">
 
-
+                                                    
                                                     <div class="section row">
                                                         <div class="col-md-6 ph10 mb5">
                                                             <label for="txtControlGroup" class="col-lg-5 control-label"><h6 class="label-item">Control Group Name</h6></label>
@@ -243,8 +243,8 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
-                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()"> Submit</button>
-                                <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()" data-dismiss="modal"> Submit</button>
+                                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                             </div>
                         </form>
                     </div>
@@ -265,7 +265,7 @@
                 <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
             </div>
             <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5"> Confirm</button>
+                <button type="submit" class="btn btn-bordered btn-primary mb5" data-dismiss="modal"> Confirm</button>
                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
             </div>
         </div>
@@ -351,8 +351,8 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
-                                <button type="submit" class="btn btn-bordered btn-primary mb5"> Submit</button>
-                                <button type="reset" class="btn btn-bordered mb5"> Cancel</button>
+                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
+                                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                             </div>
                         </form>
                     </div>

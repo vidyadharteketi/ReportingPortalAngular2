@@ -68,6 +68,13 @@ export class EmployeeEligibilityReportComponent implements OnInit {
         this.selectedUnionStatus = '-1';
         this.selectedTypeOfHours = '-1';
     }
+
+
+     reset(): void {
+        this.selectedYear = '-1';
+        this.selectedControlGroup = '-1';
+    }
+
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {
