@@ -50,13 +50,13 @@ export class ApplicableLargeEmployeeDetailsService {
     }
 
     getAleDetailsById(id: string, detailsId: string, taxYear: string): Observable<IApplicableLargeEmployeeDetails> {
-        debugger;
         return this._http.get(this._aleUrl + 'loadaledetails?AleId=' + id + '&AleDetailsId=' + detailsId + '&AleTaxYear=' + taxYear)
             .map((response: Response) => response.json().aceDetails)
             .do(data => console.log('Get ALE by Id : ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
+    
     getAllAleDetails(): Observable<IApplicableLargeEmployeeDetails[]> {
         return this._http.get(this._aleUrl + 'loadallaledetails')
             .map((response: Response) => response.json().aleDetailsData)

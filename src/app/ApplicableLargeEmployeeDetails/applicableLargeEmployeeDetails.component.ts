@@ -217,6 +217,7 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     }
 
     fillControlGroupObjectFromForm(): void {
+    
         this.aleDetailsObj = <IApplicableLargeEmployeeDetails>{};
         this.aleDetailsObj.aleDetailsId = this.aleDetailsIdControl.value;//primary
         this.aleDetailsObj.aleId = this.aleIdControl.value;//dropdown
@@ -253,13 +254,48 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
         this.aleDetailsObj.additiontionalTotalEeDec = this.additiontionalTotalEeDecControl.value;
         this.aleDetailsObj.active = this.activeControl.value;//checkbx
     }
+    clearControlGroupObjectFromForm(): void {
+        this.aleDetailsIdControl.setValue("");//primary
+        this.aleIdControl.setValue("");//dropdown
+        this.aleTaxYearControl.setValue("");//text
+        this.isAcaSubscriberControl.setValue("");//radio
+        this.isFilingAuthoritative1094cControl.setValue("");//radio
+        this.isAcaReportingSharedControl.setValue("");//radio
+        this.hTransitionReliefControl.setValue("");//radio
+        this.additional1095cCountControl.setValue("");//text
+        this.controlGroupIdControl.setValue("");//dropdown
+        this.additiontionalFulltimeEeJanControl.setValue("");
+        this.additiontionalFulltimeEeFebControl.setValue("");
+        this.additiontionalFulltimeEeMarControl.setValue("");
+        this.additiontionalFulltimeEeAprControl.setValue("");
+        this.additiontionalFulltimeEeMayControl.setValue("");
+        this.additiontionalFulltimeEeJunControl.setValue("");
+        this.additiontionalFulltimeEeJulControl.setValue("");
+        this.additiontionalFulltimeEeAugControl.setValue("");
+        this.additiontionalFulltimeEeSepControl.setValue("");
+        this.additiontionalFulltimeEeOctControl.setValue("");
+        this.additiontionalFulltimeEeNovControl.setValue("");
+        this.additiontionalFulltimeEeDecControl.setValue("");
+        this.additiontionalTotalEeJanControl.setValue("");
+        this.additiontionalTotalEeFebControl.setValue("");
+        this.additiontionalTotalEeMarControl.setValue("");
+        this.additiontionalTotalEeAprControl.setValue("");
+        this.additiontionalTotalEeMayControl.setValue("");
+        this.additiontionalTotalEeJunControl.setValue("");
+        this.additiontionalTotalEeJulControl.setValue("");
+        this.additiontionalTotalEeAugControl.setValue("");
+        this.additiontionalTotalEeSepControl.setValue("");
+        this.additiontionalTotalEeOctControl.setValue("");
+        this.additiontionalTotalEeNovControl.setValue("");
+        this.additiontionalTotalEeDecControl.setValue("");
+        this.activeControl.setValue("");//checkbx
+    }
 
     validateForm(): boolean {
         return true;
     }
 
     createAleDetails(): void {
-        debugger;
         this.fillControlGroupObjectFromForm();
         this._service.addAleDetails(this.aleDetailsObj)
             .subscribe(data => {
@@ -283,6 +319,7 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     }
 
     updateAleDetails(): void {
+        debugger;
         this.fillControlGroupObjectFromForm();
         this._service.updateAleDetails(this.aleDetailsObj)
             .subscribe(data => {
@@ -293,15 +330,20 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
             }, error => this.errorMessage = <any>error);
     }
 
-    deleteAleDetails(id: string, detailsId: string, taxYear: string): void {
 
-        if (confirm('Are you sure to delete ' + detailsId)) {
-            this._service.removeAleDetails(id, detailsId, taxYear)
+    deleteAleDetails(id: string, detailsId: string, taxYear: string): void {
+        this.aleDetailsObj = <IApplicableLargeEmployeeDetails>{};
+        this.aleDetailsObj.aleId = id;
+        this.aleDetailsObj.aleDetailsId = detailsId;
+        this.aleDetailsObj.aleTaxYear = taxYear;
+    }
+    deleteAleDetailsConfirm(): void {
+                 this._service.removeAleDetails(this.aleDetailsObj.aleId, this.aleDetailsObj.aleDetailsId, this.aleDetailsObj.aleTaxYear)
                 .subscribe(data => {
                     if (data.result === 1) {
                         this.loadGridData();
                     }
                 }, error => this.errorMessage = <any>error);
-        }
+        
     }
 }

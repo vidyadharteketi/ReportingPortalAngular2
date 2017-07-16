@@ -316,12 +316,16 @@
                                     
                                     <div class="section row">
                                         <div class="col-md-6 ph10 mb5">
-                                            <label for="txtALEName" class="col-lg-3 control-label"><h6 class="label-item">ALE Name</h6></label>
-                                            <input type="text" formControlName="nameControl" id="txtALEName" class="form-control" placeholder="ALE Name...">
+                                            <div class="mb5 mt5">
+                                                <h6 class="">ALE Name</h6>
+                                                <div>{{nameControl.value}}</div>
+                                            </div>
                                         </div>
                                         <div class="col-md-6 ph10 mb5">
-                                            <label for="txtFEIN" class="col-lg-3 control-label"><h6 class="label-item">FEIN</h6></label>
-										    <input type="text" formControlName="FEINControl" id="txtFEIN" class="form-control" placeholder="FEIN...">
+                                            <div class="mb5 mt5">
+                                                <h6 class="">FEIN</h6>
+                                                <div>{{FEINControl.value}}</div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -444,17 +448,35 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">ALE</h4>
             </div>
             <div class="modal-body">
-                <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
+                <h4 class="text-center">Are you sure want to <span>Delete</span>?</h4>
             </div>
             <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" data-dismiss="modal"> Confirm</button>
+                <button type="submit" class="btn btn-bordered btn-primary mb5" data-toggle="modal" data-target="#confirm-delete"  data-dismiss="modal" (click)="deleteAleConfirm()"> Confirm</button>
+                
+                    
                 <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
             </div>
         </div>
     </div>
 </div>
 
+ <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center">Deleted Sucessfully</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-bordered btn-primary mb5" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- Delete Modal popup -->

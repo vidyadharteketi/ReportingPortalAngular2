@@ -37,7 +37,7 @@ export class ControlGroupService {
   }
 
   removeControlGroup(id: string, name: string): Observable<any> {
-    //debugger
+    debugger;
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('ControlGroupId', id);
