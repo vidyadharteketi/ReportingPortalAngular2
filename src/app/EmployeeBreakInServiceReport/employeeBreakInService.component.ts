@@ -26,7 +26,7 @@ export class EmployeeBreakInServiceReportComponent implements OnInit {
 
     public columns: Array<any> = [
         { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
-        // { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
+        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
         { title: 'Employee Name', className: 'va-m', name: 'FirstName' },
         { title: 'SSN', className: 'va-m', name: 'SSN' },
         { title: 'Service Status', className: 'va-m', name: 'ServiceStatus' },

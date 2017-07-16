@@ -51,7 +51,7 @@ export class ControlGroupComponent implements OnInit {
         this.EINControl = new FormControl('');
         this.isActiveControl = new FormControl('');
         this.isDeletedControl = new FormControl('');
-        this.nameControl = new FormControl('');
+        this.nameControl = new FormControl(null,Validators.required);
         this.measurementStartDateControl = new FormControl('');
         this.measurementEndDateControl = new FormControl('');
         this.measureEndDate1Control = new FormControl('');

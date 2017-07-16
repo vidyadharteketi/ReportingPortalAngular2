@@ -138,28 +138,18 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-8">
-                                            <div class="section row">
-                                                <div class="col-md-6 ph10 mb5">
-                                                    <h6 class="">ALE Tax Year</h6>
-                                                    <div>{{aleTaxYearControl.value}}</div>
-                                                </div>
-                                                <div class="col-md-6 ph10">
-                                                    <div class="mb5 mt5">
-                                                       <h6 class="">ALE</h6>
-                                                       <div>{{aleIdControl.value}}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
+                                            
 
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
-                                                    <h6>Control Group</h6>
-                                                        <label for="EControlGroup" class="field prepend-icon">
-                                                       <input type="text" id="EControlGroup" class="gui-input" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
-                                                       <label for="EControlGroup1" class="field-icon">
-                                                          <i class="fa fa-user"></i>
-                                                        </label>
-                                                        </label>
+                                                    <h6 class="">ALE Tax Year</h6>
+                                                    <label for="Ealename" class="field prepend-icon">
+                                                   <input type="text"  disabled="disabled" id="Ealename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
+                                                    <label for="Ealename1" class="field-icon">
+                                                       <i class="fa fa-user"></i>
+                                                    </label>
+                                                    </label>
                                                 </div>
                                                 <div class="col-md-6 ph10">
                                                     <div class="mb5 mt5">
@@ -173,6 +163,34 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
+
+
+                                            <div class="section row">
+                                                <div class="col-md-6 ph10 mb5">
+                                                    <h6>Control Group</h6>
+                                                        <label for="EControlGroup" class="field prepend-icon">
+                                                       <input type="text" id="EControlGroup" class="gui-input" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
+                                                       <label for="EControlGroup1" class="field-icon">
+                                                          <i class="fa fa-user"></i>
+                                                        </label>
+                                                        </label>
+                                                </div>
+                                                <div class="col-md-6 ph10">
+                                                    <div class="mb5 mt5">
+                                                       <h6 class="">ALE</h6>
+                                                    <label for="EALE" class="field prepend-icon">
+                                                       <input type="text" id="EALE" class="gui-input" disabled="disabled" formControlName="aleId" aria-required="true" aria-invalid="true">
+                                                       <label for="EALE1" class="field-icon">
+                                                          <i class="fa fa-user"></i>
+                                                        </label>
+                                                    </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
 
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
@@ -413,7 +431,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit"  class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>
@@ -728,7 +746,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit" class="btn btn-bordered btn-primary mb5" [disabled]="!aleDetailsForm.valid" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>

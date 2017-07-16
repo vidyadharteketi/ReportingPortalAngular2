@@ -178,13 +178,15 @@
                                                         <div class="col-md-6 ph10 mb5">                                                            
                                                             <div class="mb5 mt5">
                                                                 <h6 class="">Control Group Name</h6>
-                                                                <div>{{nameControl.value}}</div>
+                                                                <!-- <div>{{nameControl.value}}</div> -->
+                                                                <input disabled="disabled" type="text" id="txtControlGroup" formControlName="nameControl" class="form-control" placeholder="Control group Name...">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 ph10 mb5">
                                                             <div class="mb5 mt5">
                                                                 <h6 class="">Control Group EIN</h6>
-                                                                <div>{{EINControl.value}}</div>
+                                                                <!-- <div>{{EINControl.value}}</div> -->
+                                                                <input type="text" id="txtControlGroupEIN" disabled="disabled" formControlName="EINControl" class="form-control" placeholder="EIN...">
                                                             </div>
                                                         </div>  
                                                     </div>
@@ -317,6 +319,7 @@
 														<input type="text" id="txtControlGroupEIN" formControlName="EINControl" class="gui-input" placeholder="EIN...">
                                                         </div>
                                                     </div>
+                                                    
                                                     <div class="section row">
                                                         <div class="col-md-6 ph10 mb5">
                                                             <label for="txtMeasureStartDate" class="col-lg-6 control-label"> <h6 class="label-item"> Measurement Start Date</h6></label>                                                       
@@ -360,7 +363,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
-                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
+                                <button type="submit" [disabled]="!cgForm.valid" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
                                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                             </div>
                         </form>

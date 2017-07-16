@@ -287,7 +287,7 @@
                                     </div> -->
                              
                                 <div class="panel-footer text-right">
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createAle()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit" [disabled]="!aleForm.valid" class="btn btn-bordered btn-primary mb5" (click)="createAle()" data-dismiss="modal"> Submit</button>
                                     <button class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </div>
@@ -318,13 +318,15 @@
                                         <div class="col-md-6 ph10 mb5">
                                             <div class="mb5 mt5">
                                                 <h6 class="">ALE Name</h6>
-                                                <div>{{nameControl.value}}</div>
+                                                <!-- <div>{{nameControl.value}}</div> -->
+                                                <input type="text" formControlName="nameControl" disabled="disabled" id="txtALEName" class="form-control" placeholder="ALE Name...">
                                             </div>
                                         </div>
                                         <div class="col-md-6 ph10 mb5">
                                             <div class="mb5 mt5">
                                                 <h6 class="">FEIN</h6>
-                                                <div>{{FEINControl.value}}</div>
+                                                <!-- <div>{{FEINControl.value}}</div> -->
+                                                <input type="text" formControlName="FEINControl" disabled="disabled" id="txtFEIN" class="form-control" placeholder="FEIN...">
                                             </div>
                                         </div>
                                     </div>

@@ -76,8 +76,8 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
 
     initializeControls(): void {
         this.aleDetailsIdControl = new FormControl('');
-        this.aleIdControl = new FormControl('');
-        this.aleTaxYearControl = new FormControl('');
+        this.aleIdControl = new FormControl(null,Validators.required);
+        this.aleTaxYearControl = new FormControl(null,Validators.required);
         this.isAcaSubscriberControl = new FormControl('');
         this.isFilingAuthoritative1094cControl = new FormControl('');
         this.isAcaReportingSharedControl = new FormControl('');
