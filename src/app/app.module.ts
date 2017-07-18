@@ -10,6 +10,7 @@ import { PaginationModule, TabsModule } from 'ng2-bootstrap';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { APPROUTES } from './app.routes';
 import { ExportToExcelService } from './shared/index';
+import {MdButtonModule, MdCheckboxModule} from '@angular/material';
 
 import {
   SideNavComponent, TopNavComponent, ENFTReportComponent, ENFTReportService, OnGoingReportComponent,
@@ -31,8 +32,8 @@ import {
   OneZeroNineFiveDataUploadComponent,
   PayrollDataUploadComponent,
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
-  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService,
-  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
+  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService, ClientOnboardingCustomerInfoService,
+  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent,
 } from './index';
 
 @NgModule({
@@ -41,6 +42,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    MdButtonModule, MdCheckboxModule,
     MultiselectDropdownModule,
     RouterModule.forRoot(APPROUTES, { useHash: true }),
     Ng2TableModule,
@@ -89,7 +91,8 @@ import {
     EmployeeSummaryReportService,
     ControlGroupService,
     ApplicableLargeEmployeeService,
-    ApplicableLargeEmployeeDetailsService
+    ApplicableLargeEmployeeDetailsService,
+    ClientOnboardingCustomerInfoService
   ],
   bootstrap: [AppComponent]
 })

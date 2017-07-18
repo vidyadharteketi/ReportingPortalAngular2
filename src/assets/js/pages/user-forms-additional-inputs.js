@@ -13,7 +13,7 @@
         Core.init();
 
         // Init Demo JS
-        Demo.init();
+        // Demo.init();
 
 
         // Init Select2
@@ -78,7 +78,7 @@
             'SonyEricson', 'iPhone'];
 
         // Init Typeahead
-        $('.typeahead').typeahead({
+       /* $('.typeahead').typeahead({
             hint: true,
             highlight: true,
             minLength: 1
@@ -86,7 +86,7 @@
             name: 'states',
             displayKey: 'value',
             source: substringMatcher(states)
-        });
+        });*/
 
         // Set DateRange Options
         var rangeOptions = {

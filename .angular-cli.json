@@ -19,13 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "./assets/skin/default_skin/css/theme.min.css",
-        "./assets/allcp/forms/css/forms.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "./assets/skin/default_skin/css/theme.css",
+        "./assets/allcp/forms/css/forms.css",
         "./assets/js/plugins/datatables/media/css/dataTables.bootstrap.css",
         "./assets/js/plugins/datatables/extensions/Editor/css/dataTables.editor.css",
-        "./assets/js/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css",
-        "./assets/js/plugins/c3charts/c3.min.css",
+        "./assets/js/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.css",
         "./assets/skin/default_skin/css/style.css",
         "./assets/js/plugins/select2/css/core.css",
         "./assets/js/plugins/magnific/magnific-popup.css",
@@ -46,7 +45,8 @@
         "./assets/js/demo/demo.js",
         "./assets/js/main.js",
         "./assets/js/demo/widgets_sidebar.js",
-        "./assets/js/pages/user-forms-additional-inputs.js"
+        "./assets/js/pages/user-forms-additional-inputs.js",
+        "../node_modules/moment/moment.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
