@@ -45,10 +45,10 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
 
     initializeControls(): void {
         this.idControl = new FormControl('');
-        this.FEINControl = new FormControl('');
+        this.FEINControl = new FormControl(null,Validators.required);
         // this.isActiveControl = new FormControl('');
         // this.isDeletedControl = new FormControl('');
-        this.nameControl = new FormControl('');
+        this.nameControl = new FormControl(null,Validators.required);
         this.address1Control = new FormControl('');
         this.address2Control = new FormControl('');
         this.stateControl = new FormControl('');
@@ -192,14 +192,21 @@ export class ApplicableLargeEmployeeComponent implements OnInit {
             }, error => this.errorMessage = <any>error);
     }
 
+
     deleteAle(id: string, name: string, fein: string): void {
-       // if (confirm('Are you sure to delete ' + name)) {
-            this._service.removeAle(id, name, fein)
+        this.aleObj = <IApplicableLargeEmployee>{};
+        this.aleObj.aleId = id;
+        this.aleObj.aleFein = fein;
+        this.aleObj.aleName = name;
+    }
+
+    deleteAleConfirm(): void {
+
+            this._service.removeAle(this.aleObj.aleId, this.aleObj.aleName, this.aleObj.aleFein)
                 .subscribe(data => {
                     if (data.result === 1) {
                         this.loadGridData();
                     }
                 }, error => this.errorMessage = <any>error);
-        // }
     }
 }

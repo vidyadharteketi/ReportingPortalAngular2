@@ -58,8 +58,8 @@
 
                     <div class="panel">
                         <div class="panel-custom">
-                            <a href="#" data-toggle="modal" data-target="#myModalNew" class="btn btn-primary btn-sm ml10 text-right" title="New User">
-                               <span class="fa fa-plus pr5"></span> New User</a>
+                            <a href="#" data-toggle="modal" data-target="#myModalNew" class="btn btn-primary btn-sm ml10 text-right" (click)="clearControlGroupObjectFromForm()" title="New ALE Details">
+                               <span class="fa fa-plus pr5"></span> New ALE Details</a>
                         </div>
                         <div style="clear: both;"></div>
                         <div class="panel-heading">
@@ -138,14 +138,14 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-8">
+                                            
+                                            
+
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                     <h6 class="">ALE Tax Year</h6>
                                                     <label for="Ealename" class="field prepend-icon">
-                                                        <!--<select name="" id="" formControlName="aleId">
-                                                                <option *ngFor="let ale of aleMap" value="{{ale}}">{{ale}}</option>
-                                                        </select>-->
-                                                   <input type="text"  id="Ealename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
+                                                   <input type="text"  disabled="disabled" id="Ealename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
                                                     <label for="Ealename1" class="field-icon">
                                                        <i class="fa fa-user"></i>
                                                     </label>
@@ -181,7 +181,7 @@
                                                     <div class="mb5 mt5">
                                                        <h6 class="">ALE</h6>
                                                     <label for="EALE" class="field prepend-icon">
-                                                       <input type="text" id="EALE" class="gui-input" formControlName="aleId" aria-required="true" aria-invalid="true">
+                                                       <input type="text" id="EALE" class="gui-input" disabled="disabled" formControlName="aleId" aria-required="true" aria-invalid="true">
                                                        <label for="EALE1" class="field-icon">
                                                           <i class="fa fa-user"></i>
                                                         </label>
@@ -190,9 +190,8 @@
                                                 </div>
                                             </div>
 
- 
 
-                                          
+
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                         <fieldset>
@@ -249,17 +248,17 @@
                                                         <legend>Section 4980H Transition Relief</legend>
                                                         <div class="option-group field">
                                                             <label for="ESection4980HA" class="option option-primary">
-                                                         <input type="radio" name="rdsel4980h"  id="ESection4980HA" value="Y" formControlName="isFilingAuthoritative1094c">
+                                                         <input type="radio" name="rdsel4980h"  id="ESection4980HA" value="Y" formControlName="hTransitionRelief">
                                                           <span class="radio"></span>  A - 5099 Transition Relief
                                                         </label>
 
                                                             <label for="ESection4980HB" class="option option-primary">
-                                                          <input type="radio" name="rdsel4980h"  id="ESection4980HB" value="N" formControlName="isFilingAuthoritative1094c">
+                                                          <input type="radio" name="rdsel4980h"  id="ESection4980HB" value="N" formControlName="hTransitionRelief">
                                                            <span class="radio"></span>  B - 100 or More Transition Relief
                                                         </label>
 
                                                         <label for="ESection4980HN" class="option option-primary">
-                                                          <input type="radio" name="rdsel4980h"  id="ESection4980HN" value="" formControlName="isFilingAuthoritative1094c">
+                                                          <input type="radio" name="rdsel4980h"  id="ESection4980HN" value="" formControlName="hTransitionRelief">
                                                            <span class="radio"></span>  None
                                                         </label>
                                                         </div>
@@ -432,7 +431,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit"  class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>
@@ -511,10 +510,10 @@
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                         <fieldset>
-                                                        <legend>Is ACA Subscriber</legend>
+                                                        <legend>ACA Subscriber</legend>
                                                         <div class="option-group field">
                                                          <label for="rdAcaSubY" class="option option-primary">
-                                                          <input name="acasubscriber" checked="checked" type="radio"  id="rdAcaSubY" value="Y" formControlName="isAcaSubscriber">
+                                                          <input name="acasubscriber" type="radio"  id="rdAcaSubY" value="Y" formControlName="isAcaSubscriber">
                                                           <span class="radio"></span> Yes
                                                          </label>
                                                         <label for="rdAcaSubN" class="option option-primary">
@@ -529,7 +528,7 @@
                                                         <legend>Filling Authoritative 1094C</legend>
                                                         <div class="option-group field">
                                                             <label for="radioisFilingAuthoritative1094cY" class="option option-primary">
-                                                         <input type="radio" name="rdFillingAuth" checked="checked"  id="radioisFilingAuthoritative1094cY" value="Y" formControlName="radioisFilingAuthoritative1094c">
+                                                         <input type="radio" name="rdFillingAuth" id="radioisFilingAuthoritative1094cY"  value="Y" formControlName="radioisFilingAuthoritative1094c">
                                                           <span class="radio"></span> Yes
                                                         </label>
 
@@ -548,7 +547,7 @@
                                                         <legend>ACA Report Shared</legend>
                                                         <div class="option-group field">
                                                             <label for="CACAReportSharedY" class="option option-primary">
-                                                         <input type="radio" name="rdAcaReportShared"  id="CACAReportSharedY" value="Y" formControlName="isAcaReportingShared">
+                                                         <input type="radio" name="rdAcaReportShared"  id="CACAReportSharedY"  value="Y" formControlName="isAcaReportingShared">
                                                           <span class="radio"></span> Yes
                                                         </label>
 
@@ -564,17 +563,17 @@
                                                         <legend>Section 4980H Transition Relief</legend>
                                                         <div class="option-group field">
                                                         <label for="4980HA" class="option option-primary">
-                                                         <input type="radio" name = "498h" id="4980HA" value="A" formControlName="isFilingAuthoritative1094c">
+                                                         <input type="radio" name = "498h" id="4980HA"  value="A" formControlName="hTransitionRelief">
                                                          <span class="radio"></span> A - 5099 Transition Relief
                                                         </label>
 
                                                             <label for="4980HB" class="option option-primary">
-                                                          <input type="radio" name = "498h"  id="4980HB" value="B" formControlName="isFilingAuthoritative1094c">
+                                                          <input type="radio" name = "498h"  id="4980HB" value="B" formControlName="hTransitionRelief">
                                                            <span class="radio"></span>B - 100 or More Transition Relief
                                                         </label>
 
                                                         <label for="4980HN" class="option option-primary">
-                                                          <input type="radio" name = "498h" id="4980HN" value="N" formControlName="isFilingAuthoritative1094c">
+                                                          <input type="radio" name = "498h" id="4980HN" value="N" formControlName="hTransitionRelief">
                                                            <span class="radio"></span>None
                                                         </label>
                                                         </div>
@@ -747,7 +746,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit" class="btn btn-bordered btn-primary mb5" [disabled]="!aleDetailsForm.valid" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>
@@ -763,13 +762,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">ALE Details</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
+                    <h4 class="text-center">Are you sure want to <span>Delete</span>?</h4>
                 </div>
                 <div class="panel-footer text-right">
-                    <button type="submit" class="btn btn-bordered btn-primary mb5" data-toggle="modal" data-target="#confirm-delete" data-dismiss="modal"> Confirm</button>
+                    <button type="submit" class="btn btn-bordered btn-primary mb5" data-toggle="modal" data-target="#confirm-delete" data-dismiss="modal" (click)="deleteAleDetailsConfirm()"> Confirm</button>
                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                 </div>
             </div>
@@ -782,10 +781,10 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Delete Sucessful</h4>
+                    <h4 class="modal-title" id="myModalLabel">Information</h4>
                 </div>
                 <div class="modal-body">
-                    <h4 class="text-center">Delete Sucessful</h4>
+                    <h4 class="text-center">Deleted Sucessfully</h4>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-bordered btn-primary mb5" data-dismiss="modal">Ok</button>

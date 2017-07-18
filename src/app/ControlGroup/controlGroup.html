@@ -173,31 +173,24 @@
                                         <!-- -------------- Standard Fields -------------- -->
                                         <div class="panel">
                                             <div class="panel-body no-padding">
-                                                <form class="form-horizontal" role="form" [formGroup]="cgForm">
-
-                                                    
+                                                <form class="form-horizontal" role="form" [formGroup]="cgForm">                                                    
                                                     <div class="section row">
-                                                        <div class="col-md-6 ph10 mb5">
-                                                            <label for="txtControlGroup" class="col-lg-5 control-label"><h6 class="label-item">Control Group Name</h6></label>
-                                                            <input type="text" id="txtControlGroup" formControlName="nameControl" class="form-control" placeholder="Control group Name...">
-                                                        </div>
-                                                        <div class="col-md-6 ph10 mb5">
-                                                            <label for="txtControlGroupEIN" class="col-lg-5 control-label"><h6 class="label-item">Control Group EIN</h6></label>
-														    <input type="text" id="txtControlGroupEIN" formControlName="EINControl" class="form-control" placeholder="EIN...">
-                                                        </div>
-                                                        
-                                                    </div>
-
-
-                                                    <!--<div class="form-group">
-                                                        <label for="txtAcaCustomer" class="col-lg-5 control-label">Aca Custormer</label>
-
-                                                        <div class="col-lg-6">
-                                                            <div>
-                                                                <input type="text" id="txtAcaCustomer"  formControlName="EINControl" class="form-control" placeholder="Aca Customer...">
+                                                        <div class="col-md-6 ph10 mb5">                                                            
+                                                            <div class="mb5 mt5">
+                                                                <h6 class="">Control Group Name</h6>
+                                                                <!-- <div>{{nameControl.value}}</div> -->
+                                                                <input disabled="disabled" type="text" id="txtControlGroup" formControlName="nameControl" class="form-control" placeholder="Control group Name...">
                                                             </div>
                                                         </div>
-                                                    </div>-->
+                                                        <div class="col-md-6 ph10 mb5">
+                                                            <div class="mb5 mt5">
+                                                                <h6 class="">Control Group EIN</h6>
+                                                                <!-- <div>{{EINControl.value}}</div> -->
+                                                                <input type="text" id="txtControlGroupEIN" disabled="disabled" formControlName="EINControl" class="form-control" placeholder="EIN...">
+                                                            </div>
+                                                        </div>  
+                                                    </div>
+
                                                     <div class="section row">
                                                         <div class="col-md-6 ph10 mb5">
                                                             <label for="txtMeasureStartDate" class="col-lg-6 control-label"><h6 class="label-item">Measurement Start Date</h6></label>
@@ -260,18 +253,35 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabelDelete">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabelDelete">Control Group</h4>
             </div>
             <div class="modal-body">
-                <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
+                <h4 class="text-center">Are you sure want to <span>Delete</span>?</h4>
             </div>
-            <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" data-dismiss="modal"> Confirm</button>
-                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
+            <div class="panel-footer text-right">                
+                <button type="submit" class="btn btn-bordered btn-primary mb5" data-toggle="modal" data-target="#confirm-delete"  data-dismiss="modal"  (click)="deleteControlGroupConfirm()"> Confirm</button>
+                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+
+ <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center">Deleted Sucessfully</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-bordered btn-primary mb5" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="modal fade" id="myModalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabelNew">
     <!-- <not closed> -->
@@ -309,6 +319,7 @@
 														<input type="text" id="txtControlGroupEIN" formControlName="EINControl" class="gui-input" placeholder="EIN...">
                                                         </div>
                                                     </div>
+                                                    
                                                     <div class="section row">
                                                         <div class="col-md-6 ph10 mb5">
                                                             <label for="txtMeasureStartDate" class="col-lg-6 control-label"> <h6 class="label-item"> Measurement Start Date</h6></label>                                                       
@@ -352,7 +363,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-right">
-                                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
+                                <button type="submit" [disabled]="!cgForm.valid" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
                                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                             </div>
                         </form>

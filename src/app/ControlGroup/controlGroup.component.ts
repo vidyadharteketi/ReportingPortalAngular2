@@ -51,7 +51,7 @@ export class ControlGroupComponent implements OnInit {
         this.EINControl = new FormControl('');
         this.isActiveControl = new FormControl('');
         this.isDeletedControl = new FormControl('');
-        this.nameControl = new FormControl('');
+        this.nameControl = new FormControl(null,Validators.required);
         this.measurementStartDateControl = new FormControl('');
         this.measurementEndDateControl = new FormControl('');
         this.measureEndDate1Control = new FormControl('');
@@ -186,15 +186,21 @@ export class ControlGroupComponent implements OnInit {
     }
 
     deleteControlGroup(id: string, name: string): void {
+        this.controlGroupObj = <IControlGroup>{};
+        this.controlGroupObj.controlGroupId = id;
+        this.controlGroupObj.controlGroupName = name;
+    }
 
-        if (confirm('Are you sure to delete ' + name)) {
-            this._service.removeControlGroup(id, name)
+
+    deleteControlGroupConfirm(): void {
+        debugger;
+            this._service.removeControlGroup(this.controlGroupObj.controlGroupId, this.controlGroupObj.controlGroupName)
                 .subscribe(data => {
                     debugger;
                     if (data.result === 1) {
                         this.loadGridData();
                     }
                 }, error => this.errorMessage = <any>error);
-        }
+        
     }
 }
