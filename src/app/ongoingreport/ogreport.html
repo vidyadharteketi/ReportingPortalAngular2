@@ -10,8 +10,8 @@
                     <div class="panel-heading">
                         <span class="panel-title">Eligibility Report Ongoing</span>
                         <span class="panel-icon pull-right">
-                            <a id="btnDownloadPdf"  class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
-                            <a id="btnDownloadExcel" class="fa fa-file-excel-o" (click)="downloadExcel()" ></a>
+                            <a id="btnDownloadPdf" title="Download PDF" class="fa fa-file-pdf-o" (click)="downloadPdf()"></a>
+                            <a id="btnDownloadExcel" data-toggle="modal" data-target="#confirm-excel-download" data-dismiss="modal" title="Download Excel" class="fa fa-file-excel-o"></a>
                         </span>
                     </div>
                     <div class="panel-body">
@@ -81,7 +81,7 @@
                                             <div class="col-sm-7">
                                                 <label class="field select">
                                                 <select id="selTypeofHours" name="typeofHours" formControlName="typeOfHour">
-                                                    <option selected value="">All</option>
+                                                    <option selected disabled value="">All</option>
                                                     <option *ngFor="let hour of typeOfHours" value={{hour}}>
                                                         {{hour}}
                                                     </option>
@@ -206,4 +206,23 @@
         </div>
     </section>
     <!-- -------------- /Content -------------- -->
+
+    <!-- excel download -->
+    <div class="modal fade" id="confirm-excel-download" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Information</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center">Download is Dangerous!</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-bordered btn-primary mb5" data-dismiss="modal" (click)="downloadExcel()">Ok</button>
+                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
