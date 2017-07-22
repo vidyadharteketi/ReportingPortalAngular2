@@ -64,16 +64,16 @@ export class ApplicableLargeEmployeeDetailsService {
             .catch(this.handleError);
     }
 
-    getAleMap(): Observable<any> {
+    getAleMap(){
         return this._http.get(CONFIGURATION.baseDataBoardingUrl + 'aleservice/' + 'loadallalemap')
-            .map((response: Response) => response.json().aleMap)
+            .map((response: Response) => response.json())
             .do(data => console.log('Get All ALE map: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getControlGroupMap(): Observable<any> {
+    getControlGroupMap(){
         return this._http.get(CONFIGURATION.baseDataBoardingUrl + 'controlgroupservice/' + 'loadallcontrolgroupmap')
-            .map((response: Response) => response.json().controlGroupMap)
+            .map((response: Response) => response.json())
             .do(data => console.log('Get All control group map: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }

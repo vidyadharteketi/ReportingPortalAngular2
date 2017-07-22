@@ -32,8 +32,8 @@ import {
   OneZeroNineFiveDataUploadComponent,
   PayrollDataUploadComponent,
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
-  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService, ClientOnboardingCustomerInfoService,
-  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent,
+  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService,
+  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
 } from './index';
 
 @NgModule({
@@ -91,8 +91,7 @@ import {
     EmployeeSummaryReportService,
     ControlGroupService,
     ApplicableLargeEmployeeService,
-    ApplicableLargeEmployeeDetailsService,
-    ClientOnboardingCustomerInfoService
+    ApplicableLargeEmployeeDetailsService
   ],
   bootstrap: [AppComponent]
 })

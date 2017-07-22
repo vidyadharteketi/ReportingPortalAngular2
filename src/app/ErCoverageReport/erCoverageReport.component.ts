@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ErCoverageReportService } from './erCoverageReport.service';
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 
 @Component({
     moduleId: module.id,
@@ -10,13 +11,29 @@ export class ErCoverageReportComponent implements OnInit {
 
     selectedYear: string;
     selectedHireMonth: string;
-    selectedControlGroup: string;
+    selectedControlGroup: string[];
     annulaizedMonthly: string = '0';
     errorMessage: string;
 
     Years: Array<string>;
     ControlGroups: Array<string>;
     workerDetails: Array<any> = [];
+    
+    controlGroupOptions: IMultiSelectOption[];
+    controlGroupSettings: IMultiSelectSettings = {
+        enableSearch: false,
+        showCheckAll: false,
+        checkedStyle: 'checkboxes',
+        buttonClasses: 'btn btn-default btn-block',
+        dynamicTitleMaxItems: 3,
+        displayAllSelectedText: false
+    };
+
+    // �Text�configuration
+    controlGroupTexts: IMultiSelectTexts = {
+        checkAll: 'Select�all',
+        uncheckAll: 'Unselect�all'
+    };
 
     dataLoaded: boolean;
     public rows: Array<any> = [];
@@ -45,16 +62,20 @@ export class ErCoverageReportComponent implements OnInit {
     constructor(private _erCoverageReportService: ErCoverageReportService) { }
 
     ngOnInit(): void {
-
+        this.controlGroupOptions = [{ id: '-1', name: 'All' }];
         this._erCoverageReportService.getReportData().subscribe(data => {
             this.Years = data.WorkYears;
-            this.ControlGroups = data.ControlGroups;
+             this.ControlGroups = data.ControlGroups;
+             debugger;
+            data.ControlGroups.forEach(element => {
+                this.controlGroupOptions.push({ id: element, name: element })
+            });
         },
             error => this.errorMessage = <any>error);
 
         this.selectedYear = '-1';
         this.selectedHireMonth = '-1';
-        this.selectedControlGroup = '-1';
+        this.selectedControlGroup = ['-1'];
         this.annulaizedMonthly = '0';
 
         this.onChangeTable(this.config);
@@ -77,19 +98,18 @@ export class ErCoverageReportComponent implements OnInit {
     reset(): void {
         this.dataLoaded=false;     
         this.selectedYear='-1';
-        this.selectedControlGroup='-1';
+        this.selectedControlGroup = ['-1'];
         this.annulaizedMonthly='0';
-        
     }
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {
-            year = "''";
+            year = '\'\'';
         }
 
-        let cg = this.selectedControlGroup;
-        if (cg === 'All' || cg === '-1') {
-            cg = "''";
+        const cg = this.selectedControlGroup;
+        if (cg.length > 0 && cg[0] === 'All' || cg[0] === '-1') {
+            cg[0] = '\'\'';
         }
 
         let filterCriteria: any = {

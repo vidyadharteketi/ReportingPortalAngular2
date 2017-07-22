@@ -16,10 +16,24 @@
                                 <!-- -------------- Standard Fields -------------- -->
                                 <div class="panel">
                                     <div class="panel-heading">
-                                        <span class="panel-title">Payroll Data Upload</span>
+                                        <span class="panel-title">Payroll Data Upload Vidyadhar</span>
                                     </div>
                                     <div class="panel-body">
+
+                                         <form action="http://13.59.27.17:8080/DataOnBoardingWebAPI/rest/uploadfile" method="post" enctype="multipart/form-data">
+<input name="location" type="text" /><br><br>
+    <input name="file" id="filename" type="file" /><br><br>
+    <button name="submit" type="submit">Upload</button>
+    </form>
+
+
+
                                         <form class="form-horizontal" role="form">
+
+
+
+
+
                                             <!--<div class="section">
                                             <label class="field prepend-icon append-button file">
                                                     <span class="button">Choose File</span>

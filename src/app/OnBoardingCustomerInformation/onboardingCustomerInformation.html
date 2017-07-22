@@ -113,12 +113,12 @@
                     </td>
                     <td class="w100">
                         <img class="img-responsive mw40 ib mr10" title="user" src="assets/img/pages/products/1.jpg">
-                    </td>-->
+                    </td>
                     <td class="" style="display:none">{{row?.controlGroupId}}</td>
                     <td class="">{{row?.controlGroupEIN}}</td>
                     <td class="">{{row?.controlGroupName}}</td>
                     <!--<td class="">{{row?.active}}</td>
-                    <td class="">{{row?.deleted}}</td>-->
+                    <td class="">{{row?.deleted}}</td>
                     <td class="text-right">{{row?.measurementStartDate}}</td>
                     <td class="text-right">{{row?.measurementEndDate}}</td>
                     <td class="text-right">{{row?.measurementEndDate1}}</td>
@@ -139,10 +139,10 @@
                         </button>
                         <ul class="dropdown-menu" role="menu">
                           <li>
-                            <a class="" data-toggle="modal" data-target="#myModalEdit" (click)="editControlGroup(row.controlGroupId,row.controlGroupName)">Edit</a>
+                            <!-- <a class="" data-toggle="modal" data-target="#myModalEdit" (click)="editControlGroup(row.controlGroupId,row.controlGroupName)">Edit</a> -->
                           </li>
                           <li>
-                            <a class="" data-toggle="modal" data-target="#myModalDelete" (click)="deleteControlGroup(row.controlGroupId,row.controlGroupName)">Delete</a>
+                            <!-- <a class="" data-toggle="modal" data-target="#myModalDelete" (click)="deleteControlGroup(row.controlGroupId,row.controlGroupName)">Delete</a> -->
                           </li>
                         </ul>
                       </div>
@@ -177,7 +177,8 @@
           <!-- <not closed> -->
           <div class="allcp-form theme-primary center-block">
             <!-- <closed> -->
-            <form method="post" (ngSubmit)="updateClientOnboardingInfo()" id="allcp-form" novalidate="novalidate">
+            <form method="post"  id="allcp-form" novalidate="novalidate">
+              <!-- (ngSubmit)="updateClientOnboardingInfo()" -->
               <!-- <not closed> -->
               <div class="panel-body">
                 <!-- <not closed> -->
@@ -295,7 +296,7 @@
                 </div>
               </div>
               <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()" data-dismiss="modal"> Submit</button>
+                <!-- <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()" data-dismiss="modal"> Submit</button> -->
                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
               </div>
             </form>
@@ -638,7 +639,7 @@
                 </div>
               </div>
               <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
+                <!-- <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button> -->
                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
               </div>
             </form>

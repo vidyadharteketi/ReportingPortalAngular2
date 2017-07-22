@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewHireFullTimeService } from './nhftreport.service';
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 
 @Component({
     moduleId: module.id,
@@ -8,12 +9,9 @@ import { NewHireFullTimeService } from './nhftreport.service';
 })
 
 export class NewHireFullTimeComponent implements OnInit {
-
-
-
     selectedYear: string;
     selectedHireMonth: string;
-    selectedControlGroup: string;
+    selectedControlGroup: string[];
     eligibleFullTimeWorkers: string = '0';
     errorMessage: string;
 
@@ -29,6 +27,23 @@ export class NewHireFullTimeComponent implements OnInit {
     public maxSize: number = 5;
     public numPages: number = 1;
     public length: number = 0;
+
+    optionsModel: number[];
+    myOptions: IMultiSelectOption[];
+    mySettings: IMultiSelectSettings = {
+        enableSearch: false,
+        showCheckAll: false,
+        checkedStyle: 'checkboxes',
+        buttonClasses: 'btn btn-default btn-block',
+        dynamicTitleMaxItems: 3,
+        displayAllSelectedText: false
+    };
+
+    //  Text configuration
+    myTexts: IMultiSelectTexts = {
+        checkAll: 'Select all',
+        uncheckAll: 'Unselect all'
+    };
 
     public columns: Array<any> = [
         { title: 'Control Group', className: 'va-m', name: 'controlGroup' },
@@ -55,17 +70,21 @@ export class NewHireFullTimeComponent implements OnInit {
     constructor(private _newHireFullTimeService: NewHireFullTimeService) { }
 
     ngOnInit(): void {
+        this.myOptions = [{ id: '-1', name: 'All' }];
         this._newHireFullTimeService.getReportData().subscribe(data => {
 
             this.Years = data.WorkYear;
             this.Months = data.WorkMonth;
             this.ControlGroups = data.ControlGroup;
+            data.ControlGroup.forEach(element => {
+                this.myOptions.push({ id: element, name: element })
+            });
         },
             error => this.errorMessage = <any>error);
 
         this.selectedYear = '-1';
         this.selectedHireMonth = '-1';
-        this.selectedControlGroup = '-1';
+        this.selectedControlGroup = ['-1'];
         this.eligibleFullTimeWorkers = '0';
 
         this.onChangeTable(this.config);
@@ -88,28 +107,25 @@ export class NewHireFullTimeComponent implements OnInit {
     }
 
     reset(): void {
-
-
-    
         this.selectedYear = '-1';
         this.selectedHireMonth = '-1';
-        this.selectedControlGroup='-1';
+        this.selectedControlGroup = ['-1'];
         this.dataLoaded = false;
-        this.eligibleFullTimeWorkers='0'
+        this.eligibleFullTimeWorkers = '0'
     }
 
     getFilterValues(): any {
         let year = this.selectedYear;
         if (year === '-1') {
-            year = "''";
+            year = '\'\'';
         }
         let month = this.selectedHireMonth;
         if (month === '-1') {
-            month = "''";
+            month = '\'\'';
         }
-        let cg = this.selectedControlGroup;
-        if (cg === "All" || cg === '-1') {
-            cg = "''";;
+        const cg = this.selectedControlGroup;
+        if (cg.length > 0 && cg[0] === 'All' || cg[0] === '-1') {
+            cg[0] = '\'\'';
         }
 
         let filterCriteria: any = {
