@@ -11,6 +11,7 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { APPROUTES } from './app.routes';
 import { ExportToExcelService } from './shared/index';
 import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import { NgUploaderModule } from 'ngx-uploader';
 
 import {
   SideNavComponent, TopNavComponent, ENFTReportComponent, ENFTReportService, OnGoingReportComponent,
@@ -48,6 +49,7 @@ import {
     Ng2TableModule,
     PaginationModule.forRoot(),
     TabsModule.forRoot()
+    NgUploaderModule
   ],
   declarations: [
     AppComponent,
