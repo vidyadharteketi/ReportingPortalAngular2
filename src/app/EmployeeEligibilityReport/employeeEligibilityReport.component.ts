@@ -28,7 +28,7 @@ export class EmployeeEligibilityReportComponent implements OnInit {
 
     public columns: Array<any> = [
         { title: 'Control Group', className: 'va-m', name: 'ControlGroup' },
-        { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
+        // { title: 'Work Year', className: 'va-m', name: 'WorkYear' },
         { title: 'Employee Name', className: 'va-m', name: 'EmployeeName' },
         { title: 'Union Status', className: 'va-m', name: 'UnionStatus' },
         { title: 'SSN', className: 'va-m', name: 'SSN' },

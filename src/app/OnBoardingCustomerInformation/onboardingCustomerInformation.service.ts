@@ -6,9 +6,21 @@ import { CONFIGURATION } from '../app.config';
 
 @Injectable()
 export class ClientOnboardingCustomerInfoService {
-  private _cociUrl = CONFIGURATION.baseDataBoardingUrl + 'controlgroupservice/';
+  private _cociUrl = CONFIGURATION.baseDataBoardingUrl + 'clientonboardingservice/';
 
   constructor(private _http: Http) { }
+
+  addClientOnboarding(newObj: IOnboardingCustomerInformation) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const content = JSON.stringify(newObj);
+
+    return this._http.post(this._cociUrl + 'addclient', content, {
+      headers: headers
+    }).map((response: Response) => response.json())
+      .do(data => console.log('Add Client Onboarding result: ' + JSON.stringify(data)))
+      .catch(this.handleError);
+  }
 
   getAllControlGroups(): Observable<IOnboardingCustomerInformation[]> {
     return this._http.get(this._cociUrl + 'loadallcontrolgroup')

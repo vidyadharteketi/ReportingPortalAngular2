@@ -10,7 +10,7 @@ import { PaginationModule, TabsModule } from 'ng2-bootstrap';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { APPROUTES } from './app.routes';
 import { ExportToExcelService } from './shared/index';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MdRadioModule, MdSelectModule} from '@angular/material';
 
 import {
   SideNavComponent, TopNavComponent, ENFTReportComponent, ENFTReportService, OnGoingReportComponent,
@@ -42,7 +42,7 @@ import {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    MdButtonModule, MdCheckboxModule,
+    MdButtonModule, MdCheckboxModule,MdRadioModule, MdSelectModule,
     MultiselectDropdownModule,
     RouterModule.forRoot(APPROUTES, { useHash: true }),
     Ng2TableModule,

@@ -12,172 +12,13 @@
 
   <!-- -------------- Filter , New ControlGroup , ControlGroup ,  -------------- -->
   <section id="content" class="table-layout animated fadeIn">
-    <div class="chute chute-center">
-      <div class="row"  style="display: none">
-        <div class="col-xs-12">
-          <div class="panel mb25 mt5">
-              <div class="allcp-form theme-primary btn-bordered center-block">
-                <div class="section row">
-                  <div class="col-md-4 ph10 mb5">
-                    <h6 class="">Customer Information</h6>
-                    <label for="itemsearch" class="field">
-                      <input type="search" name="itemsearch" id="itemsearch" class="gui-input" placeholder="Control Group....">
-                    </label>
-                  </div>
-                  <div class="col-md-4 ph10 mb5" style="display:none">
-                    <h6 class="">Filtering</h6>
-                    <label class="field select">
-                      <select id="language" name="language">
-                        <option value="">Select Filter</option>
-                        <option value="EN">English</option>
-                        <option value="FR">French</option>
-                        <option value="SP">Spanish</option>
-                        <option value="CH">Chinese</option>
-                        <option value="RU">Russian</option>
-                      </select>
-                      <i class="arrow double"></i>
-                    </label>
-                  </div>
-                  <div class="col-sm-2">
-                    <h6>&nbsp;</h6>
-                    <!--<button class="btn btn-bordered btn-primary mb5 dsde" type="submit">Filter</button>-->
-                  </div>
-                  <div class="col-sm-2">
-                    <h6>&nbsp;</h6>
-                    <!--<button class="btn btn-bordered btn-primary mb5 dsde" type="reset">Clear</button>-->
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="panel">
-            <div class="panel-custom">
-              <a href="#"  data-toggle="modal" data-target="#myModalNew" (click)="clearControlGroupObjectFromForm()" class="btn btn-primary btn-sm ml10 text-right" title="New User">
-                <span class="fa fa-plus pr5"></span> New Customer Information</a>
-            </div>
-            <div style="clear: both;"></div>
-            <div class="panel-heading">
-              <span class="panel-title hidden-xs">Control Group</span>
-            </div>
-            <div class="panel-body pn">
-              <div class="table-responsive">
-                <table class="table allcp-form theme-warning tc-checkbox-1 fs13">
-                  <thead>
-                  <tr class="bg-light">
-                    <!--<th class="text-center"></th>
-                    <th class="text-center"></th>-->
-                    <th class="" style="display:none">Id</th>
-                    <th class="">ALE</th>
-                    <th class="">Address</th>
-                    <th class="">City</th>
-                    <th class="">State</th>
-                    <th class="">ZIP</th>
-                    <th class="">General Contact</th>
-                    <!--<th class="">Title</th>-->
-                    <!--<th class="">Email</th>-->
-                    <!--<th class="">Phone</th>-->
-                    <th class="">Contact for Onboarding Inquires</th>
-                    <!--<th class="">Name</th>-->
-                    <!--<th class="">Name</th>-->
-                    <!--<th class="">Name</th>-->
-
-
-
-                    <!--<th class="">Active</th>
-                    <th class="">Deleted</th>-->
-                    <!--<th class="text-right">Measurement Start Date</th>-->
-                    <!--<th class="text-right">Measurement End Date</th>-->
-                    <!--<th class="text-right">Measurement End Date 1</th>-->
-                    <!--<th class="text-right">Measurement End Date 2</th>-->
-                    <!--<th class="text-right"  style="display:none">Measurement End Date3</th>
-                    <th class="text-right"  style="display:none">Measurement End Date4</th>
-                    <th class="text-right">Modified By</th>
-                    <th class="text-right">Modified Date</th>
-                    <th class="text-right">Created By</th>
-                    <th class="text-right">Created Date</th>
-                    <th class="text-right">Action</th>-->
-
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                  <!--<tr *ngFor="let row of data">-->
-                    <!--<td class="text-center">
-                        <label class="option block mn">
-                            <input type="checkbox" name="inputname" value="FR">
-                            <span class="checkbox mn"></span>
-                        </label>
-                    </td>
-                    <td class="w100">
-                        <img class="img-responsive mw40 ib mr10" title="user" src="assets/img/pages/products/1.jpg">
-                    </td>-->
-                    <td class="" style="display:none">{{row?.controlGroupId}}</td>
-                    <td class="">{{row?.controlGroupEIN}}</td>
-                    <td class="">{{row?.controlGroupName}}</td>
-                    <!--<td class="">{{row?.active}}</td>
-                    <td class="">{{row?.deleted}}</td>-->
-                    <td class="text-right">{{row?.measurementStartDate}}</td>
-                    <td class="text-right">{{row?.measurementEndDate}}</td>
-                    <td class="text-right">{{row?.measurementEndDate1}}</td>
-                    <td class="text-right">{{row?.measurementEndDate2}}</td>
-                    <!--<td class="text-right" style="display:none">{{row?.measurementEndDate3}}</td>
-                    <td class="text-right" style="display:none">{{row?.measurementEndDate4}}</td>
-                    <td class="">{{row?.modifiedBy}}</td>
-                    <td class="">{{row?.modifiedDate}}</td>
-                    <td class="">{{row?.controlGroupId}}</td>
-                    <td class="">{{row?.createdBy}}</td>
-                    <td class="">{{row?.createdDate}}</td>-->
-
-                    <td class="text-right">
-                      <div class="btn-group text-right">
-                        <button type="button" class="btn btn-success br2 btn-xs fs12 dropdown-toggle"
-                                data-toggle="dropdown" aria-expanded="false"> Action
-                          <span class="caret ml5"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                          <li>
-                            <a class="" data-toggle="modal" data-target="#myModalEdit" (click)="editControlGroup(row.controlGroupId,row.controlGroupName)">Edit</a>
-                          </li>
-                          <li>
-                            <a class="" data-toggle="modal" data-target="#myModalDelete" (click)="deleteControlGroup(row.controlGroupId,row.controlGroupName)">Delete</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- -------------- /Filter , New ControlGroup , ControlGroup ,  -------------- -->
-
-</section>
-<!-- Modal Popups -->
-<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit">
-  <!-- <not closed> -->
-  <div class="modal-dialog modal-lg" role="document">
-    <!-- <not closed> -->
-    <div class="modal-content">
-      <!-- <not closed> -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabelEdit">Edit Control Group</h4>
-      </div>
       <div class="modal-body">
         <!-- <not closed> -->
         <div class="chute chute-center">
           <!-- <not closed> -->
           <div class="allcp-form theme-primary center-block">
             <!-- <closed> -->
-            <form method="post" (ngSubmit)="updateClientOnboardingInfo()" id="allcp-form" novalidate="novalidate">
+            <form method="post" id="allcp-form" novalidate="novalidate">
               <!-- <not closed> -->
               <div class="panel-body">
                 <!-- <not closed> -->
@@ -185,9 +26,16 @@
                   <div class="col-md-12">
                     <!-- -------------- Standard Fields -------------- -->
                     <div class="panel">
-                      <div class="panel-body no-padding">
+                      <div class="panel-body no-padding" style="margin-top: 0px">
                         <form class="form-horizontal" role="form" [formGroup]="clientOnboardingForm">
+                          <div class="section row" style="background: darkgrey; padding: 3px 3px 3px;">
+                            <label> <h4 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Client Information </h4></label>
+                          </div>
                           <div class="section row">
+                            <div class="col-md-6 ph10 mb5">
+                              <label for="txtControlGroup" class="col-lg-6 control-label"> <h6 class="label-item"> Applicable Large Employee Name</h6></label>
+                              <input type="text" id="txtControlGroup" formControlName="aleNameControl" class="gui-input" placeholder="ALE Name...">
+                            </div>
                             <div class="col-md-6 ph10 mb5">
                               <label for="txtControlGroup" class="col-lg-5 control-label"> <h6 class="label-item"> Control Group Name</h6></label>
                               <input type="text" id="txtControlGroup" formControlName="controlGroupNameControl" class="gui-input" placeholder="Control Group Name...">
@@ -205,8 +53,66 @@
                           </div>
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate"> <h6 class="label-item"> State</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate" formControlName="stateControl" placeholder="State..." />
+                              <label class="col-lg-6 control-label"> <h6 class="label-item"> State</h6></label>
+                              <select name="state" class="gui-input" formControlName="stateControl">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA" selected>California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                                <option value="DC">District of Columbia</option>
+                                <option value="AS">American Samoa</option>
+                                <option value="GU">Guam</option>
+                                <option value="MP">Northern Mariana Islands</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="UM">United s Minor Outlying Islands</option>
+                                <option value="VI">Virgin Islands, U.S.</option>
+                              </select>
                             </div>
                             <div class="col-md-6 ph10 mb5">
                               <label class="col-lg-6 control-label" for="txtMeasureEndDate1"> <h6 class="label-item"> ZIP</h6>   </label>
@@ -220,416 +126,617 @@
 
                             <div class="col-md-6 ph10 mb5">
 
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2"> <h6 class="label-item"> Name</h6></label>
+                              <label class="col-lg-6 control-label" > <h6 class="label-item"> Name</h6></label>
                               <input class="gui-input" id="txtMeasureEndDate2" formControlName="gcNameControl" placeholder="Name..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="gcTitleControl" placeholder="Title..." />
                             </div>
                           </div>
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
+                              <label class="col-lg-6 control-label" > <h6 class="label-item"> Email</h6></label>
                               <input class="gui-input" id="txtMeasureEndDate4" formControlName="gcEmailControl" placeholder="Email..." />
                             </div>
                             <div class="col-md-6 ph10 mb5">
                               <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="gcPhoneControl" placeholder="Phone..." />
+                              <input class="gui-input"  formControlName="gcPhoneControl" placeholder="Phone..." />
                             </div>
                           </div>
                           <div class="section row">
-                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Contact for Onboarding Inquiries </h5></label>
+                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Contact for On-boarding Inquiries </h5></label>
                           </div>
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2"> <h6 class="label-item"> Name</h6></label>
+                              <label class="col-lg-6 control-label" > <h6 class="label-item"> Name</h6></label>
                               <input class="gui-input" id="txtMeasureEndDate2" formControlName="oicNameControl" placeholder="Name..." />
                             </div>
-                            <div class="col-md-6 ph10 mb5">
+                            <!--<div class="col-md-6 ph10 mb5">
+                            <!--<div class="col-md-6 ph10 mb5">
                               <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="oicTitleControl" placeholder="Title..." />
-                            </div>
+                              <input class="gui-input"  formControlName="oicTitleControl" placeholder="Title..." />
+                            </div>-->
                           </div>
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
+                              <label class="col-lg-6 control-label" > <h6 class="label-item"> Email</h6></label>
                               <input class="gui-input" id="txtMeasureEndDate4" formControlName="oicEmailControl" placeholder="Email..." />
                             </div>
                             <div class="col-md-6 ph10 mb5">
                               <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="oicPhoneControl" placeholder="Phone..." />
+                              <input class="gui-input"  formControlName="oicPhoneControl" placeholder="Phone..." />
+                            </div>
+                          </div>
+                          <div class="section row" style="background: darkgrey; padding: 3px 3px 3px;">
+                            <label> <h4 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> General Information</h4></label>
+                          </div>
+                          <div class="section row">
+                            <div class="col-lg-12 ph10 mb5">
+                              <label class="control-label" > <h6 class="label-item"> Reporting for all legal entities in your organization, or only those for which we are providing payroll services: </h6></label>
+                            </div>
+                          </div>
+                          <md-radio-group formControlName="reportingLegalEntitiesControl" [(ngModel)]="reportingEntities">
+                          <div class="section row">
+                            <div class="col-lg-12 ph10 mb5">
+                              <div class="col-lg-6">
+                                <div class="col-lg-6">
+                                  <md-radio-button value="all" class="md-primary"> All</md-radio-button>
+                                  <!--<md-checkbox aria-label="Checkbox 1">All </md-checkbox>-->
+                                </div>
+                                <div class="col-lg-6">
+                                  <md-radio-button value="payroll" class="md-primary"> Payroll Serviced </md-radio-button>
+                                  <!--<md-checkbox aria-label="Checkbox 1">Payroll Serviced </md-checkbox>-->
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="col-lg-2">
+                                  <md-radio-button value="other" class="md-primary"> Other</md-radio-button>
+                                  <!--<md-checkbox aria-label="Checkbox 1">Other </md-checkbox>-->
+                                </div>
+                                <div class="col-lg-6" *ngIf="reportingEntities=='other'">
+                                  <input class="gui-input" style="height: 22px"  formControlName="reportingLegalEntitiesExplanationControl" placeholder="Please explain..." /></div>
+                              </div>
+                            </div>
+                          </div>
+                          </md-radio-group>
+                          <div class="section row">
+                            <div class="col-lg-6 ph10 mb5">
+                              <label class="control-label" > <h6 class="label-item">One FEIN but utilizes multiple payroll providers </h6></label>
+                              <md-radio-group class="gui-input" style="border: none;" formControlName="entitiesOneFEINMultiplePayrollControl" [(ngModel)]="oneFEINMultiplePayroll" >
+                                <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                <md-radio-button value="no"> No </md-radio-button>
+                              </md-radio-group>
+                            </div>
+                            <div class="col-lg-6 ph10 mb5" *ngIf="oneFEINMultiplePayroll=='yes'">
+                              <label class="control-label" > <h6 class="label-item">For the legal entities with one FEIN that use multiple payroll providers, file </h6></label>
+                              <md-radio-group class="gui-input" style="border: none;" formControlName="authoritative1094CControl">
+                                <md-radio-button value="authoritative" class="md-primary"> Authoritative 1094-C</md-radio-button>
+                                <md-radio-button value=" nonauthoritative"> Non-Authoritative 1094-C</md-radio-button>
+                              </md-radio-group>
                             </div>
                           </div>
                           <div class="section row">
-                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Payroll Provider Information1</h5></label>
+                            <div class="col-lg-6 ph10 mb5">
+                              <label class="control-label" > <h6 class="label-item">Aggregate payroll and insurance data from other client sources </h6></label>
+                              <md-radio-group class="gui-input" style="border: none;" formControlName="aggregateFromOtherClientsControl">
+                                <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                <md-radio-button value="no"> No</md-radio-button>
+                              </md-radio-group>
+                            </div>
+                            <div class="col-lg-6 ph10 mb5">
+                              <label class="control-label" > <h6 class="label-item">Send data to other client sources for any entity </h6></label>
+                              <md-radio-group class="gui-input" style="border: none;" formControlName="sendDataToOtherClientsControl">
+                                <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                <md-radio-button value="no"> No</md-radio-button>
+                              </md-radio-group>
+                            </div>
+                          </div>
+                          <div class="section row" style="background: darkgrey; padding: 3px 3px 3px;">
+                            <label> <h4 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Payroll Provider Information</h4></label>
                           </div>
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1">Checkbox 1: </md-checkbox>
-                              </label>
-                            </div>
-                            <!--                            <div class="col-md-6 ph10 mb5">
-                                                          <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                                                          <input class="gui-input" id="txtMeasureEndDate3" formControlName="measureEndDate3Control" placeholder="Title..." />
-                                                        </div>
-                                                      </div>
-                                                      <div class="section row">
-                                                        <div class="col-md-6 ph10 mb5">
-                                                          <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
-                                                          <input class="gui-input" id="txtMeasureEndDate4" formControlName="measureEndDate4Control" placeholder="Email..." />
-                                                        </div>
-                                                        <div class="col-md-6 ph10 mb5">
-                                                          <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                                                          <input class="gui-input" id="txtMeasureEndDate3" formControlName="measureEndDate3Control" placeholder="Phone..." />
-                                                        </div>-->
-                          </div>
-                          <div class="section row">
-
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="updateControlGroup()" data-dismiss="modal"> Submit</button>
-                <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabelDelete">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabelDelete">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <h4 class="text-center">Are you sure want to <span>Delete</span> this field</h4>
-      </div>
-      <div class="panel-footer text-right">
-        <button type="submit" class="btn btn-bordered btn-primary mb5" data-dismiss="modal"> Confirm</button>
-        <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="myModalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabelNew">
-  <!-- <not closed> -->
-  <div class="modal-dialog modal-lg" role="document">
-    <!-- <not closed> -->
-    <div class="modal-content">
-      <!-- <not closed> -->
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabelNew">Add Customer Information</h4>
-      </div>
-      <div class="modal-body">
-        <!-- <not closed> -->
-        <div class="chute chute-center">
-          <!-- <not closed> -->
-          <div class="allcp-form theme-primary center-block">
-            <!-- <closed> -->
-            <form method="post" (ngSubmit)="addClientOnboardingInfo()" id="allcp-form" novalidate="novalidate">
-              <!-- <not closed> -->
-              <div class="panel-body">
-                <!-- <not closed> -->
-                <div class="row">
-                  <div class="col-md-12">
-                    <!-- -------------- Standard Fields -------------- -->
-                    <div class="panel">
-                      <div class="panel-body no-padding">
-                        <form class="form-horizontal" role="form" [formGroup]="clientOnboardingForm">
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label for="txtControlGroup" class="col-lg-5 control-label"> <h6 class="label-item"> Control Group Name</h6></label>
-                              <input type="text" id="txtControlGroup" formControlName="controlGroupNameControl" class="gui-input" placeholder="Control Group Name...">
+                              <label class="control-label" > <h6 class="label-item"> Is Payroll Service Provider</h6></label>
+                              <md-checkbox formControlName="isPayrollUnionControl"> Union </md-checkbox>
+                              <md-checkbox formControlName="isPayrollNonUnionControl"> Non-Union </md-checkbox>
                             </div>
                           </div>
-                          <div  class="section row">
+                         <!-- <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label for="txtControlGroupEIN" class="col-lg-5 control-label"> <h6 class="label-item"> Address</h6></label>
-                              <input type="text" id="txtControlGroupEIN" formControlName="addressControl" class="gui-input" placeholder="Address...">
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label for="txtMeasureStartDate" class="col-lg-6 control-label"> <h6 class="label-item"> City</h6></label>
-                              <input type="text" id="txtMeasureStartDate" formControlName="cityControl" class="gui-input" placeholder="City...">
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate"> <h6 class="label-item"> State</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate" formControlName="stateControl" placeholder="State..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate1"> <h6 class="label-item"> ZIP</h6>   </label>
-                              <input class="gui-input" id="txtMeasureEndDate1" formControlName="zipControl" placeholder="ZIP..." />
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> General Contact </h5></label>
-                          </div>
-                          <div class="section row">
-
-                            <div class="col-md-6 ph10 mb5">
-
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2"> <h6 class="label-item"> Name</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate2" formControlName="gcNameControl" placeholder="Name..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="gcTitleControl" placeholder="Title..." />
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate4" formControlName="gcEmailControl" placeholder="Email..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="gcPhoneControl" placeholder="Phone..." />
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Contact for Onboarding Inquiries </h5></label>
-                          </div>
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2"> <h6 class="label-item"> Name</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate2" formControlName="oicNameControl" placeholder="Name..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="oicTitleControl" placeholder="Title..." />
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate4" formControlName="oicEmailControl" placeholder="Email..." />
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="oicPhoneControl" placeholder="Phone..." />
-                            </div>
-                          </div>
-                          <div class="section row">
-                            <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Payroll Provider Information</h5></label>
-                          </div>
-                          <div class="section row">
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
+                              <label class="col-lg-6 control-label" >
 
                               </label>
                               <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
+                                <label class="col-lg-6 control-label" >
                                   <b>Union</b>
                                 </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
+                                <label class="col-lg-6 control-label" >
                                   <b>Non Union</b>
                                 </label>
                               </div>
                             </div>
-                          <div class="col-md-6 ph10 mb5">
-                            <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                              
-                            </label>
-                            <div class="col-md-6">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <b>Union</b>
-                              </label>
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <b>Non Union</b>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                          <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Entertainment Partners</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> EMS</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Cast and Crew</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Session Payroll</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Media Services</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> ADP</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> EASE</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Paychex</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> CAPS</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Ceridian</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> In-house</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                <md-checkbox aria-label="Checkbox 1"> Other</md-checkbox>
-                              </label>
-                              <div class="col-md-6">
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                                <label class="col-lg-6 control-label" for="txtMeasureEndDate2">
-                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
-                                </label>
-                              </div>
-                            </div>
+                              <label class="col-lg-6 control-label" >
 
-<!--                            <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Title</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="measureEndDate3Control" placeholder="Title..." />
+                              </label>
+                              <div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <b>Union</b>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <b>Non Union</b>
+                                </label>
+                              </div>
                             </div>
-                          </div>
+                          </div>-->
                           <div class="section row">
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate4"> <h6 class="label-item"> Email</h6></label>
-                              <input class="gui-input" id="txtMeasureEndDate4" formControlName="measureEndDate4Control" placeholder="Email..." />
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isEPControl"> Entertainment Partners</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
                             </div>
                             <div class="col-md-6 ph10 mb5">
-                              <label class="col-lg-6 control-label" for="txtMeasureEndDate3"> <h6 class="label-item"> Phone</h6>  </label>
-                              <input class="gui-input" id="txtMeasureEndDate3" formControlName="measureEndDate3Control" placeholder="Phone..." />
-                            </div>-->
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isEMSControl"> EMS</md-checkbox>
+                              </label>
+                             <!-- <div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isCCControl"> Cast and Crew</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isEMSControl"> EMS</md-checkbox>
+                              </label>
+                             <!-- <div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isMSControl"> Media Services</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isADPControl"> ADP</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isEASEControl"> EASE</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isPaychexControl"> Paychex</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isCAPSControl"> CAPS</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-6 control-label" >
+                                <md-checkbox formControlName="isCeridianControl"> Ceridian</md-checkbox>
+                              </label>
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-3 control-label" >
+                                <md-checkbox formControlName="isInHousePayrollControl" [(ngModel)]="inHousePayrollProvider" > In-house</md-checkbox>
+                              </label>
+                              <input class="gui-input" style="width: 50%" *ngIf="inHousePayrollProvider" formControlName="inHousePayrollSystemsControl" placeholder="List any payroll programs used..." />
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                            <div class="col-md-6 ph10 mb5">
+                              <label class="col-lg-3 control-label" >
+                                <md-checkbox formControlName="isOtherPayrollControl" [(ngModel)]="otherPayrollProvider" > Other</md-checkbox>
+                              </label>
+                                <input class="gui-input" style="width: 50%" *ngIf="otherPayrollProvider" formControlName="otherPayrollDetailsControl" placeholder="Specify..." />
+                              <!--<div class="col-md-6">
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                                <label class="col-lg-6 control-label" >
+                                  <md-checkbox aria-label="Checkbox 1"></md-checkbox>
+                                </label>
+                              </div>-->
+                            </div>
+                          </div>
+                          <div class="section row" style="background: darkgrey; padding: 3px 3px 3px;">
+                            <label> <h4 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Personnel Information</h4></label>
                           </div>
                           <div class="section row">
-
+                            <div class="ph10 mb5">
+                              <label class="control-label" > <h6 class="label-item"> Will handle Reporting for: </h6></label>
+                              <md-checkbox [(ngModel)]="corpStaff" [ngModelOptions]="{standalone: true}"> Corporate Staff</md-checkbox>
+                              <md-checkbox [(ngModel)]="prodStaff" [ngModelOptions]="{standalone: true}"> Production Personnel</md-checkbox>
+                            </div>
+                          </div>
+                          <div *ngIf="corpStaff">
+                            <div class="section row">
+                              <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Corporate Personnel Insurance Information</h5></label>
+                            </div>
+                            <div class="section row">
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item"> Payroll provider used for corporate employees: </h6></label>
+                                <input class="gui-input" formControlName="corpPayrollProviderControl"/>
+                              </div>
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item">Are the corporate employees payrolled under the same FEIN as the production employees? </h6></label>
+                                <md-radio-group class="gui-input" style="border: none;" formControlName="isCorpStaffUnderSameFEINControl" >
+                                <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                <md-radio-button value="no"> No </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                            <div class="section row">
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item"> Roughly how many total corporate employees did you employee this year? </h6></label>
+                                <input class="gui-input" formControlName="numberOfCorpEmployeesControl"/>
+                              </div>
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item">Is the insurance offered to your corporate employees? </h6></label>
+                                <md-radio-group class="gui-input" style="border: none;" formControlName="isInsuranceOfferToCorpStaffControl" [(ngModel)]="isInsuranceOfferedToCorpStaff">
+                                  <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                  <md-radio-button value="no"> No </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                            <div *ngIf="isInsuranceOfferedToCorpStaff == 'yes'">
+                              <div class="section row">
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Name of Insurance Carrier: </h6></label>
+                                  <input class="gui-input"  formControlName="nameOfCorpInsuranceControl" />
+                                </div>
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Insurance Administration System: </h6></label>
+                                  <input class="gui-input"  formControlName="corpInsuranceAdminSystemControl" />
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Contact Name </h6></label>
+                                  <input class="gui-input"  formControlName="corpInsuranceContactNameControl" />
+                                </div>
+                                <div class="col-md-3 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Phone </h6></label>
+                                  <input class="gui-input"  formControlName="corpInsuranceContactPhoneControl" />
+                                </div>
+                                <div class="col-md-3 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Email </h6></label>
+                                  <input class="gui-input"  formControlName="corpInsuranceContactEmailControl" />
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <div class="ph10 mb5">
+                                  <label class="control-label" > <h6 class="label-item"> Is the plan </h6></label>
+                                  <md-radio-group formControlName="insuranceTypeForCorpInsuranceControl">
+                                    <md-radio-button value="fullyinsured" class="md-primary"> fully insured or </md-radio-button>
+                                    <md-radio-button value="selfinsured"> self-insured </md-radio-button>
+                                  </md-radio-group>
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <label class="control-label" > <h6 class="label-item"> Is the plan ACA compliant?</h6></label>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="corpMinEssentialCoverageControl"> Plan provides "Minimum Essential Coverage"?</md-checkbox>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="corpAffordablePlanControl" [(ngModel)]="affordablePlan"> Plan is affordable?</md-checkbox>
+                              </div>
+                              <div class="section row" *ngIf="affordablePlan">
+                                <label class="control-label" > <h6 class="label-item"> Which affordability safe habor is used?</h6></label>
+                                <md-radio-group formControlName="corpSafeHaborControl">
+                                  <md-radio-button value="w2" class="md-primary"> W2 </md-radio-button>
+                                  <md-radio-button value="fpl"> FPL </md-radio-button>
+                                  <md-radio-button value="rateofpay"> Rate of Pay </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="corpMinValueControl"> Plan provides "Minimum Value"</md-checkbox>
+                              </div>
+                              <div class="section row">
+                                <label class="control-label" > <h6 class="label-item"> Who is eligible to enroll in the plan</h6></label>
+                              </div>
+                              <div class="section row">
+                                <md-radio-group formControlName="corpEligibleCoverageControl">
+                                  <md-radio-button value="emp" class="md-primary"> Employee Only </md-radio-button>
+                                  <md-radio-button value="empandspouse"> Employee + Spouse Only </md-radio-button>
+                                  <md-radio-button value="empanddependents"> Employee + Dependents </md-radio-button>
+                                  <md-radio-button value="all"> Employee + Spouse + Dependents </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="prodStaff">
+                            <div class="section row">
+                              <label> <h5 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> Production Personnel Insurance Information</h5></label>
+                            </div>
+                            <div class="section row">
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item">Are the production employees payrolled under the same FEIN as the corporate employees? </h6></label>
+                                <md-radio-group class="gui-input" style="border: none;" formControlName="isProdStaffUnderSameFEINControl" >
+                                  <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                  <md-radio-button value="no"> No </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                            <div class="section row">
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item"> Roughly how many total production employees did you employee this year? </h6></label>
+                                <input class="gui-input" formControlName="numberOfProdEmployeesControl"/>
+                              </div>
+                              <div class="col-md-6 ph10 mb5">
+                                <label class="control-label" > <h6 class="label-item">Is the insurance offered to your production employees? </h6></label>
+                                <md-radio-group class="gui-input" style="border: none;" formControlName="isInsuranceOfferToProdStaffControl" [(ngModel)]="isInsuranceOfferedToProdStaff">
+                                  <md-radio-button value="yes" class="md-primary"> Yes</md-radio-button>
+                                  <md-radio-button value="no"> No </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                            <div *ngIf="isInsuranceOfferedToProdStaff == 'yes'">
+                              <div class="section row">
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Name of Insurance Carrier: </h6></label>
+                                  <input class="gui-input"  formControlName="nameOfProdInsuranceControl" />
+                                </div>
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Insurance Administration System: </h6></label>
+                                  <input class="gui-input"  formControlName="prodInsuranceAdminSystemControl" />
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <div class="col-md-6 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Contact Name </h6></label>
+                                  <input class="gui-input"  formControlName="prodInsuranceContactNameControl" />
+                                </div>
+                                <div class="col-md-3 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Phone </h6></label>
+                                  <input class="gui-input"  formControlName="prodInsuranceContactPhoneControl" />
+                                </div>
+                                <div class="col-md-3 ph10 mb5">
+                                  <label class="col-lg-6 control-label" > <h6 class="label-item"> Email </h6></label>
+                                  <input class="gui-input"  formControlName="prodInsuranceContactEmailControl" />
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <div class="ph10 mb5">
+                                  <label class="control-label" > <h6 class="label-item"> Is the plan </h6></label>
+                                  <md-radio-group formControlName="insuranceTypeForProdInsuranceControl">
+                                    <md-radio-button value="fullyinsured" class="md-primary"> fully insured or </md-radio-button>
+                                    <md-radio-button value="selfinsured"> self-insured </md-radio-button>
+                                  </md-radio-group>
+                                </div>
+                              </div>
+                              <div class="section row">
+                                <label class="control-label" > <h6 class="label-item"> Is the plan ACA compliant?</h6></label>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="prodMinEssentialCoverageControl"> Plan provides "Minimum Essential Coverage"?</md-checkbox>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="prodAffordablePlanControl" [(ngModel)]="affordablePlan"> Plan is affordable?</md-checkbox>
+                              </div>
+                              <div class="section row" *ngIf="affordablePlan">
+                                <label class="control-label" > <h6 class="label-item"> Which affordability safe habor is used?</h6></label>
+                                <md-radio-group formControlName="prodSafeHaborControl">
+                                  <md-radio-button value="w2" class="md-primary"> W2 </md-radio-button>
+                                  <md-radio-button value="fpl"> FPL </md-radio-button>
+                                  <md-radio-button value="rateofpay"> Rate of Pay </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                              <div class="section row">
+                                <md-checkbox formControlName="prodMinValueControl"> Plan provides "Minimum Value"</md-checkbox>
+                              </div>
+                              <div class="section row">
+                                <label class="control-label" > <h6 class="label-item"> Who is eligible to enroll in the plan</h6></label>
+                              </div>
+                              <div class="section row">
+                                <md-radio-group formControlName="prodMinEssentialCoverageControl">
+                                  <md-radio-button value="emp" class="md-primary"> Employee Only </md-radio-button>
+                                  <md-radio-button value="empandspouse"> Employee + Spouse Only </md-radio-button>
+                                  <md-radio-button value="empanddependents"> Employee + Dependents </md-radio-button>
+                                  <md-radio-button value="all"> Employee + Spouse + Dependents </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="section row" style="background: darkgrey; padding: 3px 3px 3px;">
+                            <label> <h4 style="padding-bottom: 0px;margin-bottom: 0px;margin-top: 0px;"> ALE Member Information</h4></label>
+                          </div>
+                          <div class="section row">
+                            <label class="control-label" > <h6 class="label-item"> Number of ALE Members </h6></label>
+                            <input class="gui-input" style="width: 30%" formControlName="numberALEMembersControl" />
+                          </div>
+                          <div class="section row">
+                            <label class="control-label" > <h6 class="label-item"> List of ALE Members </h6></label>
+                          </div>
+                          <div class="section row">
+                            <div class="table-responsive over-x_table">
+                              <table id="datatable" class="table table-striped table-bordered table-hover">
+                                <tr>
+                                  <th class="col-lg-3"><h6>ALE Name</h6></th>
+                                  <th class="col-lg-3"><h6>EIN</h6></th>
+                                  <th class="col-lg-3"><h6>ALE Name</h6></th>
+                                  <th class="col-lg-3"><h6>EIN</h6></th>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName1Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein1Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName2Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein2Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName3Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein3Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName4Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein4Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName5Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein5Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName6Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein6Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName7Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein7Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName8Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein8Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName9Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein9Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName10Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein10Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName11Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein11Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName12Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein12Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName13Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein13Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName14Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein14Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName15Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein15Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName16Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein16Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName17Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein17Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName18Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein18Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName19Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein19Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName20Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein20Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName21Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein21Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName22Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein22Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName23Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein23Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName24Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein24Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName25Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein25Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName26Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein26Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName27Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein27Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName28Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein28Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                                <tr >
+                                  <td><input class="gui-input" formControlName="aleName29Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein29Control" placeholder="Enter EIN..." /></td>
+                                  <td><input class="gui-input" formControlName="aleName30Control" placeholder="Enter ALE Name..." /></td>
+                                  <td><input class="gui-input" formControlName="ein30Control" placeholder="Enter EIN..." /></td>
+                                </tr>
+                              </table>
+                            </div>
                           </div>
                         </form>
                       </div>
@@ -638,15 +745,12 @@
                 </div>
               </div>
               <div class="panel-footer text-right">
-                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="createControlGroup()" data-dismiss="modal"> Submit</button>
+                <button type="submit" class="btn btn-bordered btn-primary mb5" (click)="addClientOnboardingInfo()" data-dismiss="modal"> Submit</button>
                 <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+  </section>
 
-<!---Closed Model Popups-->
