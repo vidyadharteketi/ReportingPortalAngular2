@@ -93,6 +93,8 @@ export class PayrollDataActivityReportComponent implements OnInit {
     }
     reset():void{
         this.dataLoaded=false;
+        this.controlGroupControl.setValue('');
+        this.yearControl.setValue('-1');
         //  this.Years=['-1'];
         //this.ControlGroups=['-1'];
         

@@ -95,10 +95,13 @@ export class OnGoingReportComponent implements OnInit {
     }
 
       reset(): void {
-
+        this.typeOfHoursControl.setValue('');
+        this.controlGroupControl.setValue('');
+        this.measurementEndDateControl.setValue('');
         // this.controlGroups=['-1'];
-        // this.typeOfHours=['-1'];
+         //this.typeOfHours=['-1'];
         // this.measurementEndDates=['-1'];
+        
         this.dataLoaded=false;
 
     // this.measurementEndDates='';

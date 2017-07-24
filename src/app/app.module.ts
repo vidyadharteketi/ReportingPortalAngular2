@@ -11,6 +11,7 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { APPROUTES } from './app.routes';
 import { ExportToExcelService } from './shared/index';
 import {MdButtonModule, MdCheckboxModule, MdRadioModule, MdSelectModule} from '@angular/material';
+import { NgUploaderModule } from 'ngx-uploader';
 
 import {
   SideNavComponent, TopNavComponent, ENFTReportComponent, ENFTReportService, OnGoingReportComponent,
@@ -32,8 +33,8 @@ import {
   OneZeroNineFiveDataUploadComponent,
   PayrollDataUploadComponent,
   EmployeeSummaryReportComponent, EmployeeSummaryReportService,
-  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService, ClientOnboardingCustomerInfoService,
-  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent,
+  ControlGroupService, ApplicableLargeEmployeeService, ApplicableLargeEmployeeDetailsService,
+  OnGoingReportService, NewHireFullTimeComponent, NewHireFullTimeService, DashboardComponent, LoginComponent
 } from './index';
 
 @NgModule({
@@ -48,6 +49,7 @@ import {
     Ng2TableModule,
     PaginationModule.forRoot(),
     TabsModule.forRoot()
+    NgUploaderModule
   ],
   declarations: [
     AppComponent,
@@ -91,8 +93,7 @@ import {
     EmployeeSummaryReportService,
     ControlGroupService,
     ApplicableLargeEmployeeService,
-    ApplicableLargeEmployeeDetailsService,
-    ClientOnboardingCustomerInfoService
+    ApplicableLargeEmployeeDetailsService
   ],
   bootstrap: [AppComponent]
 })

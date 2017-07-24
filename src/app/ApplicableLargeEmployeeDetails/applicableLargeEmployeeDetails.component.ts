@@ -69,8 +69,8 @@ export class ApplicableLargeEmployeeDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.initializeControls();
         this.loadGridData();
-        this._service.getAleMap().subscribe(data => this.aleMap = data, error => this.errorMessage = <any>error);
-        this._service.getControlGroupMap().subscribe(data => this.controlGroupMap = data, error => this.errorMessage = <any>error);
+        this._service.getAleMap().subscribe(dataa => this.aleMap = dataa.aleDropDownList, error => this.errorMessage = <any>error);
+        this._service.getControlGroupMap().subscribe(data => this.controlGroupMap = data.controlGroupDropDownList, error => this.errorMessage = <any>error);
         this.isEdit = false;
     }
 

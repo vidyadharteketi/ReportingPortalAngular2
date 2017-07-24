@@ -144,9 +144,9 @@
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                     <h6 class="">ALE Tax Year</h6>
-                                                    <label for="Ealename" class="field prepend-icon">
-                                                   <input type="text"  disabled="disabled" id="Ealename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
-                                                    <label for="Ealename1" class="field-icon">
+                                                    <label for="CAlename" class="field prepend-icon">
+                                                   <input type="text"  id="CAlename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
+                                                    <label for="CAlename1" class="field-icon">
                                                        <i class="fa fa-user"></i>
                                                     </label>
                                                     </label>
@@ -163,28 +163,28 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
-
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                     <h6>Control Group</h6>
-                                                        <label for="EControlGroup" class="field prepend-icon">
-                                                       <input type="text" id="EControlGroup" class="gui-input" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
-                                                       <label for="EControlGroup1" class="field-icon">
-                                                          <i class="fa fa-user"></i>
-                                                        </label>
-                                                        </label>
+                                                        <label for="EControlGroup" class="field select prepend-icon">
+                                                        <select id="EControlGroup" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
+                                                            <option *ngFor="let cgs of controlGroupMap" value={{cgs.controlGroupId}} selected="cgs.controlGroupId==controlGroupId.value" >
+                                                                {{cgs.controlGroupName}}
+                                                            </option>
+                                                        </select>
+                                                        <i class="arrow"></i>
+                                                    </label>
                                                 </div>
                                                 <div class="col-md-6 ph10">
                                                     <div class="mb5 mt5">
                                                        <h6 class="">ALE</h6>
-                                                    <label for="EALE" class="field prepend-icon">
-                                                       <input type="text" id="EALE" class="gui-input" disabled="disabled" formControlName="aleId" aria-required="true" aria-invalid="true">
-                                                       <label for="EALE1" class="field-icon">
-                                                          <i class="fa fa-user"></i>
-                                                        </label>
+                                                    <label for="CALE" class="field select prepend-icon">
+                                                        <select id="CALE" disabled formControlName="aleId" aria-required="true" aria-invalid="true">
+                                                            <option *ngFor="let ale of aleMap" value={{ale.aleId}} selected="ale.aleId==aleId.value">
+                                                                {{ale.aleName}}
+                                                            </option>
+                                                        </select>
+                                                        <i class="arrow"></i>
                                                     </label>
                                                     </div>
                                                 </div>
@@ -431,7 +431,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit"  class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit" [disabled]="!aleDetailsForm.valid" class="btn btn-bordered btn-primary mb5" (click)="updateAleDetails()" data-dismiss="modal"> Submit</button>
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>
@@ -461,9 +461,6 @@
                                                 <div class="col-md-6 ph10 mb5">
                                                     <h6 class="">ALE Tax Year</h6>
                                                     <label for="CAlename" class="field prepend-icon">
-                                                        <!--<select name="" id="" formControlName="aleId">
-                                                                <option *ngFor="let ale of aleMap" value="{{ale}}">{{ale}}</option>
-                                                        </select>-->
                                                    <input type="text"  id="CAlename"  class="gui-input" formControlName="aleTaxYear" aria-required="true" aria-invalid="true">
                                                     <label for="CAlename1" class="field-icon">
                                                        <i class="fa fa-user"></i>
@@ -487,20 +484,26 @@
                                             <div class="section row">
                                                 <div class="col-md-6 ph10 mb5">
                                                     <h6>Control Group</h6>
-                                                   <label for="CControlGroup" class="field prepend-icon">
-                                                       <input type="text" id="CControlGroup" class="gui-input" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
-                                                       <label for="CControlGroup1" class="field-icon">
-                                                            <i class="fa fa-user"></i>
-                                                       </label>
+                                                    <label for="CControlGroup" class="field select">
+                                                       <select id="CControlGroup" formControlName="controlGroupId" aria-required="true" aria-invalid="true">
+                                                            <option value="" disabled selected>Select </option>
+                                                            <option *ngFor="let group of controlGroupMap" value={{group.controlGroupId}}>
+                                                                {{group.controlGroupName}}
+                                                            </option>
+                                                        </select>
+                                                        <i class="arrow"></i>
                                                     </label>
                                                 </div>
                                                 <div class="col-md-6 ph10">
                                                     <h6 class="">ALE</h6>
-                                                    <label for="CALE" class="field prepend-icon">
-                                                       <input type="text" id="CALE" class="gui-input" formControlName="aleId" aria-required="true" aria-invalid="true">
-                                                       <label for="CALE1" class="field-icon">
-                                                          <i class="fa fa-user"></i>
-                                                        </label>
+                                                     <label for="CALE" class="field select">
+                                                        <select id="CALE" formControlName="aleId" aria-required="true" aria-invalid="true">
+                                                            <option value="" disabled selected>Select </option>
+                                                            <option *ngFor="let ale of aleMap" value={{ale.aleId}}>
+                                                                {{ale.aleName}}
+                                                            </option>
+                                                        </select>
+                                                        <i class="arrow"></i>
                                                     </label>
                                                 </div>
                                             </div>
@@ -746,7 +749,7 @@
                                     </div>
                                 </div>
                                 <div class="panel-footer text-right" >
-                                    <button type="submit" class="btn btn-bordered btn-primary mb5" [disabled]="!aleDetailsForm.valid" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>
+                                    <button type="submit" [disabled]="!aleDetailsForm.valid" class="btn btn-bordered btn-primary mb5" (click)="createAleDetails()" data-dismiss="modal"> Submit</button>                                    
                                     <button type="reset" class="btn btn-bordered mb5" data-dismiss="modal"> Cancel</button>
                                 </div>
                             </form>

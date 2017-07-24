@@ -24,8 +24,17 @@
                                                 <label for="fileInsuDataUpload" class="col-lg-3 control-label">Select File : </label>
                                                 <div class="col-lg-8">
                                                     <div>
-                                                        <input type="file" id="fileInsuDataUpload" class="form-control" placeholder="Upload File">
-                                                    </div>
+                                                       <label class="upload-button">
+                                                        <input type="file" ngFileSelect  (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" multiple>
+                                                                Select your file(s)
+                                                        </label>
+                                                        <button type="button" class="start-upload-btn" (click)="startUpload()">
+                                                         Start Upload
+                                                        </button>                                          
+                                                       </div>
+                                                       <div #statusDiv>
+                                                          
+                                                       </div>
                                                 </div>
                                             </div>
                                         </form>

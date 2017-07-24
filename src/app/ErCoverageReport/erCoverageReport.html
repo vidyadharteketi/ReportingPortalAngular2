@@ -38,7 +38,10 @@
                                     <div class="form-group">
                                         <label for="ddlcontrolgroup" class="col-sm-5 control-label"><i class="fa fa-group"></i> Control Group</label>
                                         <div class="col-sm-7">
-                                            <label class="field select">
+                                            <div class="block">
+                                                <ss-multiselect-dropdown [options]="controlGroupOptions" [settings]="controlGroupSettings" [texts]="controlGroupTexts" [(ngModel)]="selectedControlGroup"></ss-multiselect-dropdown>
+                                            </div>
+                                            <!-- <label class="field select">
                                                 <select id="ddlcontrolgroup" name="ddlcontrolgroup" [(ngModel)]="selectedControlGroup">
                                                     <option value="-1">All</option>
                                                     <option *ngFor="let group of ControlGroups" value={{group}}>
@@ -46,7 +49,7 @@
                                                     </option>
                                                 </select>
                                                 <i class="arrow"></i>
-                                            </label>
+                                            </label> -->
                                         </div>                                        
                                     </div>
                                 </div>  

@@ -59,7 +59,7 @@ export class ENFTReportComponent implements OnInit {
         { title: 'Last Worked Date', className: 'va-m', name: 'lastWorkedDate' },
         { title: 'Hire Date', className: 'va-m', name: 'hireDate' },
         { title: 'Union Type', className: 'va-m', name: 'unionType' },
-        { title: 'Payroll Source', className: 'va-m', name: 'payrollSource' },
+        // { title: 'Payroll Source', className: 'va-m', name: 'payrollSource' },
         { title: 'Average Hours', className: 'va-m', name: 'avgHours' },
         { title: 'Total Hours', className: 'va-m', name: 'totalHours' }
     ];
@@ -142,7 +142,7 @@ export class ENFTReportComponent implements OnInit {
         }
 
         const filterCriteria: any = {
-            selectedYear: year, selectedHireMonth: month, selectedControlGroup: cg,
+            selectedYear: year, selectedHireMonth: month, selectedControlGroup: cg, // cg.join('|'),
             selectedTypeOfHours: emptype, selectedNonFullTimeCatgeories: cat,
             avgWeeklyThreshold: this.AvgWeeklyHrsThr,
             reportCount: 13

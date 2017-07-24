@@ -26,8 +26,6 @@ export class NewHireFullTimeService {
             .map((response: Response) => response.json().summaryCountForNewHireFullTimeVO)
             .do(data => console.log('All: ' + JSON.stringify(data)))
             .catch(this.handleError);
-
-        // return { eftworkers: "26" }; 
     }
 
     getEligibleFullTimeReportData(filterCriteria: any): Observable<InhftWorkDetail[]> {
